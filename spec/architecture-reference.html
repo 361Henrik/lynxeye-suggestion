@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Project Accelerate Lynxeye — four-panel architecture v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Lexend', -apple-system, sans-serif;
+  background: #ECE7DE;
+  color: #1A1F1A;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+.wrap { max-width: 1120px; margin: 0 auto; }
+
+.note {
+  background: #FBF6E9; border: 0.5px dashed #C9A962; border-radius: 8px;
+  padding: 18px 24px; margin: 24px 16px; font-size: 13px; color: #6E6A5E;
+  line-height: 1.65;
+}
+.note strong { color: #2E6B54; font-weight: 500; }
+
+.doc { background: #F6F3EE; border-radius: 12px; overflow: hidden; border: 0.5px solid #CCC4B8; margin: 0 16px 60px; }
+
+/* ============ TOP MENU BAR ============ */
+.topbar {
+  position: sticky; top: 0;
+  background: rgba(246,243,238,0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 36px;
+  border-bottom: 0.5px solid #CCC4B8;
+  z-index: 50;
+}
+.topbar-brand {
+  font-size: 12px; color: #2E6B54; font-weight: 500; letter-spacing: 0.02em;
+}
+.topbar-menu { display: flex; gap: 4px; }
+.topbar-link {
+  font-size: 11px; color: #6E6A5E;
+  padding: 6px 12px; border-radius: 5px;
+  cursor: pointer; transition: all 250ms ease-out;
+  letter-spacing: 0.04em;
+}
+.topbar-link:hover { background: #E8E2D9; color: #1A1F1A; }
+.topbar-link-icon { display: inline-block; margin-right: 5px; opacity: 0.6; }
+
+/* ============ HERO ============ */
+.hero {
+  padding: 60px 48px 48px;
+  position: relative;
+  background: #F6F3EE;
+  display: grid; grid-template-columns: 1.05fr 1fr;
+  gap: 40px; align-items: center;
+}
+.hero-l {}
+.hero-eyebrow { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #C9A962; font-weight: 500; margin-bottom: 14px; }
+.hero-name { font-size: 38px; font-weight: 500; color: #1A1F1A; letter-spacing: -0.02em; line-height: 1.08; margin-bottom: 20px; }
+.hero-pitch { font-size: 17px; line-height: 1.7; color: #1A1F1A; margin-bottom: 18px; }
+.hero-pitch strong { color: #2E6B54; font-weight: 500; }
+.hero-tagline {
+  font-size: 14px; color: #2E6B54; margin-top: 18px;
+  font-style: italic; font-weight: 500;
+  border-left: 3px solid #C9A962; padding-left: 16px;
+}
+.hero-r {
+  background: #FFFFFF; border: 0.5px solid #CCC4B8; border-radius: 8px;
+  padding: 28px 30px 22px;
+}
+.hero-r-l { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #C9A962; font-weight: 500; margin-bottom: 14px; }
+.hero-r svg { width: 100%; height: auto; display: block; }
+.hero-r-cap {
+  font-size: 12px; color: #6E6A5E; margin-top: 10px; padding-top: 10px;
+  border-top: 0.5px solid #E8E2D9; font-style: italic; text-align: center;
+}
+.hero-r-cap strong { color: #2E6B54; font-style: normal; font-weight: 500; }
+
+/* ============ PANEL NAVIGATOR ============ */
+.nav-wrap { padding: 32px 48px 0; }
+.nav-title { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #C9A962; font-weight: 500; margin-bottom: 16px; }
+.nav-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.nav-card {
+  background: #FFFFFF; border: 0.5px solid #CCC4B8; border-radius: 8px;
+  padding: 20px 22px 18px; cursor: pointer;
+  transition: all 300ms ease-out;
+  display: flex; flex-direction: column; min-height: 150px;
+  position: relative;
+}
+.nav-card:hover { border-color: #C9A962; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.05); }
+.nav-card-active { border: 0.5px solid #2E6B54; background: #FAFAF6; }
+.nav-card-active::after {
+  content: ''; position: absolute; bottom: -1px; left: 50%; transform: translateX(-50%);
+  width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent;
+  border-top: 10px solid #2E6B54;
+}
+.nav-card-num { font-size: 10px; letter-spacing: 0.18em; color: #C9A962; font-weight: 500; margin-bottom: 8px; }
+.nav-card-name { font-size: 16px; font-weight: 500; color: #1A1F1A; margin-bottom: 8px; letter-spacing: -0.01em; line-height: 1.25; }
+.nav-card-desc { font-size: 12px; color: #6E6A5E; line-height: 1.55; flex: 1; }
+.nav-card-cue {
+  font-size: 10px; color: #C9A962; font-weight: 500; letter-spacing: 0.06em;
+  margin-top: 12px;
+}
+.nav-card-active .nav-card-cue { color: #2E6B54; }
+
+/* ============ OPEN PANEL CONTAINER ============ */
+.open-panel {
+  background: #FFFFFF; margin: 24px 48px 48px;
+  border: 0.5px solid #2E6B54; border-radius: 8px;
+  padding: 36px 40px;
+  animation: panelOpen 350ms ease-out;
+}
+@keyframes panelOpen {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.panel-eyebrow { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #C9A962; font-weight: 500; margin-bottom: 8px; }
+.panel-title { font-size: 24px; font-weight: 500; color: #1A1F1A; letter-spacing: -0.015em; line-height: 1.25; margin-bottom: 8px; }
+.panel-sub { font-size: 13px; color: #6E6A5E; margin-bottom: 26px; font-style: italic; max-width: 700px; line-height: 1.6; }
+
+/* === Panel 1 — Situation + Ambition === */
+.s-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 22px; }
+.s-col-h { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #C9A962; font-weight: 500; margin-bottom: 10px; }
+.s-prose { font-size: 14px; line-height: 1.75; color: #1A1F1A; }
+.s-prose strong { color: #2E6B54; font-weight: 500; }
+.s-prose p { margin-bottom: 10px; }
+.s-quotes {
+  background: #F6F3EE; border-left: 3px solid #C9A962;
+  border-radius: 0 6px 6px 0; padding: 18px 22px; margin-top: 16px;
+}
+.s-quotes-l { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #6E6A5E; font-weight: 500; margin-bottom: 12px; }
+.s-quotes-t { font-size: 13px; line-height: 1.75; color: #1A1F1A; font-style: italic; }
+
+/* === Panel 2 — Back of envelope === */
+.b-hyp {
+  background: #FBF6E9; border-left: 3px solid #C9A962;
+  padding: 16px 22px; margin-bottom: 22px;
+  font-size: 13px; line-height: 1.7; color: #1A1F1A; border-radius: 0 4px 4px 0;
+}
+.b-hyp strong { color: #2E6B54; font-weight: 500; }
+.b-sim { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.b-side-l { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #6E6A5E; font-weight: 500; margin-bottom: 14px; }
+.b-slider { margin-bottom: 14px; }
+.b-slider-h { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 5px; }
+.b-slider-h .v { color: #2E6B54; font-weight: 500; font-variant-numeric: tabular-nums; }
+.b-slider input { width: 100%; -webkit-appearance: none; height: 3px; background: #E8E2D9; border-radius: 2px; outline: none; }
+.b-slider input::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: #2E6B54; cursor: pointer; border: 2px solid #FFFFFF; transition: background 300ms; }
+.b-slider input::-webkit-slider-thumb:hover { background: #C9A962; }
+.b-out { background: #F6F3EE; border-radius: 8px; padding: 22px; border: 0.5px solid #E8E2D9; }
+.b-out-l { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #6E6A5E; font-weight: 500; margin-bottom: 14px; }
+.b-met { margin-bottom: 18px; }
+.b-met:last-child { margin-bottom: 0; }
+.b-met-l { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6E6A5E; font-weight: 500; margin-bottom: 3px; }
+.b-met-v { font-size: 22px; font-weight: 500; color: #C9A962; letter-spacing: -0.015em; font-variant-numeric: tabular-nums; line-height: 1.2; }
+.b-met-h { font-size: 11px; color: #6E6A5E; margin-top: 3px; }
+.b-flag {
+  margin-top: 22px; padding: 14px 18px;
+  background: #FAFAF6; border: 0.5px dashed #C9A962; border-radius: 6px;
+  font-size: 12px; color: #6E6A5E; font-style: italic; line-height: 1.6;
+}
+.b-flag strong { color: #B8985A; font-weight: 500; font-style: normal; }
+
+/* === Panel 3 — Phases === */
+.ph-intro { font-size: 14px; color: #1A1F1A; line-height: 1.75; margin-bottom: 22px; max-width: 720px; }
+.ph-intro strong { color: #2E6B54; font-weight: 500; }
+.ph-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.ph-card { background: #F6F3EE; border-radius: 8px; padding: 22px 22px 20px; transition: transform 300ms ease-out; }
+.ph-card:hover { transform: translateY(-2px); }
+.ph-p1 { border-top: 1.5px solid #C9A962; }
+.ph-p2 { border-top: 2.5px solid #C9A962; }
+.ph-p3 { border-top: 4px solid #C9A962; background: linear-gradient(to bottom, #FBF6E9 0%, #F6F3EE 30%); }
+.ph-here {
+  display: inline-block; font-size: 10px; letter-spacing: 0.1em;
+  color: #2E6B54; font-weight: 500;
+  padding: 3px 8px; background: #E8F0EC; border-radius: 4px; margin-bottom: 8px;
+}
+.ph-lbl { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #C9A962; font-weight: 500; margin-bottom: 4px; }
+.ph-n { font-size: 17px; font-weight: 500; color: #1A1F1A; margin-bottom: 8px; letter-spacing: -0.01em; }
+.ph-p3 .ph-n { color: #2E6B54; }
+.ph-t { font-size: 13px; line-height: 1.6; color: #6E6A5E; margin-bottom: 10px; }
+.ph-tag { display: inline-block; font-size: 10px; color: #6E6A5E; font-style: italic; padding-top: 8px; border-top: 0.5px dashed #CCC4B8; }
+
+/* === Panel 4 — My suggestion === */
+.sug-prose { font-size: 14px; color: #1A1F1A; line-height: 1.75; max-width: 720px; margin-bottom: 22px; }
+.sug-prose strong { color: #2E6B54; font-weight: 500; }
+
+.sug-tabs { display: flex; gap: 6px; margin-bottom: 22px; border-bottom: 0.5px solid #E8E2D9; }
+.sug-tab {
+  padding: 12px 18px; font-size: 12px; color: #6E6A5E; cursor: pointer;
+  border-bottom: 2px solid transparent; transition: all 250ms ease-out;
+  letter-spacing: 0.06em;
+}
+.sug-tab:hover { color: #1A1F1A; }
+.sug-tab-active { color: #2E6B54; border-bottom-color: #C9A962; font-weight: 500; }
+.sug-tab-tag {
+  font-size: 9px; padding: 2px 7px; margin-left: 8px;
+  border-radius: 10px; letter-spacing: 0.06em; font-weight: 500;
+}
+.sug-tag-locked { background: #E8F0EC; color: #2E6B54; }
+.sug-tag-pick { background: #FBF6E9; color: #B8985A; }
+.sug-tag-meta { background: #E8E2D9; color: #6E6A5E; }
+
+.sug-pane { display: none; }
+.sug-pane-active { display: block; }
+
+.sug-items { display: grid; gap: 6px; }
+.sug-item {
+  font-size: 13px; line-height: 1.55; padding: 12px 14px;
+  display: grid; grid-template-columns: 22px 1fr 14px; gap: 10px; align-items: flex-start;
+  border-radius: 5px; cursor: pointer; transition: all 200ms ease-out;
+  border: 0.5px solid transparent;
+  background: #FAFAF6;
+}
+.sug-item:hover { background: #F6F3EE; border-color: #E5C988; }
+.sug-item-check {
+  width: 16px; height: 16px; border-radius: 3px; margin-top: 1px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 500;
+}
+.sug-item-locked .sug-item-check { background: #2E6B54; color: #FFFFFF; }
+.sug-item-pick .sug-item-check { border: 1px solid #CCC4B8; background: #FFFFFF; }
+.sug-item:hover.sug-item-pick .sug-item-check { border-color: #C9A962; }
+.sug-item-text strong { color: #1A1F1A; font-weight: 500; }
+.sug-item-text > span { color: #6E6A5E; font-size: 12px; display: block; margin-top: 2px; line-height: 1.45; }
+.sug-item-toggle {
+  color: #C9A962; font-size: 13px; cursor: pointer; transition: transform 250ms;
+  margin-top: 1px;
+}
+.sug-item-open .sug-item-toggle { transform: rotate(180deg); }
+.sug-item-detail {
+  grid-column: 1 / -1; max-height: 0; overflow: hidden;
+  transition: max-height 350ms ease-out;
+  padding-left: 32px; padding-right: 14px;
+}
+.sug-item-open .sug-item-detail { max-height: 400px; padding-top: 12px; padding-bottom: 2px; }
+.sug-item-detail-inner {
+  font-size: 12px; line-height: 1.7; color: #1A1F1A;
+  padding: 14px 18px; background: #FFFFFF; border-radius: 5px;
+  border-left: 2px solid #C9A962;
+}
+.sug-item-detail-inner strong { color: #2E6B54; font-weight: 500; }
+.sug-item-detail-inner em { color: #6E6A5E; font-style: italic; font-size: 11px; display: block; margin-top: 6px; }
+
+.sug-meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 22px; }
+.sug-meta-block {
+  background: #FAFAF6; border: 0.5px solid #E8E2D9; border-radius: 6px;
+  padding: 18px 22px;
+}
+.sug-meta-l { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #6E6A5E; font-weight: 500; margin-bottom: 12px; }
+.sug-meta-h { font-size: 15px; font-weight: 500; color: #1A1F1A; margin-bottom: 8px; letter-spacing: -0.01em; }
+.sug-meta-t { font-size: 13px; line-height: 1.65; color: #1A1F1A; }
+.sug-meta-t strong { color: #2E6B54; font-weight: 500; }
+
+.sug-timeline {
+  padding: 20px 24px; background: #1A1F1A; color: #F6F3EE; border-radius: 8px;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 4px;
+}
+.sug-tl-item {}
+.sug-tl-l { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #C9A962; font-weight: 500; margin-bottom: 6px; }
+.sug-tl-v { font-size: 14px; line-height: 1.4; color: #F6F3EE; }
+.sug-tl-v strong { font-weight: 500; }
+
+.sug-loop { padding: 28px 24px 16px; background: #F6F3EE; border-radius: 8px; }
+.sug-loop svg { width: 100%; height: auto; max-width: 600px; display: block; margin: 0 auto; }
+.sug-loop-cap {
+  font-size: 12px; color: #6E6A5E; margin-top: 14px; padding-top: 12px;
+  border-top: 0.5px solid #E8E2D9; text-align: center; font-style: italic;
+}
+
+.sug-outcomes {
+  background: #FAFAF6; border: 0.5px solid #E8E2D9; border-radius: 8px;
+  padding: 22px 24px; margin-top: 16px;
+}
+.sug-outcomes-l { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #C9A962; font-weight: 500; margin-bottom: 10px; }
+.sug-outcomes-h { font-size: 17px; font-weight: 500; color: #1A1F1A; margin-bottom: 14px; letter-spacing: -0.01em; }
+.sug-outcomes-list { display: grid; gap: 10px; }
+.sug-outcome { display: flex; gap: 12px; align-items: flex-start; font-size: 13px; line-height: 1.6; color: #1A1F1A; }
+.sug-outcome:before { content: ''; flex-shrink: 0; width: 5px; height: 5px; border-radius: 50%; background: #C9A962; margin-top: 8px; }
+.sug-outcome strong { color: #2E6B54; font-weight: 500; }
+
+/* ============ MODAL OVERLAY for supporting items ============ */
+.modal-bg {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(26, 31, 26, 0.6);
+  backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  z-index: 100;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 20px;
+  overflow-y: auto;
+}
+.modal-bg-active { display: flex; }
+.modal {
+  background: #F6F3EE; border-radius: 12px;
+  width: 100%; max-width: 880px; padding: 40px 44px;
+  position: relative;
+  border: 0.5px solid #CCC4B8;
+  animation: modalOpen 300ms ease-out;
+}
+@keyframes modalOpen {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.modal-close {
+  position: absolute; top: 20px; right: 24px;
+  font-size: 22px; color: #6E6A5E; cursor: pointer;
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 200ms;
+}
+.modal-close:hover { background: #E8E2D9; color: #1A1F1A; }
+.modal-eyebrow { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #C9A962; font-weight: 500; margin-bottom: 10px; }
+.modal-title { font-size: 26px; font-weight: 500; color: #1A1F1A; letter-spacing: -0.018em; margin-bottom: 8px; }
+.modal-sub { font-size: 14px; color: #6E6A5E; font-style: italic; margin-bottom: 24px; }
+.modal-body { font-size: 14px; line-height: 1.75; color: #1A1F1A; }
+.modal-body p { margin-bottom: 14px; }
+.modal-body strong { color: #2E6B54; font-weight: 500; }
+.modal-body h3 { font-size: 14px; font-weight: 500; color: #1A1F1A; letter-spacing: 0.04em; text-transform: uppercase; margin: 24px 0 12px; }
+.modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 18px; }
+.modal-cell { background: #FFFFFF; border-radius: 6px; padding: 18px 22px; border: 0.5px solid #CCC4B8; }
+.modal-cell-l { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #C9A962; font-weight: 500; margin-bottom: 8px; }
+.modal-cell-t { font-size: 13px; line-height: 1.7; color: #1A1F1A; }
+.modal-pillars { display: grid; gap: 14px; margin-top: 18px; }
+.modal-pillar { display: flex; gap: 14px; align-items: flex-start; }
+.modal-pillar-dot { flex-shrink: 0; width: 6px; height: 6px; border-radius: 50%; background: #C9A962; margin-top: 9px; }
+.modal-pillar-h { font-size: 13px; font-weight: 500; color: #1A1F1A; margin-bottom: 2px; }
+.modal-pillar-t { font-size: 12px; color: #6E6A5E; line-height: 1.6; }
+
+@media (max-width: 900px) {
+  .hero, .nav-cards, .b-sim, .s-grid, .ph-cards, .sug-meta-grid, .sug-timeline, .modal-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero { padding: 40px 24px; gap: 24px; }
+  .nav-wrap, .open-panel { padding-left: 24px; padding-right: 24px; }
+  .open-panel { margin-left: 16px; margin-right: 16px; padding: 24px; }
+  .hero-name { font-size: 28px; }
+  .topbar { padding: 12px 20px; flex-wrap: wrap; gap: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="note">
+<strong>New architecture:</strong> Top menu with the two supporting items as modal overlays. Hero with elevator pitch on the left and the orchestrating-vs-ping-pong visual on the right. Four summary cards as the navigator. Click any card to open that panel underneath. Click another card to switch. Inside Panel 4 (My suggestion), the deliverables are click-to-expand for detail. The simulator drops in as-is for now — next pass refines it. No closing — that lives in the email.
+</div>
+
+<div class="doc">
+
+  <!-- ============ TOP MENU ============ -->
+  <div class="topbar">
+    <div class="topbar-brand">Project Accelerate Lynxeye · for Lynxeye, May 2026</div>
+    <div class="topbar-menu">
+      <div class="topbar-link" onclick="openModal('m-pingpong')"><span class="topbar-link-icon">↗</span>Ping-pong vs. orchestration</div>
+      <div class="topbar-link" onclick="openModal('m-henrik')"><span class="topbar-link-icon">↗</span>About Henrik &amp; Threesixty1</div>
+    </div>
+  </div>
+
+  <!-- ============ HERO ============ -->
+  <div class="hero">
+    <div class="hero-l">
+      <div class="hero-eyebrow">A proposal for Lynxeye</div>
+      <div class="hero-name">Project Accelerate Lynxeye</div>
+      <div class="hero-pitch">A focused engagement to help <strong>5-8 people at Lynxeye</strong> escape ad-hoc AI and start orchestrating with intelligence. Real client work as the practice field, real outputs to keep, and a clear view of what comes next.</div>
+      <div class="hero-pitch">Built from our conversations. <strong>Meant to be discussed</strong>, shaped together, and locked in before pricing.</div>
+      <div class="hero-tagline">Human judgment leads. AI accelerates. Playbooks scale.</div>
+    </div>
+    <div class="hero-r">
+      <div class="hero-r-l">The gap that compounds</div>
+      <svg viewBox="0 0 480 280" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="hero-end" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round"/>
+          </marker>
+        </defs>
+        <line x1="40" y1="240" x2="450" y2="240" stroke="#CCC4B8" stroke-width="0.5"/>
+        <line x1="40" y1="240" x2="40" y2="30" stroke="#CCC4B8" stroke-width="0.5"/>
+        <text x="40" y="262" font-family="Lexend" font-size="9" font-weight="500" fill="#6E6A5E" letter-spacing="0.14em">NOW</text>
+        <text x="450" y="262" font-family="Lexend" font-size="9" font-weight="500" fill="#6E6A5E" letter-spacing="0.14em" text-anchor="end">LATER</text>
+
+        <!-- Ping-pong path (mostly flat, slight decline) -->
+        <path d="M40,228 C120,226 220,222 320,225 C380,228 420,232 450,235" fill="none" stroke="#8A8678" stroke-width="1.6" opacity="0.7"/>
+
+        <!-- Orchestrated path (rising sharply) -->
+        <path d="M40,228 C100,222 170,210 230,180 C290,148 340,108 390,68 C420,42 440,28 450,22" fill="none" stroke="#C9A962" stroke-width="2.8" stroke-linecap="round" marker-end="url(#hero-end)"/>
+
+        <circle cx="100" cy="223" r="3" fill="#C9A962" opacity="0.6"/>
+        <circle cx="180" cy="200" r="3" fill="#C9A962" opacity="0.7"/>
+        <circle cx="270" cy="158" r="3" fill="#C9A962" opacity="0.85"/>
+        <circle cx="360" cy="92" r="3" fill="#C9A962"/>
+
+        <!-- Endpoint labels -->
+        <line x1="450" y1="22" x2="450" y2="10" stroke="#C9A962" stroke-width="0.5"/>
+        <text x="450" y="8" font-family="Lexend" font-size="11" font-weight="500" fill="#2E6B54" text-anchor="end">Orchestrating with AI</text>
+
+        <line x1="450" y1="237" x2="450" y2="252" stroke="#8A8678" stroke-width="0.5"/>
+        <text x="450" y="278" font-family="Lexend" font-size="11" font-weight="500" fill="#6E6A5E" text-anchor="end">Ping-pong with AI</text>
+
+        <text x="40" y="220" font-family="Lexend" font-size="10" fill="#6E6A5E">Same starting point</text>
+      </svg>
+      <div class="hero-r-cap">Two paths. Same starting point. <strong>The gap widens every quarter.</strong></div>
+    </div>
+  </div>
+
+  <!-- ============ PANEL NAVIGATOR ============ -->
+  <div class="nav-wrap">
+    <div class="nav-title">Click any panel to open it · click another to switch</div>
+    <div class="nav-cards">
+      <div class="nav-card nav-card-active" data-panel="situation" onclick="openPanel('situation')">
+        <div class="nav-card-num">PANEL 1</div>
+        <div class="nav-card-name">Situation &amp; ambition</div>
+        <div class="nav-card-desc">What I hear from our conversations. Where Lynxeye is, where Lynxeye wants to get to.</div>
+        <div class="nav-card-cue">↓ OPEN</div>
+      </div>
+      <div class="nav-card" data-panel="envelope" onclick="openPanel('envelope')">
+        <div class="nav-card-num">PANEL 2</div>
+        <div class="nav-card-name">Back of the envelope</div>
+        <div class="nav-card-desc">The directional math. Toggle the levers, watch the upside. The cost side, indicatively.</div>
+        <div class="nav-card-cue">↓ OPEN</div>
+      </div>
+      <div class="nav-card" data-panel="phases" onclick="openPanel('phases')">
+        <div class="nav-card-num">PANEL 3</div>
+        <div class="nav-card-name">The journey</div>
+        <div class="nav-card-desc">Three phases. Escape Velocity is Phase 1 — and the most important. Without it, the rest doesn't happen.</div>
+        <div class="nav-card-cue">↓ OPEN</div>
+      </div>
+      <div class="nav-card" data-panel="suggestion" onclick="openPanel('suggestion')">
+        <div class="nav-card-num">PANEL 4</div>
+        <div class="nav-card-name">My suggestion for collaboration</div>
+        <div class="nav-card-desc">The core that's locked, the add-ons Lynxeye picks, how the work is structured, what the outcome looks like.</div>
+        <div class="nav-card-cue">↓ OPEN</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ OPEN PANEL AREA ============ -->
+
+  <!-- Panel 1 — Situation + Ambition -->
+  <div class="open-panel" id="panel-situation">
+    <div class="panel-eyebrow">Panel 1 · The conversation so far</div>
+    <div class="panel-title">Situation &amp; ambition</div>
+    <div class="panel-sub">What I hear from our conversations. Lynxeye's reality on the left, where Lynxeye wants to get to on the right.</div>
+
+    <div class="s-grid">
+      <div>
+        <div class="s-col-h">Situation</div>
+        <div class="s-prose">
+          <p>Premium consultancy of ~70 people. Structurally understaffed. Pricing premium creates lost opportunities. Hiring can't keep pace with demand, and the finance team is currently short three people.</p>
+          <p>Internally, AI use is individual and scattered. Johan and Viking are doing meaningful work, but the wider firm is still in <strong>ping-pong mode</strong> — prompts disappear, knowledge stays in heads, every project starts from scratch.</p>
+        </div>
+      </div>
+      <div>
+        <div class="s-col-h">Ambition</div>
+        <div class="s-prose">
+          <p>Scale and orchestrate with AI without losing what makes Lynxeye premium. Turn senior expertise into playbooks. Free experienced people from production burden so they can focus on strategic judgment.</p>
+          <p>Build the capability inside Lynxeye, not bought-in. <strong>Premium quality preserved.</strong> Capacity beyond linear hiring. New project types within reach.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="s-quotes">
+      <div class="s-quotes-l">From our conversations (anonymized)</div>
+      <div class="s-quotes-t">"The great plan dies the moment the email doesn't work." · "Every experienced person needs a scalable junior team." · "Freed-up time must be designed, otherwise the company fills it with more work." · "We're understaffed anyway. Either we deal with it with reduced quality, or we look at other ways."</div>
+    </div>
+  </div>
+
+  <!-- Panel 2 — Back of envelope -->
+  <div class="open-panel" id="panel-envelope" style="display:none;">
+    <div class="panel-eyebrow">Panel 2 · The math, directionally</div>
+    <div class="panel-title">Back of the envelope</div>
+    <div class="panel-sub">Toggle the levers to explore. These are starting hypotheses, not commitments. Phase 1 turns these into Lynxeye-specific numbers.</div>
+
+    <div class="b-hyp"><strong>Starting hypothesis.</strong> If Lynxeye succeeds with the acceleration, the upside looks something like the numbers below. No time frame implied here — this is the destination state, not a Phase 1 deliverable.</div>
+
+    <div class="b-sim">
+      <div>
+        <div class="b-side-l">Lynxeye baseline (SEK)</div>
+        <div class="b-slider"><div class="b-slider-h"><span>Employees</span><span class="v" id="emp-v">70</span></div><input type="range" min="20" max="150" value="70" id="emp"></div>
+        <div class="b-slider"><div class="b-slider-h"><span>Billable hours / year</span><span class="v" id="hrs-v">1,500</span></div><input type="range" min="1000" max="2000" value="1500" step="50" id="hrs"></div>
+        <div class="b-slider"><div class="b-slider-h"><span>Avg. billing rate (SEK/hr)</span><span class="v" id="rate-v">3,000</span></div><input type="range" min="1500" max="5000" value="3000" step="100" id="rate"></div>
+        <div class="b-side-l" style="margin-top: 22px;">Improvement levers</div>
+        <div class="b-slider"><div class="b-slider-h"><span>Project delivery compression</span><span class="v" id="proj-v">25%</span></div><input type="range" min="0" max="50" value="25" id="proj"></div>
+        <div class="b-slider"><div class="b-slider-h"><span>Pitch cycle compression</span><span class="v" id="pitch-v">25%</span></div><input type="range" min="0" max="50" value="25" id="pitch"></div>
+        <div class="b-slider"><div class="b-slider-h"><span>Win rate on qualified pitches</span><span class="v" id="win-v">15%</span></div><input type="range" min="0" max="40" value="15" id="win"></div>
+      </div>
+      <div class="b-out">
+        <div class="b-out-l">Output · for Lynxeye at current settings</div>
+        <div class="b-met"><div class="b-met-l">Freed-up capacity (range)</div><div class="b-met-v" id="cap-v">35,000 – 50,000</div><div class="b-met-h">hours per year · ~1 extra day per consultant per week</div></div>
+        <div class="b-met"><div class="b-met-l">Directional capacity value</div><div class="b-met-v" id="val-v">105 – 150M</div><div class="b-met-h">SEK at current billing rate</div></div>
+        <div class="b-met"><div class="b-met-l">Additional pitch cycles</div><div class="b-met-v" id="pc-v">+1 to +2</div><div class="b-met-h">per year, from cycle compression</div></div>
+        <div class="b-met"><div class="b-met-l">Win-rate gain</div><div class="b-met-v" id="wr-v">+15%</div><div class="b-met-h">on qualified pitches</div></div>
+      </div>
+    </div>
+
+    <div class="b-flag"><strong>Next pass on the simulator:</strong> add info indicators on every input explaining assumptions, fold in the hiring-alternative comparison, improve the pitch cycles math, surface more topics we've discussed. This version is the existing simulator dropped in as a placeholder — refining it is the next focused pass.</div>
+  </div>
+
+  <!-- Panel 3 — Phases -->
+  <div class="open-panel" id="panel-phases" style="display:none;">
+    <div class="panel-eyebrow">Panel 3 · The journey</div>
+    <div class="panel-title">The Accelerate Lynxeye phases</div>
+    <div class="panel-sub">Three phases. Phase 1 is what this proposal is about — and it's the most important. Without escape velocity, the rest doesn't happen.</div>
+
+    <div class="ph-intro">Most companies fail to scale with AI not because they don't want to. They fail because <strong>the new way of working is rougher than the old one</strong>, and time pulls people back to old habits. Phase 1 is designed to break that gravity. Phase 2 and 3 are what becomes possible once Lynxeye is moving.</div>
+
+    <div class="ph-cards">
+      <div class="ph-card ph-p1">
+        <div class="ph-here">↓ THIS PROPOSAL</div>
+        <div class="ph-lbl">Phase 1</div>
+        <div class="ph-n">Escape Velocity</div>
+        <div class="ph-t">5-8 people, 2-3 months, one live client engagement. Break free from old habits. Build foundation. Capture first playbooks. Map Lynxeye's AI opportunity surface.</div>
+        <div class="ph-tag">Foundation built</div>
+      </div>
+      <div class="ph-card ph-p2">
+        <div class="ph-lbl">Phase 2</div>
+        <div class="ph-n">Ascent</div>
+        <div class="ph-t">Picking up speed. Orchestration matures, more teams onboard, playbooks accumulate. Capacity compounds across the firm.</div>
+        <div class="ph-tag">Compounding capacity</div>
+      </div>
+      <div class="ph-card ph-p3">
+        <div class="ph-lbl">Phase 3</div>
+        <div class="ph-n">New Frontiers</div>
+        <div class="ph-t">New offers, new business areas, new types of client work that wouldn't have been viable before. Lynxeye becomes the firm others measure against.</div>
+        <div class="ph-tag">New offers, new business</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel 4 — My suggestion for collaboration -->
+  <div class="open-panel" id="panel-suggestion" style="display:none;">
+    <div class="panel-eyebrow">Panel 4 · The center of gravity</div>
+    <div class="panel-title">My suggestion for collaboration</div>
+    <div class="panel-sub">Based on our conversations. A locked core, a small set of add-ons Lynxeye can choose, and a way of working built on what Johan and Viking are already doing.</div>
+
+    <div class="sug-prose">
+      Phase 1 has <strong>a locked core</strong> — seven deliverables every version includes — and <strong>six add-ons</strong> Lynxeye can pick from depending on what matters most now. Click any deliverable to see detail. The tabs below let you navigate between the locked core, the add-ons, how we'd work together, and what the outcome looks like.
+    </div>
+
+    <div class="sug-tabs">
+      <div class="sug-tab sug-tab-active" data-tab="locked" onclick="switchTab('locked')">The locked core <span class="sug-tab-tag sug-tag-locked">7 items</span></div>
+      <div class="sug-tab" data-tab="addons" onclick="switchTab('addons')">The add-ons <span class="sug-tab-tag sug-tag-pick">6 options</span></div>
+      <div class="sug-tab" data-tab="howwework" onclick="switchTab('howwework')">How we work <span class="sug-tab-tag sug-tag-meta">approach</span></div>
+      <div class="sug-tab" data-tab="outcome" onclick="switchTab('outcome')">What Lynxeye gets <span class="sug-tab-tag sug-tag-meta">outcome</span></div>
+    </div>
+
+    <!-- LOCKED CORE -->
+    <div class="sug-pane sug-pane-active" id="pane-locked">
+      <div class="sug-items">
+
+        <div class="sug-item sug-item-locked" onclick="toggleItem(this)">
+          <div class="sug-item-check">✓</div>
+          <div class="sug-item-text"><strong>AI ambition &amp; operating principles.</strong><span>One-page Lynxeye AI objective, principles, success measures.</span></div>
+          <div class="sug-item-toggle">▾</div>
+          <div class="sug-item-detail"><div class="sug-item-detail-inner">A short, signed document that captures <strong>where Lynxeye is going with AI</strong>, the principles that guide decisions, and the measures of success for the first 12 months. Lives at the partner level. Becomes the reference for every Phase 2 conversation. <em>~1 page. Owned by Lynxeye leadership. I draft, you refine, we lock together.</em></div></div>
+        </div>
+
+        <div class="sug-item sug-item-locked" onclick="toggleItem(this)">
+          <div class="sug-item-check">✓</div>
+          <div class="sug-item-text"><strong>Working session with Johan, Viking, pilot team.</strong><span>Capture what's already in motion, what's working, learnings to build on.</span></div>
+          <div class="sug-item-toggle">▾</div>
+          <div class="sug-item-detail"><div class="sug-item-detail-inner">A structured kickoff session that brings together <strong>Johan, Viking, and the 5-8 pilot people</strong>. We capture what's already been built, what's working, what's failed, and what's been learned. This becomes the foundation for everything that follows — no greenfield assumption, no consultant ego. <em>Half-day session. Documented and circulated.</em></div></div>
+        </div>
+
+        <div class="sug-item sug-item-locked" onclick="toggleItem(this)">
+          <div class="sug-item-check">✓</div>
+          <div class="sug-item-text"><strong>Personal AI setup &amp; gateway readiness.</strong><span>Workspace, connectors, voice-first, friction removed for 5-8 people.</span></div>
+          <div class="sug-item-toggle">▾</div>
+          <div class="sug-item-detail"><div class="sug-item-detail-inner">Each pilot person gets their AI environment set up for serious work. <strong>Tools include Claude (Anthropic), ChatGPT/OpenAI, Wispr Flow</strong> for voice-first input, and the Microsoft 365 connectors Lynxeye uses today. Folders, contexts, projects configured. Friction removed. <em>One-on-one sessions, ~1 hour per person.</em></div></div>
+        </div>
+
+        <div class="sug-item sug-item-locked" onclick="toggleItem(this)">
+          <div class="sug-item-check">✓</div>
+          <div class="sug-item-text"><strong>Live-case workflow design.</strong><span>One real client engagement as the practice field. Real outputs, not exercises.</span></div>
+          <div class="sug-item-toggle">▾</div>
+          <div class="sug-item-detail"><div class="sug-item-detail-inner">We pick <strong>one real client project</strong> Lynxeye is running or about to run. Phase 1 happens on top of it. The pilot team uses AI alongside their actual delivery — not as a parallel exercise. Outputs are kept and used. This is what makes training stick. <em>Live-case selection happens in the first 2 weeks.</em></div></div>
+        </div>
+
+        <div class="sug-item sug-item-locked" onclick="toggleItem(this)">
+          <div class="sug-item-check">✓</div>
+          <div class="sug-item-text"><strong>First Lynxeye playbooks (1-2).</strong><span>Top methods captured, structured, sanitized for reuse.</span></div>
+          <div class="sug-item-toggle">▾</div>
+          <div class="sug-item-detail"><div class="sug-item-detail-inner">We capture 1-2 of Lynxeye's most-used methods as <strong>structured, AI-ready playbooks</strong>. Likely candidates: the Proposal Logic playbook, the Insight-to-Implication framework. Each becomes a reusable asset — humans still lead, but the AI scaffolding is built. <em>Owned by Lynxeye. Lives in your knowledge base.</em></div></div>
+        </div>
+
+        <div class="sug-item sug-item-locked" onclick="toggleItem(this)">
+          <div class="sug-item-check">✓</div>
+          <div class="sug-item-text"><strong>Light quality guardrails &amp; review rhythms.</strong><span>Work-slop prevention, premium standard held.</span></div>
+          <div class="sug-item-toggle">▾</div>
+          <div class="sug-item-detail"><div class="sug-item-detail-inner">A minimal but real set of <strong>quality checks</strong> for AI-assisted work. Where humans must review. When outputs leave the firm. How "good enough" is defined. Prevents the most common failure mode of fast-scaling AI use: volume goes up, quality drifts down. <em>Lightweight version in Phase 1. Full governance is an add-on.</em></div></div>
+        </div>
+
+        <div class="sug-item sug-item-locked" onclick="toggleItem(this)">
+          <div class="sug-item-check">✓</div>
+          <div class="sug-item-text"><strong>Use-case map, opportunity surface &amp; refined quantification.</strong><span>What we found together: use cases, bottlenecks, insights, plus the simulator turned into Lynxeye-specific numbers.</span></div>
+          <div class="sug-item-toggle">▾</div>
+          <div class="sug-item-detail"><div class="sug-item-detail-inner">The deliverable that <strong>only exists because we did the work</strong>. By the end of Phase 1, we will have captured: the use cases Lynxeye should pursue next, the bottlenecks AI can actually break, the issues to watch out for, the insights about where premium quality must stay human. Plus: the back-of-envelope simulator updated with real Lynxeye numbers — actual hours saved, actual capacity value, actual hiring comparison. <em>This is decision-grade input for Phase 2.</em></div></div>
+        </div>
+
+      </div>
+
+      <div class="sug-timeline">
+        <div class="sug-tl-item">
+          <div class="sug-tl-l">Duration</div>
+          <div class="sug-tl-v"><strong>~2-3 months</strong><br>active work</div>
+        </div>
+        <div class="sug-tl-item">
+          <div class="sug-tl-l">Window</div>
+          <div class="sug-tl-v"><strong>Spans summer</strong><br>Jul-Aug included</div>
+        </div>
+        <div class="sug-tl-item">
+          <div class="sug-tl-l">Team</div>
+          <div class="sug-tl-v"><strong>5-8 people</strong><br>add-ons may extend</div>
+        </div>
+        <div class="sug-tl-item">
+          <div class="sug-tl-l">Investment</div>
+          <div class="sug-tl-v"><strong>[TBD]</strong><br>follows alignment</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADD-ONS -->
+    <div class="sug-pane" id="pane-addons">
+      <div class="sug-items">
+        <div class="sug-item sug-item-pick" onclick="toggleItem(this)">
+          <div class="sug-item-check"></div>
+          <div class="sug-item-text"><strong>Extended playbook capture.</strong><span>3-5 playbooks captured deeper across the summer window.</span></div>
+          <div class="sug-item-toggle">▾</div>
+          <div class="sug-item-detail"><div class="sug-item-detail-inner">Instead of the core's 1-2 playbooks, this add-on captures <strong>3-5 of Lynxeye's most valuable methods</strong> and turns them into AI-ready assets across the summer window. Returns Lynxeye ready to scale these in autumn. <em>Best when Lynxeye knows which methods are highest-leverage to codify.</em></div></div>
+        </div>
+        <div class="sug-item sug-item-pick" onclick="toggleItem(this)">
+          <div class="sug-item-check"></div>
+          <div class="sug-item-text"><strong>Multi-team momentum.</strong><span>Two or more client teams running in parallel.</span></div>
+          <div class="sug-item-toggle">▾</div>
+          <div class="sug-item-detail"><div class="sug-item-detail-inner">The pilot runs across <strong>two or more client teams in parallel</strong>, not just one. This crosses the rough 10% threshold that organizational change research suggests is needed for behavior to stick firm-wide. More logistics, more value. <em>Best when Lynxeye wants Phase 1 to seed change broadly, not just deeply.</em></div></div>
+        </div>
+        <div class="sug-item sug-item-pick" onclick="toggleItem(this)">
+          <div class="sug-item-check"></div>
+          <div class="sug-item-text"><strong>Wider team scale.</strong><span>10-15 people in the pilot instead of 5-8.</span></div>
+          <div class="sug-item-toggle">▾</div>
+          <div class="sug-item-detail"><div class="sug-item-detail-inner">The pilot is <strong>10-15 people</strong> instead of 5-8. Broader cultural anchor. More voices in the use-case map. More variance in what we learn. <em>Best when leadership wants Phase 1 to feel firm-wide from day one.</em></div></div>
+        </div>
+        <div class="sug-item sug-item-pick" onclick="toggleItem(this)">
+          <div class="sug-item-check"></div>
+          <div class="sug-item-text"><strong>Adoption rhythm &amp; governance.</strong><span>Rhythm of business for AI, use-case sharing, lightweight governance for the wider firm.</span></div>
+          <div class="sug-item-toggle">▾</div>
+          <div class="sug-item-detail"><div class="sug-item-detail-inner">A <strong>rhythm of business for AI</strong> across the wider firm: monthly use-case sharing, lightweight governance, clear escalation paths for the gray-zone questions. This is what makes Phase 1 stick after I leave. <em>Best when Lynxeye is ready to operationalize, not just experiment.</em></div></div>
+        </div>
+        <div class="sug-item sug-item-pick" onclick="toggleItem(this)">
+          <div class="sug-item-check"></div>
+          <div class="sug-item-text"><strong>Framing keynote &amp; feedback loop.</strong><span>Communicate broadly, capture reactions, update framing for Phase 2.</span></div>
+          <div class="sug-item-toggle">▾</div>
+          <div class="sug-item-detail"><div class="sug-item-detail-inner">A <strong>firm-wide framing moment</strong> at the end of Phase 1: a session, a deck, a structured way of capturing reactions from the rest of Lynxeye. Surfaces concerns. Aligns Phase 2. Useful for organizations where partners need to feel part of the direction, not informed of it. <em>Best when broad partner alignment matters as much as pilot success.</em></div></div>
+        </div>
+        <div class="sug-item sug-item-pick" onclick="toggleItem(this)">
+          <div class="sug-item-check"></div>
+          <div class="sug-item-text"><strong>Extended coaching cadence.</strong><span>Ongoing coaching and check-ins past the initial 2-3 months.</span></div>
+          <div class="sug-item-toggle">▾</div>
+          <div class="sug-item-detail"><div class="sug-item-detail-inner">A <strong>continued coaching cadence</strong> for 3-6 months past Phase 1's active window. Bi-weekly check-ins, hands-on with specific people, problem-solving as new use cases emerge. Bridges into Phase 2 without a hard handoff. <em>Best when Lynxeye wants to avoid the post-pilot slump.</em></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOW WE WORK -->
+    <div class="sug-pane" id="pane-howwework">
+      <div class="sug-meta-grid">
+        <div class="sug-meta-block">
+          <div class="sug-meta-l">The principle</div>
+          <div class="sug-meta-h">Train through the work</div>
+          <div class="sug-meta-t">Five to eight people in the first version. Live client projects, never hypothetical exercises. What gets produced is theirs to keep and use the next day. Coaching, challenging, demos when needed. <strong>If someone is stuck, I help them out.</strong></div>
+        </div>
+        <div class="sug-meta-block">
+          <div class="sug-meta-l">The integration</div>
+          <div class="sug-meta-h">Built on what Johan and Viking are doing</div>
+          <div class="sug-meta-t">This work doesn't replace internal AI capability. <strong>It accelerates it.</strong> The first deliverable of every Phase 1 is a working session with Johan, Viking, and the pilot team. The playbooks and methods that emerge are Lynxeye-owned. I add velocity, structure, outside perspective.</div>
+        </div>
+      </div>
+
+      <div class="sug-loop">
+        <svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="loop-end" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.4" stroke-linecap="round"/>
+            </marker>
+          </defs>
+          <circle cx="350" cy="160" r="115" fill="none" stroke="#CCC4B8" stroke-width="0.5" stroke-dasharray="2 4" opacity="0.5"/>
+          <g>
+            <rect x="295" y="30" width="110" height="38" rx="19" fill="#FFFFFF" stroke="#CCC4B8" stroke-width="0.5"/>
+            <text x="350" y="47" font-family="Lexend" font-size="9" font-weight="500" fill="#6E6A5E" text-anchor="middle" letter-spacing="0.12em">STEP 1</text>
+            <text x="350" y="62" font-family="Lexend" font-size="12" font-weight="500" fill="#1A1F1A" text-anchor="middle">Live Case</text>
+          </g>
+          <g>
+            <rect x="465" y="140" width="130" height="38" rx="19" fill="#FFFFFF" stroke="#CCC4B8" stroke-width="0.5"/>
+            <text x="530" y="157" font-family="Lexend" font-size="9" font-weight="500" fill="#6E6A5E" text-anchor="middle" letter-spacing="0.12em">STEP 2</text>
+            <text x="530" y="172" font-family="Lexend" font-size="12" font-weight="500" fill="#1A1F1A" text-anchor="middle">Client Output</text>
+          </g>
+          <g>
+            <rect x="385" y="255" width="150" height="38" rx="19" fill="#C9A962" stroke="#B8985A" stroke-width="0.5"/>
+            <text x="460" y="272" font-family="Lexend" font-size="9" font-weight="500" fill="#1A1F1A" text-anchor="middle" letter-spacing="0.12em" opacity="0.7">STEP 3</text>
+            <text x="460" y="287" font-family="Lexend" font-size="12" font-weight="500" fill="#1A1F1A" text-anchor="middle">Review &amp; Refine</text>
+          </g>
+          <g>
+            <rect x="165" y="255" width="150" height="38" rx="19" fill="#C9A962" stroke="#B8985A" stroke-width="0.5"/>
+            <text x="240" y="272" font-family="Lexend" font-size="9" font-weight="500" fill="#1A1F1A" text-anchor="middle" letter-spacing="0.12em" opacity="0.7">STEP 4</text>
+            <text x="240" y="287" font-family="Lexend" font-size="12" font-weight="500" fill="#1A1F1A" text-anchor="middle">Playbook Update</text>
+          </g>
+          <g>
+            <rect x="105" y="140" width="150" height="38" rx="19" fill="#FFFFFF" stroke="#CCC4B8" stroke-width="0.5"/>
+            <text x="180" y="157" font-family="Lexend" font-size="9" font-weight="500" fill="#6E6A5E" text-anchor="middle" letter-spacing="0.12em">STEP 5</text>
+            <text x="180" y="172" font-family="Lexend" font-size="12" font-weight="500" fill="#1A1F1A" text-anchor="middle">Next Client Case</text>
+          </g>
+          <path d="M395,60 Q470,75 500,140" fill="none" stroke="#C9A962" stroke-width="1.2" marker-end="url(#loop-end)"/>
+          <path d="M530,183 Q565,225 500,260" fill="none" stroke="#C9A962" stroke-width="1.2" marker-end="url(#loop-end)"/>
+          <path d="M385,274 L320,274" fill="none" stroke="#C9A962" stroke-width="1.5" marker-end="url(#loop-end)"/>
+          <path d="M195,260 Q130,225 165,183" fill="none" stroke="#C9A962" stroke-width="1.2" marker-end="url(#loop-end)"/>
+          <path d="M215,140 Q255,75 305,60" fill="none" stroke="#C9A962" stroke-width="1.2" marker-end="url(#loop-end)"/>
+          <text x="350" y="155" font-family="Lexend" font-size="10" fill="#6E6A5E" text-anchor="middle" letter-spacing="0.14em">WHERE THE</text>
+          <text x="350" y="170" font-family="Lexend" font-size="10" fill="#6E6A5E" text-anchor="middle" letter-spacing="0.14em">LEVERAGE LIVES</text>
+        </svg>
+        <div class="sug-loop-cap">Steps 3 and 4 are where ordinary client work compounds into Lynxeye intelligence.</div>
+      </div>
+    </div>
+
+    <!-- OUTCOME -->
+    <div class="sug-pane" id="pane-outcome">
+      <div class="sug-outcomes">
+        <div class="sug-outcomes-l">By the end of Phase 1, Lynxeye knows</div>
+        <div class="sug-outcomes-h">Three things that didn't exist on day one</div>
+        <div class="sug-outcomes-list">
+          <div class="sug-outcome"><div><strong>What Lynxeye's actual AI opportunity surface looks like.</strong> A captured map of use cases, areas, bottlenecks, issues, and insights extracted from the live work. Not theory — what we found together.</div></div>
+          <div class="sug-outcome"><div><strong>What the real numbers are.</strong> The back-of-envelope simulator updated with Lynxeye-specific data: actual hours saved, actual capacity value, actual hiring comparison. Decision-grade input.</div></div>
+          <div class="sug-outcome"><div><strong>What Phase 2 should look like.</strong> A clear view of where to invest next, who to bring in, what to scale, and what to leave alone. No guesswork.</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</div>
+
+<!-- ============ MODAL: PING-PONG VS ORCHESTRATION ============ -->
+<div class="modal-bg" id="m-pingpong" onclick="if(event.target===this) closeModal('m-pingpong')">
+  <div class="modal">
+    <div class="modal-close" onclick="closeModal('m-pingpong')">×</div>
+    <div class="modal-eyebrow">Supporting context</div>
+    <div class="modal-title">Ping-pong vs. orchestration</div>
+    <div class="modal-sub">How Lynxeye employees interact with AI today, and what changes when the practice becomes orchestrated.</div>
+
+    <div class="modal-body">
+      <p>Most people start with AI in <strong>ping-pong mode</strong>: ask a question, get an answer, ask another, get another. It feels productive in the moment. It doesn't compound. The prompts disappear. The context resets. Next week, the wheel is reinvented.</p>
+
+      <p>Orchestration is what happens when AI use stops being individual and starts being systemic. <strong>Playbooks accumulate. Senior expertise gets structured. AI works alongside the team, not in parallel to it.</strong> The same person doing the same client work produces dramatically more, with quality preserved.</p>
+
+      <h3>One workflow, two ways</h3>
+      <p>A proposal draft for a financial services client. Today on the left, after Phase 1 on the right.</p>
+
+      <div class="modal-grid">
+        <div class="modal-cell">
+          <div class="modal-cell-l">Today · Ping-pong mode</div>
+          <div class="modal-cell-t">Senior strategist opens a blank deck. Asks AI in 3 separate sessions: industry context, frameworks, draft language. Copies and pastes. Reformats by hand. Loses 2 hours to PowerPoint layout. Three rounds with junior to refine. Each round restarts the AI without memory. <strong>Effort: 3 days. Output: one-shot deck.</strong></div>
+        </div>
+        <div class="modal-cell">
+          <div class="modal-cell-l">After Phase 1 · Orchestrated</div>
+          <div class="modal-cell-t">Strategist opens the Lynxeye Proposal Playbook. AI has memory: client context, sector knowledge, Lynxeye tone. Voice-first briefing: 10 minutes. Draft generated with the Insight-to-Implication framework. Strategist reviews, challenges, refines. Output goes back into the playbook. <strong>Effort: 4 hours. Output: reusable asset.</strong></div>
+        </div>
+      </div>
+
+      <h3>Why most companies don't escape</h3>
+      <p>Four forces pull teams back into ping-pong mode. <strong>Prompts disappear</strong> — good thinking happens in chat windows and vanishes. <strong>Knowledge stays scattered</strong> — senior expertise lives in heads, decks, habits. AI can't reach what isn't structured. <strong>Best practices don't scale</strong> — one person figures something out, the other 69 don't benefit. <strong>Every project starts from scratch</strong> — no playbooks, no shared assets, no compounding.</p>
+
+      <p>The cost of waiting compounds. Every quarter Lynxeye stays in ping-pong mode, the gap widens between Lynxeye and the firms that escaped earlier. The intelligence is already inside Lynxeye. AI does not create it. <strong>AI activates it.</strong> The question is when.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODAL: ABOUT HENRIK ============ -->
+<div class="modal-bg" id="m-henrik" onclick="if(event.target===this) closeModal('m-henrik')">
+  <div class="modal">
+    <div class="modal-close" onclick="closeModal('m-henrik')">×</div>
+    <div class="modal-eyebrow">Supporting context</div>
+    <div class="modal-title">About Henrik &amp; Threesixty1</div>
+    <div class="modal-sub">My background, my view, my way of working.</div>
+
+    <div class="modal-body">
+      <p>I have spent <strong>20 to 30 years working inside transformation</strong>, long before AI. Leading people, building teams, shipping consumer technology, advising companies on how to change the way they operate. The hardest part has never been the new tool. It has been escaping the old habit.</p>
+
+      <p>That is what makes this work specific. I am not coming to Lynxeye as an AI expert. I am coming as someone who has watched dozens of organizations try to change, succeed, fail, and quietly revert. AI is the new lever, but the work is the same work: <strong>leadership, coaching, designing how people show up to their craft.</strong></p>
+
+      <p>I work hands-on with people. I sit with their actual problem. I challenge thinking, demo what is possible, document what emerges, and stay close enough that nothing gets stuck. I have an instinct for what is real and what is theater. I avoid frameworks that do not earn their place. I push back when something is off.</p>
+
+      <p>I have been deep in the AI space practically and strategically for a few years. I work with <strong>Claude, OpenAI, and Gemini</strong> every day. I have built workflows, playbooks, and live-case methods. But the part of my work I trust most is still the human part. <strong>Reading the room, finding the right person to spend an hour with, getting the next thing unstuck.</strong></p>
+
+      <h3>Three commitments I work by</h3>
+      <div class="modal-pillars">
+        <div class="modal-pillar">
+          <div class="modal-pillar-dot"></div>
+          <div>
+            <div class="modal-pillar-h">Humans stay in charge</div>
+            <div class="modal-pillar-t">Senior judgment leads on what matters: brand fit, taste, strategy, quality. AI is leverage, not authority.</div>
+          </div>
+        </div>
+        <div class="modal-pillar">
+          <div class="modal-pillar-dot"></div>
+          <div>
+            <div class="modal-pillar-h">Live cases over generic training</div>
+            <div class="modal-pillar-t">Real client work as the practice field. What gets produced is theirs to keep and use the next day.</div>
+          </div>
+        </div>
+        <div class="modal-pillar">
+          <div class="modal-pillar-dot"></div>
+          <div>
+            <div class="modal-pillar-h">The intelligence is already there</div>
+            <div class="modal-pillar-t">Lynxeye's playbooks, sector knowledge, and proposal craft already exist. AI activates them. My job is to help structure them so they scale.</div>
+          </div>
+        </div>
+      </div>
+
+      <p style="margin-top: 22px; font-size: 13px; color: #6E6A5E;">
+        <strong style="color: #1A1F1A;">Threesixty1</strong> · threesixty1.com · henrik@threesixty1.com · 941 52 361
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+function openPanel(name) {
+  // Hide all panels
+  ['situation', 'envelope', 'phases', 'suggestion'].forEach(function(n){
+    document.getElementById('panel-' + n).style.display = 'none';
+  });
+  document.querySelectorAll('.nav-card').forEach(function(c){ c.classList.remove('nav-card-active'); });
+
+  // Show selected
+  var panel = document.getElementById('panel-' + name);
+  panel.style.display = 'block';
+  // Re-trigger animation
+  panel.style.animation = 'none';
+  panel.offsetHeight;
+  panel.style.animation = '';
+
+  document.querySelector('[data-panel="' + name + '"]').classList.add('nav-card-active');
+
+  // Scroll panel into view smoothly
+  setTimeout(function(){
+    panel.scrollIntoView({behavior: 'smooth', block: 'start'});
+  }, 50);
+}
+
+function switchTab(tab) {
+  document.querySelectorAll('.sug-tab').forEach(function(t){ t.classList.remove('sug-tab-active'); });
+  document.querySelectorAll('.sug-pane').forEach(function(p){ p.classList.remove('sug-pane-active'); });
+  document.querySelector('[data-tab="' + tab + '"]').classList.add('sug-tab-active');
+  document.getElementById('pane-' + tab).classList.add('sug-pane-active');
+}
+
+function toggleItem(el) {
+  el.classList.toggle('sug-item-open');
+}
+
+function openModal(id) {
+  document.getElementById(id).classList.add('modal-bg-active');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('modal-bg-active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') {
+    ['m-pingpong', 'm-henrik'].forEach(function(id){
+      closeModal(id);
+    });
+  }
+});
+
+// Simulator math
+(function(){
+  function fmt(n) { return n.toLocaleString('en-US'); }
+  function rangeFmt(lo, hi) { return fmt(lo) + ' – ' + fmt(hi); }
+  function moneyFmt(lo, hi) {
+    return Math.round(lo / 1000000) + ' – ' + Math.round(hi / 1000000) + 'M';
+  }
+  var ids = ['emp','hrs','rate','proj','pitch','win'];
+  var els = {};
+  ids.forEach(function(id){ els[id] = document.getElementById(id); });
+  function recalc() {
+    var emp = +els.emp.value, hrs = +els.hrs.value, rate = +els.rate.value;
+    var proj = +els.proj.value, pitch = +els.pitch.value, win = +els.win.value;
+    document.getElementById('emp-v').textContent = fmt(emp);
+    document.getElementById('hrs-v').textContent = fmt(hrs);
+    document.getElementById('rate-v').textContent = fmt(rate);
+    document.getElementById('proj-v').textContent = proj + '%';
+    document.getElementById('pitch-v').textContent = pitch + '%';
+    document.getElementById('win-v').textContent = win + '%';
+    var capBase = emp * hrs * (proj / 100);
+    var capLo = Math.round(capBase * 0.8 / 1000) * 1000;
+    var capHi = Math.round(capBase * 1.15 / 1000) * 1000;
+    document.getElementById('cap-v').textContent = rangeFmt(capLo, capHi);
+    var valBase = capBase * rate;
+    document.getElementById('val-v').textContent = moneyFmt(valBase * 0.8, valBase * 1.15);
+    var pcLo = Math.floor(pitch / 25);
+    var pcHi = Math.ceil(pitch / 15);
+    if (pcLo === pcHi) pcHi = pcLo + 1;
+    document.getElementById('pc-v').textContent = '+' + pcLo + ' to +' + pcHi;
+    document.getElementById('wr-v').textContent = '+' + win + '%';
+  }
+  ids.forEach(function(id){ els[id].addEventListener('input', recalc); });
+  recalc();
+})();
+</script>
+</body>
+</html>

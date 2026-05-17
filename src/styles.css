@@ -1,0 +1,61 @@
+/*
+  Project Accelerate Lynxeye — styles.css
+
+  CLAUDE CODE: Build this from spec/design-tokens.md.
+  The CSS variables below are the locked design tokens. Don't add new colors
+  without explicit Henrik approval.
+
+  Match the visual treatments in spec/architecture-reference.html. That file
+  has working CSS for every component you need to build. You can lift and
+  refactor from it.
+
+  Delete this comment block when you're done.
+*/
+
+:root {
+  /* Backgrounds */
+  --bg-page: #ECE7DE;
+  --bg-doc: #F6F3EE;
+  --bg-white: #FFFFFF;
+  --bg-warm-stone: #E8E2D9;
+  --bg-dark: #1A1F1A;
+
+  /* Text */
+  --text-ink: #1A1F1A;
+  --text-muted: #6E6A5E;
+  --text-light: #AFA89A;
+  --text-on-dark: #F6F3EE;
+  --text-bronze-on-dark: #DDD3BC;
+
+  /* Brand */
+  --brand-green: #2E6B54;
+  --brand-green-light: #E8F0EC;
+  --gold: #C9A962;
+  --gold-dark: #B8985A;
+  --gold-tint: #FBF6E9;
+  --gold-pale: #FAFAF6;
+
+  /* Borders */
+  --border: #CCC4B8;
+  --border-light: #E8E2D9;
+
+  /* Motion */
+  --easing: ease-out;
+  --duration-fast: 200ms;
+  --duration-normal: 300ms;
+  --duration-slow: 350ms;
+}
+
+/* Reset and base */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Lexend', -apple-system, sans-serif;
+  background: var(--bg-page);
+  color: var(--text-ink);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+/* === Component styles go below === */
+/* Use spec/architecture-reference.html as the source of truth for component-level CSS */

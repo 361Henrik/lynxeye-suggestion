@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Accelerate Lynxeye</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!--
+  CLAUDE CODE: Build this file from spec/architecture-reference.html and spec/content-comprehensive.md.
+
+  The visual reference (spec/architecture-reference.html) shows the working four-panel architecture
+  end-to-end. Match its structure and interactions:
+
+    - Top menu bar with two supporting items (modal overlays on click)
+    - Hero (two-column: elevator pitch left, divergence visual right)
+    - Four-card navigator with active state indicator
+    - Click-to-expand panel area below the navigator (one panel at a time)
+    - Panel 4 has internal tabs: locked core / add-ons / how we work / what Lynxeye gets
+    - Deliverables in Panel 4 are click-to-expand for detail
+    - NO closing section. Document ends when the open panel is closed.
+
+  The content (spec/content-comprehensive.md) has every line of copy, every deliverable detail,
+  every visual brief. Use the locked content. Surface placeholders flagged [VERIFY] to Henrik
+  before shipping.
+
+  The design tokens (spec/design-tokens.md) are the design system. Don't invent new colors
+  or font weights.
+
+  Build approach:
+    1. HTML structure first (this file), matching the architecture sketch
+    2. Then styles.css using the design tokens
+    3. Then script.js for panel switching, modal opening, tab switching, deliverable expansion, slider math
+    4. Simulator is a separate later pass in src/simulator/
+
+  Delete this comment block when you're done.
+-->
+
+<div id="app">
+  <!-- Top menu bar -->
+  <!-- Hero -->
+  <!-- Navigator (4 cards) -->
+  <!-- Open panel area -->
+  <!-- Modals (Ping-pong vs orchestration + About Henrik) -->
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
