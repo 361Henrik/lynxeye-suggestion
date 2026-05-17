@@ -138,6 +138,42 @@ Four visuals, redrawn in editorial daylight palette (cream `#F6F3EE`, gold `#C9A
 
 These are load-bearing. Don't remove or restyle without explicit Henrik approval.
 
+## Image generation policy
+
+Some agents (notably OpenAI Codex) have access to image generation. This policy applies when image generation is available:
+
+**Approved use cases, in priority order:**
+
+1. **Open Graph share image** — `assets/og-image.png`, 1200×630px. For when Christian pastes the proposal URL into Slack, email, or LinkedIn. This is the most valuable image: it's what people see before clicking.
+
+2. **About Henrik modal — one abstract editorial visual moment** — Defer until #1 is approved. Then propose options. Abstract only, never a portrait of Henrik (AI-generated portraits of real people are problematic and feel uncanny).
+
+3. **Modal 1 "Ping-pong vs. orchestration" workflow contrast pair** — Defer until #2 is approved. A visual before/after for one workflow.
+
+**Critical constraints:**
+
+- Use the proposal's palette: cream `#F6F3EE` background, gold `#C9A962` accents, brand green `#2E6B54`. No off-palette colors.
+- Reference the Dancing with Intelligence deck's visual register: restrained, editorial, hand-drawn quality, cream and gold. Read `spec/deck-reference.md` for context.
+- **No stock-AI aesthetics.** No glowing particles, no neural network visualizations, no gradient meshes, no abstract data-flow imagery. These signal "tech startup," not "premium strategy consultancy."
+- All generated imagery must read as belonging to a premium strategy document, not a SaaS landing page.
+- If you can't match the editorial register, default to **no image** rather than a generic one. An empty space is better than a wrong image.
+
+**Process:**
+
+- Generate one image at a time. Show Henrik before placing it in the project.
+- Iterate if needed. Lock when approved.
+- Then move to the next priority. Don't batch.
+- Each approved image gets committed with a clear message: "feat: add og-image (approved)".
+
+**Not in scope for image generation:**
+
+- The four locked SVG visuals (hero divergence, hero curves, three-phase borders, live-case loop). These stay as SVG.
+- Section dividers, decorative flourishes, or generative "art" between sections.
+- Real people, real client logos, real Lynxeye people. Even Henrik.
+- Anything that would be reproduced from the Dancing with Intelligence deck — that deck is Henrik's IP, not an input for generation.
+
+If image generation isn't available (Claude Code without image-gen, current Cursor builds), this policy is a no-op. The SVG visuals carry the proposal.
+
 ## The simulator (separate focused build)
 
 The simulator in Panel 2 is currently a placeholder from the architecture sketch. The next-pass simulator is a focused build with:
