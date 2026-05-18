@@ -4,8 +4,10 @@
   var tabButtons = Array.prototype.slice.call(document.querySelectorAll("[data-tab-target]"));
   var tabPanes = Array.prototype.slice.call(document.querySelectorAll("[data-tab-pane]"));
   var paceButtons = Array.prototype.slice.call(document.querySelectorAll("[data-pace-option]"));
+  var coverageButtons = Array.prototype.slice.call(document.querySelectorAll("[data-coverage-option]"));
   var paceSummary = document.getElementById("pace-summary");
   var modalOpeners = Array.prototype.slice.call(document.querySelectorAll("[data-modal-open]"));
+  var proofOpeners = Array.prototype.slice.call(document.querySelectorAll("[data-proof-open]"));
   var modals = Array.prototype.slice.call(document.querySelectorAll(".modal-backdrop"));
   var previouslyFocused = null;
   var mobilePanelQuery = window.matchMedia("(max-width: 880px)");
@@ -48,7 +50,7 @@
   function scrollToPanelContext(name) {
     var panel = document.querySelector('[data-panel="' + name + '"]');
     var button = document.querySelector('[data-panel-target="' + name + '"]');
-    var target = mobilePanelQuery.matches && button ? button : panel;
+    var target = button || panel;
 
     if (!target) return;
 
@@ -77,7 +79,7 @@
       var cue = button.querySelector(".nav-card-cue");
       button.classList.toggle("nav-card-active", isActive);
       button.setAttribute("aria-expanded", String(isActive));
-      if (cue) cue.textContent = isActive ? "↑ Close" : "↓ Open";
+      if (cue) cue.textContent = "↓";
     });
 
     placeActivePanel(name);
@@ -99,7 +101,7 @@
       var cue = button.querySelector(".nav-card-cue");
       button.classList.remove("nav-card-active");
       button.setAttribute("aria-expanded", "false");
-      if (cue) cue.textContent = "↓ Open";
+      if (cue) cue.textContent = "↓";
     });
 
     restorePanelsHome();
@@ -129,6 +131,18 @@
         paceSummary.textContent = button.dataset.paceSummary;
       }
     });
+  }
+
+  function setCoverageRate(rate, shouldRecalculate) {
+    coverageButtons.forEach(function (button) {
+      var isActive = Number(button.dataset.coverageOption) === Number(rate);
+      button.classList.toggle("lift-option-active", isActive);
+      button.setAttribute("aria-pressed", String(isActive));
+    });
+
+    if (shouldRecalculate !== false) {
+      recalculateSimulator();
+    }
   }
 
   function openModal(id) {
@@ -186,6 +200,12 @@
     });
   });
 
+  coverageButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      setCoverageRate(Number(button.dataset.coverageOption));
+    });
+  });
+
   document.querySelectorAll(".deliverable-head").forEach(function (button) {
     button.addEventListener("click", function () {
       var item = button.closest(".deliverable");
@@ -197,6 +217,12 @@
   modalOpeners.forEach(function (button) {
     button.addEventListener("click", function () {
       openModal(button.dataset.modalOpen);
+    });
+  });
+
+  proofOpeners.forEach(function (button) {
+    button.addEventListener("click", function () {
+      setPanel("envelope", true);
     });
   });
 
@@ -317,6 +343,61 @@
     return trimDecimal(low / 1000000, 1) + " to " + trimDecimal(high / 1000000, 1) + "M SEK";
   }
 
+  function formatSEKShortRange(low, high) {
+    if (low === 0 && high === 0) return "0 SEK";
+    if (low === high) return formatSEKShort(low);
+
+    if (low >= 1000000 && high >= 1000000) {
+      return trimDecimal(low / 1000000, 1) + " to " + trimDecimal(high / 1000000, 1) + "M SEK";
+    }
+
+    return formatSEKShort(low) + " to " + formatSEKShort(high);
+  }
+
+  function formatHireCount(value) {
+    return value === 1 ? "1 hire" : formatNumber(value) + " hires";
+  }
+
+  function formatRoleCount(value) {
+    return value === 1 ? "1 role" : formatNumber(value) + " roles";
+  }
+
+  function formatRemainingHires(value) {
+    return value === 1 ? "About 1 hire still needed" : "About " + formatNumber(value) + " hires still needed";
+  }
+
+  function readCoverageRate() {
+    var activeButton = coverageButtons.find(function (button) {
+      return button.getAttribute("aria-pressed") === "true";
+    });
+
+    return activeButton ? Number(activeButton.dataset.coverageOption) : 50;
+  }
+
+  function getCoverageLabel(rate) {
+    if (rate === 25) return "Light support";
+    if (rate === 70) return "Strong lift";
+    return "Balanced lift";
+  }
+
+  function buildHiringPressureSentence(state) {
+    var sentence = "Old answer: hire " + state.hiringNeed + ". Capability answer: hire about " + state.remainingHires;
+
+    if (state.pressureEased === 0) {
+      return sentence + ", while the model keeps at least one real hire in place.";
+    }
+
+    return sentence + ", while playbooks absorb the pressure of roughly " + formatRoleCount(state.pressureEased) + ".";
+  }
+
+  function buildHiringPressureHelp(state) {
+    if (state.pressureEased === 0) {
+      return state.coverageLabel + " does not change the immediate hire count at this setting. Project Accelerate pricing stays [TBD].";
+    }
+
+    return state.coverageLabel + " keeps roughly " + formatRoleCount(state.pressureEased) + " out of the immediate hiring pressure. Project Accelerate pricing stays [TBD].";
+  }
+
   function readSimulatorInputs() {
     return {
       employees: Math.max(0, readNumber("employees")),
@@ -326,7 +407,8 @@
       pitchCompression: Math.max(0, readNumber("pitch-compression")),
       winRateImprovement: Math.max(0, readNumber("win-rate")),
       captureRate: Math.max(0, readNumber("capture-rate")),
-      toolingCost: Math.max(0, readNumber("tooling-cost")),
+      hiringNeed: Math.max(1, readNumber("hiring-need")),
+      coverageRate: readCoverageRate(),
       baselinePitches: Math.max(1, readNumber("baseline-pitches")),
       baselineWinRate: Math.max(0, readNumber("baseline-win-rate")),
       workingWeeks: Math.max(1, readNumber("working-weeks")),
@@ -340,14 +422,16 @@
     var pitchCompressionRate = Math.min(inputs.pitchCompression / 100, 0.95);
     var winRateImprovementRate = inputs.winRateImprovement / 100;
     var captureRateDecimal = inputs.captureRate / 100;
+    var coverageRateDecimal = Math.min(Math.max(inputs.coverageRate / 100, 0), 0.95);
     var uncertaintyRate = inputs.uncertaintyBand / 100;
+    var hireCostLow = 1200000;
+    var hireCostHigh = 1500000;
     var rawFreedHours = inputs.employees * inputs.hours * projectCompressionRate;
     var capturedHours = rawFreedHours * captureRateDecimal;
     var capturedLow = capturedHours * (1 - uncertaintyRate);
     var capturedHigh = capturedHours * (1 + uncertaintyRate);
     var valueLow = capturedLow * inputs.rate;
     var valueHigh = capturedHigh * inputs.rate;
-    var annualToolingCost = inputs.employees * inputs.toolingCost * 12;
     var pitchCapacity = inputs.baselinePitches / (1 - pitchCompressionRate) - inputs.baselinePitches;
     var additionalWins = inputs.baselinePitches * (inputs.baselineWinRate / 100) * winRateImprovementRate;
     var weeklyHours = inputs.employees > 0 ? capturedHours / inputs.employees / inputs.workingWeeks : 0;
@@ -355,6 +439,14 @@
     var absorbedHours = rawFreedHours - capturedHours;
     var sensitivityHours = rawFreedHours * 0.01;
     var sensitivityValue = sensitivityHours * inputs.rate;
+    var remainingHires = Math.max(1, Math.ceil(inputs.hiringNeed * (1 - coverageRateDecimal)));
+    var pressureEased = Math.max(0, inputs.hiringNeed - remainingHires);
+    var oldHiringCostLow = inputs.hiringNeed * hireCostLow;
+    var oldHiringCostHigh = inputs.hiringNeed * hireCostHigh;
+    var remainingHiringCostLow = remainingHires * hireCostLow;
+    var remainingHiringCostHigh = remainingHires * hireCostHigh;
+    var hiringRunRateNotAddedLow = pressureEased * hireCostLow;
+    var hiringRunRateNotAddedHigh = pressureEased * hireCostHigh;
 
     return Object.assign({}, inputs, {
       rawFreedHours: rawFreedHours,
@@ -363,14 +455,22 @@
       capturedHigh: Math.max(0, capturedHigh),
       valueLow: Math.max(0, valueLow),
       valueHigh: Math.max(0, valueHigh),
-      annualToolingCost: annualToolingCost,
       pitchCapacity: pitchCapacity,
       additionalWins: additionalWins,
       weeklyHours: weeklyHours,
       weeklyWorkdays: weeklyWorkdays,
       absorbedHours: absorbedHours,
       sensitivityHours: sensitivityHours,
-      sensitivityValue: sensitivityValue
+      sensitivityValue: sensitivityValue,
+      remainingHires: remainingHires,
+      pressureEased: pressureEased,
+      oldHiringCostLow: oldHiringCostLow,
+      oldHiringCostHigh: oldHiringCostHigh,
+      remainingHiringCostLow: remainingHiringCostLow,
+      remainingHiringCostHigh: remainingHiringCostHigh,
+      hiringRunRateNotAddedLow: hiringRunRateNotAddedLow,
+      hiringRunRateNotAddedHigh: hiringRunRateNotAddedHigh,
+      coverageLabel: getCoverageLabel(inputs.coverageRate)
     });
   }
 
@@ -386,7 +486,9 @@
       "Pitch cycle compression: " + state.pitchCompression + "%",
       "Win rate improvement: " + state.winRateImprovement + "%",
       "Freed time captured as real value: " + state.captureRate + "%",
-      "AI tooling cost: " + formatNumber(state.toolingCost) + " SEK/person/month",
+      "Hiring need under old answer: " + formatHireCount(state.hiringNeed),
+      "Capability support level: " + state.coverageLabel + " (" + state.coverageRate + "%)",
+      "AI tool costs: per-employee cost exists, handled outside this directional model.",
       "",
       "Advanced assumptions",
       "Qualified pitches / year: " + state.baselinePitches,
@@ -399,12 +501,19 @@
       "Captured capacity before uncertainty: " + formatHours(state.capturedHours),
       "Captured capacity range: " + formatHoursRange(state.capturedLow, state.capturedHigh),
       "Gross capacity value: " + formatSEKRange(state.valueLow, state.valueHigh),
-      "Annual tooling cost: " + formatSEKShort(state.annualToolingCost),
       "Pitch-equivalent capacity: " + formatSignedNumber(state.pitchCapacity, 1) + " pitches/year",
       "Expected additional qualified wins: " + formatSignedNumber(state.additionalWins, 1) + " wins/year",
       "Hours returned / consultant / week: " + formatDecimal(state.weeklyHours, 1) + " hours",
       "Captured vs absorbed: " + state.captureRate + "% captured / " + (100 - state.captureRate) + "% absorbed",
       "Sensitivity: every 1 percentage point increase in captured time is worth roughly " + formatHours(state.sensitivityHours) + " / " + formatSEKShort(state.sensitivityValue) + " gross capacity at current settings.",
+      "",
+      "Hiring pressure scenario",
+      buildHiringPressureSentence(state),
+      "Old hiring run-rate: " + formatSEKShortRange(state.oldHiringCostLow, state.oldHiringCostHigh) + " / year",
+      "Hiring run-rate not immediately added: " + formatSEKShortRange(state.hiringRunRateNotAddedLow, state.hiringRunRateNotAddedHigh) + " / year",
+      "Remaining hiring run-rate: " + formatSEKShortRange(state.remainingHiringCostLow, state.remainingHiringCostHigh) + " / year",
+      "AI tool costs: per-employee cost exists, handled outside this hiring-cost model.",
+      "Project Accelerate pricing: [TBD], outside this hiring-cost model.",
       "",
       "Qualitative value summary",
       "For clients: faster iteration, better-prepared teams, and more senior attention on judgment, implications, and quality.",
@@ -412,8 +521,8 @@
       "For partners: less senior bottleneck, better delegation, reusable methods, and clearer quality control.",
       "For Lynxeye: compounding capability instead of isolated tool use.",
       "",
-      "Hiring vs scaling interpretation",
-      "Hiring 3 people creates a fixed annual run-rate, linear capacity, and a slow ramp. Building scaling capability is priced separately after scope alignment. The simulator keeps Project Accelerate out of the cost model and shows only the tooling run-rate.",
+      "Hiring pressure interpretation",
+      "This is not a headcount reduction argument. It is a hiring pressure argument: hire where human judgment is needed, and let playbooks absorb repeatable production load.",
       "",
       "Caveats",
       "This is directional Ascent potential, not a commitment. Gross capacity value is not net profit. No deal-size revenue value is assigned to qualified wins. Qualitative value is an interpretation of what captured capacity could enable, not measured evidence yet. Phase 1 replaces these defaults with Lynxeye-specific evidence.",
@@ -440,29 +549,35 @@
     setText("pitch-compression-value", state.pitchCompression + "%");
     setText("win-rate-value", state.winRateImprovement + "%");
     setText("capture-rate-value", state.captureRate + "%");
-    setText("tooling-cost-value", formatNumber(state.toolingCost));
+    setText("hiring-need-value", formatHireCount(state.hiringNeed));
+    setText("coverage-rate-value", state.coverageRate + "%");
 
     setText("raw-capacity-output", formatHours(state.rawFreedHours));
     setText("raw-capacity-help", "Gross time opportunity before the " + state.captureRate + "% capture rate is applied.");
     setText("capacity-output", formatHoursRange(state.capturedLow, state.capturedHigh));
+    setText("proof-capacity-output", formatHoursRange(state.capturedLow, state.capturedHigh));
     setText("capacity-help", "For Lynxeye at " + formatNumber(state.employees) + " people, roughly " + formatHours(state.capturedHours) + " survives work creep before the uncertainty band.");
     setText("value-output", formatSEKRange(state.valueLow, state.valueHigh));
+    setText("proof-value-output", formatSEKRange(state.valueLow, state.valueHigh));
     setText("value-help", "If captured as billable work at " + formatNumber(state.rate) + " SEK/hr, this is the gross directional Ascent upside.");
-    setText("tooling-output", formatSEKShort(state.annualToolingCost));
-    setText("tooling-help", "At " + formatNumber(state.toolingCost) + " SEK per person per month across " + formatNumber(state.employees) + " people.");
     setText("pitch-output", formatSignedNumber(state.pitchCapacity, 1));
     setText("pitch-help", "At " + state.baselinePitches + " baseline pitches and " + state.pitchCompression + "% compression, the same pitch capacity can handle roughly " + formatSignedNumber(state.pitchCapacity, 1) + " more pitch-equivalents per year.");
     setText("wins-output", formatSignedNumber(state.additionalWins, 1));
     setText("wins-help", "At " + state.baselinePitches + " qualified pitches per year and a " + state.baselineWinRate + "% baseline win rate.");
     setText("weekly-hours-output", formatDecimal(state.weeklyHours, 1) + " hours");
+    setText("proof-weekly-output", formatDecimal(state.weeklyHours, 1) + " hours / week");
     setText("weekly-hours-help", "Roughly " + formatDecimal(state.weeklyWorkdays, 1) + " workdays per consultant per week.");
     setText("absorption-output", state.captureRate + "% captured / " + (100 - state.captureRate) + "% absorbed");
     setText("absorption-help", "That means " + formatHours(state.capturedHours) + " captured and " + formatHours(state.absorbedHours) + " absorbed before behavior changes.");
     setText("time-use-help", "At current settings, roughly " + formatDecimal(state.weeklyHours, 1) + " hours per consultant per week can be redirected into better work.");
     setText("sensitivity-line", "Every 1 percentage point increase in captured time is worth roughly " + formatHours(state.sensitivityHours) + " / " + formatSEKShort(state.sensitivityValue) + " gross capacity at current settings.");
-    setText("path-tooling-output", formatSEKShort(state.annualToolingCost) + " / year");
-    setText("path-capacity-output", formatHoursRange(state.capturedLow, state.capturedHigh) + " of captured capacity");
-    setText("path-weekly-output", formatDecimal(state.weeklyHours, 1) + " hours per consultant per week");
+    setText("hiring-pressure-output", buildHiringPressureSentence(state));
+    setText("hiring-avoided-output", formatSEKShortRange(state.hiringRunRateNotAddedLow, state.hiringRunRateNotAddedHigh) + " / year");
+    setText("hiring-pressure-help", buildHiringPressureHelp(state));
+    setText("old-hiring-cost-output", formatSEKShortRange(state.oldHiringCostLow, state.oldHiringCostHigh) + " / year");
+    setText("old-hiring-help", "Fully loaded annual run-rate for " + formatHireCount(state.hiringNeed) + ", before recruiting delay.");
+    setText("remaining-hiring-output", formatRemainingHires(state.remainingHires));
+    setText("remaining-hiring-help", "Remaining hiring run-rate: " + formatSEKShortRange(state.remainingHiringCostLow, state.remainingHiringCostHigh) + " / year, plus [TBD] Phase 1 and per-employee AI tool costs.");
 
     var captureBar = byId("capture-bar-fill");
     if (captureBar) captureBar.style.width = state.captureRate + "%";
@@ -530,6 +645,7 @@
   }
 
   setPace("focused");
+  setCoverageRate(50, false);
   setPanel("situation", false);
   setTab("core");
   recalculateSimulator();
