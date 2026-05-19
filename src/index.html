@@ -3,1136 +3,561 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Project Accelerate Lynxeye: a focused suggestion for collaboration with Lynxeye, May 2026.">
+  <meta name="description" content="Project Accelerate Lynxeye: building on HQ AI infrastructure to increase Lynxeye capacity, capability, and client value.">
   <title>Project Accelerate Lynxeye</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="styles.css?v=active-connector-2">
+  <link rel="stylesheet" href="styles.css?v=matrix-lock">
 </head>
 <body>
   <main class="page-shell">
-    <article class="document-shell" aria-label="Project Accelerate Lynxeye collaboration suggestion">
+    <article class="document-shell" aria-label="Project Accelerate Lynxeye proposal">
       <header class="topbar">
-        <div class="topbar-brand">Project Accelerate Lynxeye · suggestion for collaboration</div>
-        <nav class="topbar-menu" aria-label="Supporting context">
-          <button class="topbar-link" type="button" data-modal-open="modal-pingpong">
-            <span class="topbar-link-label">Ping-pong vs. orchestration</span>
-            <span class="topbar-link-arrow" aria-hidden="true">→</span>
-          </button>
-          <button class="topbar-link" type="button" data-modal-open="modal-henrik">
-            <span class="topbar-link-label">About Henrik &amp; Threesixty1</span>
-            <span class="topbar-link-arrow" aria-hidden="true">→</span>
-          </button>
+        <a class="topbar-brand" href="#top" aria-label="Project Accelerate Lynxeye home">Project Accelerate Lynxeye</a>
+        <nav class="topbar-menu" aria-label="Proposal navigation">
+          <a class="topbar-link" href="#matrix">Value matrix</a>
+          <a class="topbar-link" href="#value">Directional value case</a>
+          <button class="topbar-link" type="button" data-modal-open="modal-orchestration">Why orchestration</button>
+          <button class="topbar-link" type="button" data-modal-open="modal-henrik">About Henrik</button>
         </nav>
       </header>
 
-      <section class="hero" aria-labelledby="hero-title">
+      <section class="hero" id="top" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="hero-eyebrow">A suggestion for collaboration · May 2026</p>
+          <p class="eyebrow">A proposal for Lynxeye &middot; May 2026</p>
           <h1 id="hero-title">Project Accelerate Lynxeye</h1>
-          <p class="hero-pitch"><strong>Build the practice, not just the usage.</strong> The ambition is to help Lynxeye scale AI as a company, starting with a practical 5-8 person pilot focused on less friction, faster client work, and reusable playbooks from live projects.</p>
-          <p class="hero-tagline">Human judgment leads. AI accelerates. Playbooks scale.</p>
+          <p class="hero-lead"><strong>Build on the AI infrastructure now arriving, and turn it into more capacity, stronger capability, and better client work inside Lynxeye.</strong> HQ and Eraneos create the conditions: platforms, approved tools, security, data access, and guardrails. The value appears when Lynxeye turns that foundation into smooth use, stronger client delivery, better pitches, and reusable company practice.</p>
+          <a class="primary-action" href="#matrix">See the value matrix</a>
         </div>
 
-        <aside class="hero-visual" aria-label="AI orchestration outperforms ping-pong chat">
-          <p class="visual-thesis">Companies that orchestrate AI will outperform those still ping-ponging with chat.</p>
-          <svg viewBox="0 0 480 280" role="img" aria-labelledby="divergence-title divergence-desc">
-            <title id="divergence-title">Orchestrating and scaling with AI compounds beyond ping-pong chat</title>
-            <desc id="divergence-desc">Ping-pong chat with AI creates isolated gains. Orchestrating with AI creates reusable company capability that compounds over time.</desc>
+        <aside class="hero-visual" aria-label="Orchestration creates reusable value">
+          <p class="visual-thesis">Two strategies: ping-pong with AI chat, or scale and orchestrate with AI.</p>
+          <svg viewBox="0 0 480 280" role="img" aria-labelledby="hero-visual-title hero-visual-desc">
+            <title id="hero-visual-title">Scaling and orchestrating with AI compounds beyond ping-pong chat</title>
+            <desc id="hero-visual-desc">Ping-pong chat creates isolated gains. Scaling and orchestrating with AI builds capacity and capability over time.</desc>
             <defs>
-              <marker id="hero-end" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-                <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" />
+              <marker id="arrow-end" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round"></path>
               </marker>
             </defs>
-            <line x1="54" y1="232" x2="448" y2="232" class="axis" />
-            <line x1="54" y1="232" x2="54" y2="32" class="axis" />
-            <text class="svg-axis-title" transform="translate(16 136) rotate(-90)" text-anchor="middle">Reusable company capability</text>
-            <line x1="54" y1="232" x2="54" y2="238" class="axis-tick" />
-            <line x1="448" y1="232" x2="448" y2="238" class="axis-tick" />
+            <line x1="54" y1="232" x2="448" y2="232" class="axis"></line>
+            <line x1="54" y1="232" x2="54" y2="32" class="axis"></line>
+            <text class="svg-axis-title" transform="translate(16 136) rotate(-90)" text-anchor="middle">Capacity and capability that compounds</text>
             <text x="54" y="258" class="svg-date">NOW</text>
             <text x="448" y="258" class="svg-date" text-anchor="end">LATER</text>
-            <path d="M54,222 C132,219 226,217 318,214 C374,212 420,210 448,208" class="path-muted-echo" />
-            <path d="M54,222 C132,219 226,217 318,214 C374,212 420,210 448,208" class="path-muted" />
-            <path d="M54,222 C112,217 158,200 207,166 C258,130 312,74 448,18" class="path-gold-ghost" />
-            <path d="M54,222 C112,217 158,200 207,166 C258,130 312,74 448,18" class="path-gold" marker-end="url(#hero-end)" />
-            <circle cx="54" cy="222" r="4" class="dot-origin" />
-            <circle cx="128" cy="210" r="3" class="dot-gold faint" />
-            <circle cx="207" cy="166" r="3" class="dot-gold soft" />
-            <circle cx="314" cy="72" r="3" class="dot-gold medium" />
-            <circle cx="392" cy="38" r="3" class="dot-gold" />
-            <line x1="392" y1="38" x2="338" y2="24" class="gold-hairline" />
+            <path d="M54,222 C132,219 226,217 318,214 C374,212 420,210 448,208" class="path-muted"></path>
+            <path d="M54,222 C112,217 158,200 207,166 C258,130 312,74 448,18" class="path-gold" marker-end="url(#arrow-end)"></path>
+            <circle cx="54" cy="222" r="4" class="dot-origin"></circle>
+            <circle cx="207" cy="166" r="3" class="dot-gold soft"></circle>
+            <circle cx="392" cy="38" r="3" class="dot-gold"></circle>
+            <line x1="392" y1="38" x2="338" y2="24" class="gold-hairline"></line>
             <text x="330" y="28" class="svg-end svg-end-strong" text-anchor="end">
-              <tspan x="330" dy="0">Orchestrating and</tspan>
-              <tspan x="330" dy="13">scaling with AI</tspan>
+              <tspan x="330" dy="0">Scale and</tspan>
+              <tspan x="330" dy="13">orchestrate</tspan>
             </text>
-            <line x1="390" y1="211" x2="336" y2="188" class="muted-hairline" />
+            <line x1="390" y1="211" x2="336" y2="188" class="muted-hairline"></line>
             <text x="326" y="176" class="svg-end" text-anchor="end">
-              <tspan x="326" dy="0">Continue ping-ponging</tspan>
+              <tspan x="326" dy="0">Ping-ponging</tspan>
               <tspan x="326" dy="13">with AI chat</tspan>
             </text>
-            <line x1="54" y1="222" x2="92" y2="196" class="muted-hairline" />
-            <text x="98" y="194" class="svg-note">Same starting point</text>
           </svg>
-          <p class="visual-caption">Individual gains help. <strong>Shared capability compounds.</strong></p>
+          <p class="visual-caption">The same infrastructure can produce scattered individual activity or a working method that increases capacity, strengthens capability, and becomes reusable across Lynxeye.</p>
         </aside>
       </section>
 
-      <section class="executive-summary" aria-labelledby="executive-summary-title">
-        <div>
-          <p class="section-kicker">Executive takeaways</p>
-          <h2 id="executive-summary-title">The pitch in one view</h2>
-          <p class="summary-promise">Senior judgment stays in charge. Friction gets removed. Good practice becomes reusable capability.</p>
+      <section class="gap-section" id="gap" aria-labelledby="gap-title">
+        <div class="section-heading">
+          <p class="eyebrow">The bridge</p>
+          <h2 id="gap-title">From HQ infrastructure to Lynxeye working value.</h2>
+          <p>Infrastructure matters because it gives Lynxeye a secure and scalable foundation to build from. The project role is to help that foundation show up in the work: smoother setup, stronger client projects, sharper pitches, better review habits, and company-owned practice.</p>
         </div>
-        <div class="summary-grid">
+        <div class="gap-grid">
           <article>
-            <span>01</span>
-            <h3>Current AI use is scattered</h3>
-            <p>People get faster, but the capability does not stay inside the company.</p>
+            <span>HQ and Eraneos</span>
+            <h3>Create the conditions.</h3>
+            <p>Infrastructure, approved tools, security, data access, platform direction, and group-level guardrails.</p>
+          </article>
+          <article class="gap-card-strong">
+            <span>Lynxeye</span>
+            <h3>Turns it into work.</h3>
+            <p>Smooth AI use, client delivery capacity, stronger capability, better pitches, review rhythms, and reusable practice.</p>
           </article>
           <article>
-            <span>02</span>
-            <h3>Orchestration creates capability</h3>
-            <p>Shared workflows and playbooks turn senior judgment into reusable company capability.</p>
+            <span>Project role</span>
+            <h3>Build the bridge.</h3>
+            <p>Connect infrastructure to daily use, live projects, and commercial evidence so Lynxeye can decide what should scale next.</p>
           </article>
-          <article>
-            <span>03</span>
-            <h3>Phase 1 builds Escape Velocity</h3>
-            <p>Remove friction, prove the method through live client work, and leave Lynxeye with the first reusable capability.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="proof-strip" aria-labelledby="proof-strip-title">
-        <div class="proof-strip-copy">
-          <p class="section-kicker">Back-of-the-envelope proof</p>
-          <h2 id="proof-strip-title">A directional view of the capacity gap</h2>
-          <p>These numbers are directional, not promises. The purpose is to frame what becomes possible once capability starts compounding.</p>
-        </div>
-        <div class="proof-metrics" aria-label="Default simulator outputs">
-          <article>
-            <span>Captured capacity</span>
-            <strong id="proof-capacity-output">13,400 to 18,100 hours</strong>
-            <em>After work creep and uncertainty</em>
-          </article>
-          <article>
-            <span>Gross capacity value</span>
-            <strong id="proof-value-output">40.2 to 54.3M SEK</strong>
-            <em>Directional, not net profit</em>
-          </article>
-          <article>
-            <span>Time back per consultant</span>
-            <strong id="proof-weekly-output">4.9 hours / week</strong>
-            <em>At the default settings</em>
-          </article>
-        </div>
-        <button class="proof-link" type="button" data-proof-open>Open the simulator <span aria-hidden="true">→</span></button>
-      </section>
-
-      <section class="navigator" aria-labelledby="navigator-title">
-        <p id="navigator-title" class="nav-title">The conversation, step by step</p>
-        <div class="nav-cards">
-          <button class="nav-card nav-card-active" type="button" data-panel-target="situation" aria-controls="panel-situation" aria-expanded="true">
-            <span class="nav-card-num">01</span>
-            <span class="nav-card-name">Situation &amp; ambition</span>
-            <span class="nav-card-desc">Premium judgment and demand, but scattered AI use is not yet becoming shared capability.</span>
-            <span class="nav-card-cue" aria-hidden="true">↓</span>
-          </button>
-          <button class="nav-card" type="button" data-panel-target="envelope" aria-controls="panel-envelope" aria-expanded="false">
-            <span class="nav-card-num">02</span>
-            <span class="nav-card-name">Back-of-the-envelope simulation</span>
-            <span class="nav-card-desc">Directional Ascent potential: what the gap could mean once friction is removed.</span>
-            <span class="nav-card-cue" aria-hidden="true">↓</span>
-          </button>
-          <button class="nav-card" type="button" data-panel-target="phases" aria-controls="panel-phases" aria-expanded="false">
-            <span class="nav-card-num">03</span>
-            <span class="nav-card-name">The journey</span>
-            <span class="nav-card-desc">Escape Velocity first. Ascent and New Frontiers are what become possible after that.</span>
-            <span class="nav-card-cue" aria-hidden="true">↓</span>
-          </button>
-          <button class="nav-card" type="button" data-panel-target="suggestion" aria-controls="panel-suggestion" aria-expanded="false">
-            <span class="nav-card-num">04</span>
-            <span class="nav-card-name">What we would do together</span>
-            <span class="nav-card-desc">The Phase 1 core, possible add-ons, working rhythm, and expansion map.</span>
-            <span class="nav-card-cue" aria-hidden="true">↓</span>
-          </button>
         </div>
       </section>
 
-      <section class="open-panel" id="panel-situation" data-panel="situation">
-        <p class="panel-eyebrow">The conversation so far</p>
-        <h2 class="panel-title">Situation &amp; ambition</h2>
-        <p class="panel-sub">Lynxeye already has the judgment and the demand. The opportunity is to make that expertise easier to scale without lowering the standard.</p>
+      <section class="matrix-section" id="matrix" aria-labelledby="matrix-title">
+        <div class="section-heading">
+          <p class="eyebrow">Accelerate with AI value matrix</p>
+          <h2 id="matrix-title">The proposal in one view.</h2>
+          <p>The matrix shows who benefits, where value is created, and how the work moves from scope and setup into proof through live work. The center is client projects: building capacity and capability in real delivery.</p>
+        </div>
 
-        <div class="two-col-grid">
-          <div>
-            <p class="column-label">Situation</p>
-            <div class="prose">
-              <p>AI use already exists, but most of it remains individual. Context disappears, good practice stays trapped inside teams, and too much work still starts from scratch.</p>
-              <p>Senior judgment is still the bottleneck. Until it becomes reusable, AI improves individuals more than the firm itself.</p>
+        <div class="matrix-reader">
+          <div class="matrix-grid focus-matrix" aria-label="Lynxeye AI value matrix">
+            <button class="matrix-corner matrix-home" type="button" data-matrix-home>
+              <span>Matrix home</span>
+              <strong>Accelerate with AI value matrix</strong>
+              <em>Who benefits, where value is created, and what this proposal helps prove.</em>
+            </button>
+            <button class="matrix-head matrix-col-head" type="button" data-matrix-column-toggle="setup" aria-pressed="false">
+              <span>Value arena</span>
+              <strong>AI-ready setup</strong>
+              <em>Remove friction so approved AI becomes smooth and usable.</em>
+            </button>
+            <button class="matrix-head matrix-col-head" type="button" data-matrix-column-toggle="projects" aria-pressed="false">
+              <span>Value arena</span>
+              <strong>Client projects</strong>
+              <em>Build capacity and capability in live client delivery.</em>
+            </button>
+            <button class="matrix-head matrix-col-head" type="button" data-matrix-column-toggle="pitches" aria-pressed="false">
+              <span>Value arena</span>
+              <strong>Client pitches</strong>
+              <em>Improve pitch speed, quality, and win probability.</em>
+            </button>
+
+            <div class="matrix-row-group">
+              <button class="matrix-row-head" type="button" data-matrix-row-toggle="employee" aria-pressed="false">
+                <span>Who benefits</span>
+                <strong>Employee</strong>
+                <em>Individual flow and contribution.</em>
+              </button>
+              <button class="matrix-cell" type="button" data-matrix-cell="employee-setup" data-matrix-row="employee" data-matrix-column="setup" aria-pressed="false">
+                <span>Employee x AI-ready setup</span>
+                <strong>Smooth AI flow</strong>
+                <em>Less friction, more confidence.</em>
+              </button>
+              <button class="matrix-cell" type="button" data-matrix-cell="employee-projects" data-matrix-row="employee" data-matrix-column="projects" aria-pressed="false">
+                <span>Employee x client projects</span>
+                <strong>Useful delivery capacity</strong>
+                <em>More useful contribution in live work.</em>
+              </button>
+              <button class="matrix-cell" type="button" data-matrix-cell="employee-pitches" data-matrix-row="employee" data-matrix-column="pitches" aria-pressed="false">
+                <span>Employee x client pitches</span>
+                <strong>Earlier sharper input</strong>
+                <em>Better pitch support before senior review.</em>
+              </button>
+            </div>
+
+            <div class="matrix-row-group">
+              <button class="matrix-row-head" type="button" data-matrix-row-toggle="teams" aria-pressed="false">
+                <span>Who benefits</span>
+                <strong>Teams</strong>
+                <em>Shared working practice and delivery lift.</em>
+              </button>
+              <button class="matrix-cell" type="button" data-matrix-cell="teams-setup" data-matrix-row="teams" data-matrix-column="setup" aria-pressed="false">
+                <span>Teams x AI-ready setup</span>
+                <strong>Shared working rhythm</strong>
+                <em>Common habits that reduce reinvention.</em>
+              </button>
+              <button class="matrix-cell matrix-cell-active" type="button" data-matrix-cell="teams-projects" data-matrix-row="teams" data-matrix-column="projects" aria-pressed="true">
+                <span>Teams x client projects</span>
+                <strong>Capability lift in delivery</strong>
+                <em>The heart of the pilot.</em>
+              </button>
+              <button class="matrix-cell" type="button" data-matrix-cell="teams-pitches" data-matrix-row="teams" data-matrix-column="pitches" aria-pressed="false">
+                <span>Teams x client pitches</span>
+                <strong>Stronger pitch flow</strong>
+                <em>Faster, sharper pitch work.</em>
+              </button>
+            </div>
+
+            <div class="matrix-row-group">
+              <button class="matrix-row-head" type="button" data-matrix-row-toggle="lynxeye" aria-pressed="false">
+                <span>Who benefits</span>
+                <strong>Lynxeye</strong>
+                <em>Company-owned capability and scale evidence.</em>
+              </button>
+              <button class="matrix-cell" type="button" data-matrix-cell="lynxeye-setup" data-matrix-row="lynxeye" data-matrix-column="setup" aria-pressed="false">
+                <span>Lynxeye x AI-ready setup</span>
+                <strong>Scalable adoption path</strong>
+                <em>A better baseline for more people.</em>
+              </button>
+              <button class="matrix-cell" type="button" data-matrix-cell="lynxeye-projects" data-matrix-row="lynxeye" data-matrix-column="projects" aria-pressed="false">
+                <span>Lynxeye x client projects</span>
+                <strong>Reusable client practice</strong>
+                <em>Playbooks, examples, and review rhythms.</em>
+              </button>
+              <button class="matrix-cell" type="button" data-matrix-cell="lynxeye-pitches" data-matrix-row="lynxeye" data-matrix-column="pitches" aria-pressed="false">
+                <span>Lynxeye x client pitches</span>
+                <strong>Commercial scale evidence</strong>
+                <em>Value case and scale decision.</em>
+              </button>
             </div>
           </div>
-          <div>
-            <p class="column-label">Ambition</p>
-            <div class="prose">
-              <p><strong>Scale and orchestrate with AI without losing what makes Lynxeye premium.</strong> The goal is more capacity, less friction, and stronger client work.</p>
-              <p>Turn senior expertise into reusable practice. Give people better starting points. Let the first playbooks emerge from real client work, not artificial training exercises.</p>
-              <p>When Henrik leaves, the capability stays. The playbooks are owned by Lynxeye. The methods belong to Lynxeye. The IP is built inside the firm.</p>
+
+          <aside class="matrix-detail" aria-live="polite">
+            <div class="detail-context">
+              <p class="detail-kicker" id="matrix-detail-kicker">Phase 1: Scope &amp; Setup</p>
+              <h3 id="matrix-detail-title">Capability lift in delivery</h3>
+              <p id="matrix-detail-coordinates">Teams x client projects</p>
             </div>
-          </div>
+
+            <div class="matrix-phase-tabs" role="tablist" aria-label="Matrix phases">
+              <button class="matrix-phase-tab matrix-phase-tab-active" type="button" role="tab" aria-selected="true" data-matrix-phase="phase1">Phase 1: Scope &amp; Setup</button>
+              <button class="matrix-phase-tab" type="button" role="tab" aria-selected="false" data-matrix-phase="phase2">Phase 2: Prove In Work</button>
+              <button class="matrix-phase-tab matrix-phase-tab-muted" type="button" role="tab" aria-selected="false" aria-disabled="true" disabled>Phase 3: Scale Further</button>
+            </div>
+
+            <div class="matrix-detail-tabs" role="tablist" aria-label="Matrix detail views">
+              <button class="matrix-detail-tab matrix-detail-tab-active" type="button" role="tab" aria-selected="true" data-matrix-detail-tab="success">Success looks like</button>
+              <button class="matrix-detail-tab" type="button" role="tab" aria-selected="false" data-matrix-detail-tab="deliverables">Concrete deliverables</button>
+              <button class="matrix-detail-tab" type="button" role="tab" aria-selected="false" data-matrix-detail-tab="activities">Activities we do</button>
+              <button class="matrix-detail-tab" type="button" role="tab" aria-selected="false" data-matrix-detail-tab="collaboration">How we collaborate</button>
+            </div>
+
+            <p id="matrix-detail-body">Scope and setup define which client-project workflows matter enough to test, who should be involved, which constraints apply, and what evidence would make the pilot worth running.</p>
+
+            <div class="detail-commercial" id="matrix-detail-commercial-wrap">
+              <span>Commercial signal</span>
+              <p id="matrix-detail-commercial">This is where project compression, captured value, and reduced hiring pressure can become visible in the directional value case.</p>
+              <a href="#value" id="matrix-value-link">See directional value case</a>
+            </div>
+
+            <div class="guardrail-rail">
+              <span>Practical guardrails</span>
+              <p id="matrix-detail-guardrails">Approved tools, client confidentiality, human review, quality standard.</p>
+            </div>
+
+            <div class="detail-meta">
+              <div>
+                <span>Evidence created</span>
+                <strong id="matrix-detail-evidence">Use-case shortlist, pilot context, success logic, and risk notes.</strong>
+              </div>
+              <div>
+                <span>Proposal status</span>
+                <strong id="matrix-detail-status">Included in this proposal.</strong>
+              </div>
+            </div>
+          </aside>
         </div>
       </section>
 
-      <section class="open-panel panel-hidden" id="panel-envelope" data-panel="envelope" hidden>
-        <p class="panel-eyebrow">Panel 2 · The math, directionally</p>
-        <h2 class="panel-title">Back-of-the-envelope simulation</h2>
-        <p class="panel-sub">Basic directional math for what the gap could become once Phase 1 creates enough capability to move into Ascent.</p>
+      <section class="value-section" id="value" aria-labelledby="value-title">
+        <div class="section-heading">
+          <p class="eyebrow">Directional value case</p>
+          <h2 id="value-title">Commercial logic connected to the matrix.</h2>
+          <p>The simulator is not proof. It makes the commercial signals from client projects and client pitches discussable: capacity captured, pitch speed, win probability, and hiring pressure. Phase 1 calibrates the assumptions. Phase 2 replaces them with Lynxeye evidence.</p>
+        </div>
 
-        <div class="simulator" data-simulator>
-          <div class="simulator-controls">
-            <p class="sim-label">Lynxeye baseline (SEK)</p>
-            <div class="slider-row">
-              <div class="slider-heading">
-                <span class="slider-title"><label for="employees">Employees</label> <button class="info-trigger" type="button" aria-label="Employees assumption" aria-expanded="false" data-info-trigger>i</button></span>
-                <span id="employees-value">70</span>
-              </div>
-              <span class="info-panel" role="status">Assumption: Lynxeye headcount in scope for the model. Default: 70 from the brief. Range: 20 to 150, so the same logic can be tested on a smaller pilot or wider firm scale. Caveat: Phase 1 should replace this with the real team count.</span>
-              <input id="employees" type="range" min="20" max="150" value="70" data-simulator-input>
-            </div>
-            <div class="slider-row">
-              <div class="slider-heading">
-                <span class="slider-title"><label for="hours">Billable hours / consultant / year</label> <button class="info-trigger" type="button" aria-label="Billable hours assumption" aria-expanded="false" data-info-trigger>i</button></span>
-                <span id="hours-value">1,500</span>
-              </div>
-              <span class="info-panel" role="status">Assumption: annual billable hours per consultant. Default: 1,500, a directional premium consultancy starting point. Range: 1,000 to 2,000 for lower and higher utilization years. Caveat: Lynxeye-specific utilization should replace this in Phase 1.</span>
-              <input id="hours" type="range" min="1000" max="2000" step="50" value="1500" data-simulator-input>
-            </div>
-            <div class="slider-row">
-              <div class="slider-heading">
-                <span class="slider-title"><label for="rate">Avg. billing rate (SEK/hr)</label> <button class="info-trigger" type="button" aria-label="Billing rate assumption" aria-expanded="false" data-info-trigger>i</button></span>
-                <span id="rate-value">3,000</span>
-              </div>
-              <span class="info-panel" role="status">Assumption: blended billing rate across seniority levels. Default: 3,000 SEK/hr. Range: 1,500 to 5,000 SEK/hr because rates vary by role and engagement type. Caveat: this creates gross equivalent value, not net profit.</span>
-              <input id="rate" type="range" min="1500" max="5000" step="100" value="3000" data-simulator-input>
-            </div>
+        <div class="scenario-grid" role="group" aria-label="Value scenarios">
+          <button class="scenario-card" type="button" data-scenario="conservative" aria-pressed="false">
+            <span>Conservative</span>
+            <strong>Lower lift, lower capture</strong>
+            <em>Useful when adoption is slower or the first pilot stays narrow.</em>
+          </button>
+          <button class="scenario-card scenario-card-active" type="button" data-scenario="base" aria-pressed="true">
+            <span>Base case</span>
+            <strong>Practical middle view</strong>
+            <em>Default working hypothesis for a credible pilot.</em>
+          </button>
+          <button class="scenario-card" type="button" data-scenario="strong" aria-pressed="false">
+            <span>Strong case</span>
+            <strong>Better capture, stronger reuse</strong>
+            <em>Useful if the pilot finds real repeatable work quickly.</em>
+          </button>
+        </div>
 
-            <p class="sim-label sim-label-spaced">Improvement levers</p>
-            <div class="slider-row">
-              <div class="slider-heading">
-                <span class="slider-title"><label for="project-compression">Project delivery compression</label> <button class="info-trigger" type="button" aria-label="Project delivery compression assumption" aria-expanded="false" data-info-trigger>i</button></span>
-                <span id="project-compression-value">25%</span>
-              </div>
-              <span class="info-panel" role="status">Assumption: reduction in project delivery time from better AI orchestration. Default: 25%, so a 12-week project becomes roughly 9 weeks. Range: 0 to 50%, from no lift to an ambitious upside case. Caveat: this must be proven by Lynxeye workflow evidence.</span>
-              <input id="project-compression" type="range" min="0" max="50" value="25" data-simulator-input>
-            </div>
-            <div class="slider-row">
-              <div class="slider-heading">
-                <span class="slider-title"><label for="pitch-compression">Pitch cycle compression</label> <button class="info-trigger" type="button" aria-label="Pitch cycle compression assumption" aria-expanded="false" data-info-trigger>i</button></span>
-                <span id="pitch-compression-value">25%</span>
-              </div>
-              <span class="info-panel" role="status">Assumption: reduction in time from opportunity or RFP to proposal-ready. Default: 25%, so a 4-week pitch becomes roughly 3 weeks. Formula effect: baseline pitches divided by the compressed cycle. Caveat: baseline pitch volume is a placeholder.</span>
-              <input id="pitch-compression" type="range" min="0" max="50" value="25" data-simulator-input>
-            </div>
-            <div class="slider-row">
-              <div class="slider-heading">
-                <span class="slider-title"><label for="win-rate">Win rate improvement</label> <button class="info-trigger" type="button" aria-label="Win rate improvement assumption" aria-expanded="false" data-info-trigger>i</button></span>
-                <span id="win-rate-value">15%</span>
-              </div>
-              <span class="info-panel" role="status">Assumption: relative improvement on qualified pitch wins from better preparation and faster turnaround. Default: 15%. Range: 0 to 40%. Caveat: this affects expected additional wins only, no revenue value is assigned because deal size is not in the model.</span>
-              <input id="win-rate" type="range" min="0" max="40" value="15" data-simulator-input>
-            </div>
-            <div class="slider-row">
-              <div class="slider-heading">
-                <span class="slider-title"><label for="capture-rate">% of freed time captured as real value</label> <button class="info-trigger" type="button" aria-label="Freed time capture assumption" aria-expanded="false" data-info-trigger>i</button></span>
-                <span id="capture-rate-value">60%</span>
-              </div>
-              <span class="info-panel" role="status">Assumption: share of freed time that becomes real value instead of work creep. Default: 60%. Formula effect: raw freed capacity is multiplied by this rate. Caveat: this is the honesty lever, and Phase 1 is designed to improve and measure it.</span>
-              <input id="capture-rate" type="range" min="0" max="100" value="60" data-simulator-input>
-            </div>
-            <div class="tooling-note">
-              <strong>Tooling cost note.</strong> There will of course be a cost per employee for AI solutions and tools. This simulator keeps that outside the model until the exact stack, licenses, and scope are clear.
-            </div>
-
-            <details class="assumptions-panel">
-              <summary>Advanced assumptions</summary>
-              <div class="assumption-grid">
-                <div class="assumption-row">
-                  <span class="slider-title"><label for="baseline-pitches">Qualified pitches / year</label> <button class="info-trigger" type="button" aria-label="Qualified pitches assumption" aria-expanded="false" data-info-trigger>i</button></span>
-                  <span class="info-panel" role="status">Assumption: qualified pitch volume before compression. Default: 12, roughly one qualified pitch per month. Formula effect: used in pitch-equivalent capacity and expected wins. Caveat: Henrik should replace this with Lynxeye's actual volume.</span>
-                  <input id="baseline-pitches" type="number" min="1" max="60" step="1" value="12" data-simulator-input>
-                </div>
-                <div class="assumption-row">
-                  <span class="slider-title"><label for="baseline-win-rate">Baseline win rate</label> <button class="info-trigger" type="button" aria-label="Baseline win rate assumption" aria-expanded="false" data-info-trigger>i</button></span>
-                  <span class="info-panel" role="status">Assumption: current win rate on qualified pitches. Default: 35%. Formula effect: baseline pitches x baseline win rate x win-rate improvement. Caveat: this is not Lynxeye-confirmed, and revenue impact is intentionally excluded.</span>
-                  <input id="baseline-win-rate" type="number" min="0" max="100" step="1" value="35" data-simulator-input>
-                </div>
-                <div class="assumption-row">
-                  <span class="slider-title"><label for="working-weeks">Working weeks / year</label> <button class="info-trigger" type="button" aria-label="Working weeks assumption" aria-expanded="false" data-info-trigger>i</button></span>
-                  <span class="info-panel" role="status">Assumption: working weeks used for human interpretation. Default: 46. Formula effect: captured capacity divided by employees and working weeks. Caveat: this is only for readability, not the core commercial value calculation.</span>
-                  <input id="working-weeks" type="number" min="40" max="52" step="1" value="46" data-simulator-input>
-                </div>
-                <div class="assumption-row">
-                  <span class="slider-title"><label for="uncertainty-band">Uncertainty band</label> <button class="info-trigger" type="button" aria-label="Uncertainty band assumption" aria-expanded="false" data-info-trigger>i</button></span>
-                  <span class="info-panel" role="status">Assumption: uncertainty band around captured capacity and gross value. Default: 15%. Formula effect: captured capacity is shown as plus or minus this band. Caveat: exact internal math is rounded only for display.</span>
-                  <input id="uncertainty-band" type="number" min="0" max="30" step="1" value="15" data-simulator-input>
-                </div>
-              </div>
-            </details>
-          </div>
-
+        <div class="value-layout" data-simulator>
           <div class="simulator-output" aria-live="polite">
             <div class="output-head">
-              <p class="output-label">Output · directional Ascent potential at current settings</p>
-              <button class="copy-model" id="copy-model" type="button">Copy current model</button>
+              <p class="output-label">Current scenario</p>
+              <button class="copy-model" type="button" id="copy-model">Copy model</button>
             </div>
             <p class="copy-status" id="copy-status" aria-live="polite"></p>
 
-            <div class="output-columns">
-              <section class="output-group output-group-primary" aria-labelledby="main-output-title">
-                <h3 id="main-output-title">Main signal</h3>
-                <div class="metric metric-primary">
-                  <p class="metric-label">Captured capacity <button class="info-trigger" type="button" aria-label="Captured capacity formula" aria-expanded="false" data-info-trigger>i</button></p>
-                  <span class="info-panel metric-info" role="status">Formula: raw freed capacity x freed-time capture rate, shown with the uncertainty band. Interpretation: the part of the upside that survives work creep. Caveat: this is the directional number Phase 1 is meant to replace with evidence.</span>
-                  <p class="metric-value" id="capacity-output">13,400 to 18,100 hours</p>
-                  <p class="metric-help" id="capacity-help">For Lynxeye at 70 people, roughly 15,750 hours survives work creep before the uncertainty band.</p>
-                </div>
-                <div class="metric metric-primary">
-                  <p class="metric-label">Gross capacity value <button class="info-trigger" type="button" aria-label="Gross capacity value formula" aria-expanded="false" data-info-trigger>i</button></p>
-                  <span class="info-panel metric-info" role="status">Formula: captured capacity range x blended billing rate. Interpretation: gross equivalent capacity value if the time becomes useful client work. Caveat: this is not net profit, and it excludes margin, pricing, demand, and change cost.</span>
-                  <p class="metric-value" id="value-output">40.2 to 54.3M SEK</p>
-                  <p class="metric-help" id="value-help">If captured as billable work at 3,000 SEK/hr, this is the gross directional Ascent upside.</p>
-                </div>
-                <div class="metric">
-                  <p class="metric-label">Pitch-equivalent capacity <button class="info-trigger" type="button" aria-label="Pitch-equivalent capacity formula" aria-expanded="false" data-info-trigger>i</button></p>
-                  <span class="info-panel metric-info" role="status">Formula: baseline pitches divided by (1 minus pitch compression), then minus baseline pitches. Interpretation: extra pitch-equivalent capacity from shorter cycles. Caveat: this is capacity, not a sales forecast.</span>
-                  <p class="metric-value" id="pitch-output">+4</p>
-                  <p class="metric-help" id="pitch-help">At 12 baseline pitches and 25% compression, the same pitch capacity can handle roughly +4 more pitch-equivalents per year.</p>
-                </div>
-                <div class="metric">
-                  <p class="metric-label">Hours returned / consultant / week <button class="info-trigger" type="button" aria-label="Hours returned formula" aria-expanded="false" data-info-trigger>i</button></p>
-                  <span class="info-panel metric-info" role="status">Formula: captured capacity divided by employees and working weeks. Interpretation: what the model feels like in the week. Caveat: this depends on leaders protecting the recovered time from low-value work.</span>
-                  <p class="metric-value" id="weekly-hours-output">4.9 hours</p>
-                  <p class="metric-help" id="weekly-hours-help">Roughly 0.7 workdays per consultant per week.</p>
-                </div>
-              </section>
-
-              <section class="output-group" aria-labelledby="context-output-title">
-                <h3 id="context-output-title">Model context</h3>
-                <div class="metric">
-                  <p class="metric-label">Raw freed capacity <button class="info-trigger" type="button" aria-label="Raw freed capacity formula" aria-expanded="false" data-info-trigger>i</button></p>
-                  <span class="info-panel metric-info" role="status">Formula: employees x billable hours x project delivery compression. Interpretation: gross time opportunity before capture. Caveat: raw freed time is not value until the organization captures it.</span>
-                  <p class="metric-value" id="raw-capacity-output">26,250 hours</p>
-                  <p class="metric-help" id="raw-capacity-help">Gross time opportunity before capture rate is applied.</p>
-                </div>
-                <div class="metric">
-                  <p class="metric-label">Expected additional qualified wins <button class="info-trigger" type="button" aria-label="Expected additional qualified wins formula" aria-expanded="false" data-info-trigger>i</button></p>
-                  <span class="info-panel metric-info" role="status">Formula: baseline pitches x baseline win rate x win-rate improvement. Interpretation: incremental qualified wins before any deal-size value. Caveat: this is directional only, no revenue value is assigned.</span>
-                  <p class="metric-value" id="wins-output">+0.6</p>
-                  <p class="metric-help" id="wins-help">At 12 qualified pitches per year and a 35% baseline win rate.</p>
-                </div>
-                <div class="metric">
-                  <p class="metric-label">AI tool costs <button class="info-trigger" type="button" aria-label="AI tool cost note" aria-expanded="false" data-info-trigger>i</button></p>
-                  <span class="info-panel metric-info" role="status">Interpretation: there will be a cost per employee for AI solutions and tools. Caveat: the exact tool stack, licensing model, and enterprise terms should be handled after scope alignment, not inside this directional upside model.</span>
-                  <p class="metric-value metric-value-text">Separate implementation cost.</p>
-                  <p class="metric-help">Tooling is real, but it is not a slider in this model.</p>
-                </div>
-                <div class="metric">
-                  <p class="metric-label">Captured vs. absorbed time <button class="info-trigger" type="button" aria-label="Captured versus absorbed formula" aria-expanded="false" data-info-trigger>i</button></p>
-                  <span class="info-panel metric-info" role="status">Formula: captured time equals raw freed capacity x capture rate, absorbed time is the remainder. Interpretation: the work-creep risk made visible. Caveat: the split is a hypothesis until measured.</span>
-                  <p class="metric-value" id="absorption-output">60% captured / 40% absorbed</p>
-                  <p class="metric-help" id="absorption-help">Phase 1 is partly about moving this split in the right direction.</p>
-                  <div class="capture-bar" aria-hidden="true"><span id="capture-bar-fill"></span></div>
-                </div>
-                <div class="metric">
-                  <p class="metric-label">Where the time can go <button class="info-trigger" type="button" aria-label="Where returned time can go" aria-expanded="false" data-info-trigger>i</button></p>
-                  <span class="info-panel metric-info" role="status">Interpretation: recovered effort can move into higher-value work and less blank-page production burden. Caveat: this is not measured yet, and the pattern depends on leadership rhythm.</span>
-                  <p class="metric-value metric-value-text" id="time-use-output">Client prep, synthesis, senior review, learning, proposal depth.</p>
-                  <p class="metric-help" id="time-use-help">A better use of the week, not just a shorter week.</p>
-                </div>
-              </section>
+            <div class="metric-grid">
+              <article class="metric metric-primary">
+                <p class="metric-label">Captured capacity <button class="info-trigger" type="button" aria-label="Captured capacity formula" aria-expanded="false" data-info-trigger>i</button></p>
+                <span class="info-panel" role="status">Formula: employees x billable hours x delivery compression x capture rate, shown with uncertainty. Directional only.</span>
+                <strong id="capacity-output">10,900 to 14,800 hours</strong>
+                <span id="capacity-help">For Lynxeye at 70 people, roughly 12,850 hours survives work creep before uncertainty.</span>
+              </article>
+              <article class="metric metric-primary">
+                <p class="metric-label">Gross capacity value <button class="info-trigger" type="button" aria-label="Gross value formula" aria-expanded="false" data-info-trigger>i</button></p>
+                <span class="info-panel" role="status">Formula: captured capacity range x blended billing rate. This is gross equivalent value, not net profit.</span>
+                <strong id="value-output">32.6 to 44.3M SEK</strong>
+                <span id="value-help">If captured as billable work at 3,000 SEK/hr.</span>
+              </article>
+              <article class="metric">
+                <p class="metric-label">Pitch-equivalent capacity <button class="info-trigger" type="button" aria-label="Pitch capacity formula" aria-expanded="false" data-info-trigger>i</button></p>
+                <span class="info-panel" role="status">Formula: baseline pitches divided by compressed cycle, then minus baseline pitches. Capacity only, not a sales forecast.</span>
+                <strong id="pitch-output">+3.0</strong>
+                <span id="pitch-help">At 12 baseline pitches and 20% compression.</span>
+              </article>
+              <article class="metric">
+                <p class="metric-label">Hours returned / consultant / week <button class="info-trigger" type="button" aria-label="Weekly hours formula" aria-expanded="false" data-info-trigger>i</button></p>
+                <span class="info-panel" role="status">Formula: captured capacity divided by employees and working weeks. This is what the model feels like in the week.</span>
+                <strong id="weekly-hours-output">4.0 hours</strong>
+                <span id="weekly-hours-help">Roughly 0.5 workdays per consultant per week.</span>
+              </article>
+              <article class="metric">
+                <p class="metric-label">Expected additional wins <button class="info-trigger" type="button" aria-label="Additional wins formula" aria-expanded="false" data-info-trigger>i</button></p>
+                <span class="info-panel" role="status">Formula: baseline pitches x baseline win rate x win-rate improvement. No revenue value is assigned.</span>
+                <strong id="wins-output">+0.4</strong>
+                <span id="wins-help">At 12 qualified pitches per year and a 35% baseline win rate.</span>
+              </article>
+              <article class="metric">
+                <p class="metric-label">Captured vs absorbed time <button class="info-trigger" type="button" aria-label="Captured versus absorbed formula" aria-expanded="false" data-info-trigger>i</button></p>
+                <span class="info-panel" role="status">Formula: captured time equals raw freed capacity x capture rate. Absorbed time is the remainder.</span>
+                <strong id="absorption-output">55% captured / 45% absorbed</strong>
+                <span id="absorption-help">Phase 1 and Phase 2 are partly about moving this split in the right direction.</span>
+                <span class="capture-bar" aria-hidden="true"><span id="capture-bar-fill"></span></span>
+              </article>
             </div>
 
-            <div class="sensitivity-line" id="sensitivity-line">Every 1 percentage point increase in captured time is worth roughly 263 hours / 788k SEK gross capacity at current settings.</div>
-
-            <section class="value-translation" aria-labelledby="value-translation-title">
-              <p class="section-kicker" id="value-translation-title">What this means</p>
-              <div class="value-card-grid">
-                <article class="value-card">
-                  <div class="value-card-head">
-                    <h3>For clients</h3>
-                    <button class="info-trigger" type="button" aria-label="Client value interpretation" aria-expanded="false" data-info-trigger>i</button>
-                  </div>
-                  <span class="info-panel" role="status">Directional interpretation. The simulator does not prove client outcomes. It shows where freed capacity could improve the client experience if Lynxeye captures it deliberately.</span>
-                  <p>Faster iteration, better-prepared teams, and more senior attention on judgment, implications, and quality.</p>
-                </article>
-                <article class="value-card">
-                  <div class="value-card-head">
-                    <h3>For employees</h3>
-                    <button class="info-trigger" type="button" aria-label="Employee value interpretation" aria-expanded="false" data-info-trigger>i</button>
-                  </div>
-                  <span class="info-panel" role="status">Directional interpretation. Employee value depends on whether leadership protects the recovered time from being absorbed by more low-value work.</span>
-                  <p>Fewer blank-page starts, less production drag, clearer playbooks, and more time for thinking and craft.</p>
-                </article>
-                <article class="value-card">
-                  <div class="value-card-head">
-                    <h3>For partners</h3>
-                    <button class="info-trigger" type="button" aria-label="Partner value interpretation" aria-expanded="false" data-info-trigger>i</button>
-                  </div>
-                  <span class="info-panel" role="status">Directional interpretation. The partner value is not that senior people disappear from the work. It is that their judgment is used at better moments.</span>
-                  <p>Less senior bottleneck, better delegation, reusable methods, and clearer quality control across teams.</p>
-                </article>
-                <article class="value-card">
-                  <div class="value-card-head">
-                    <h3>For Lynxeye</h3>
-                    <button class="info-trigger" type="button" aria-label="Firm value interpretation" aria-expanded="false" data-info-trigger>i</button>
-                  </div>
-                  <span class="info-panel" role="status">Directional interpretation. The firm-level value only appears when isolated AI use becomes shared operating capability.</span>
-                  <p>Compounding capability instead of isolated tool use: workflows, playbooks, and judgment that improve with reuse.</p>
-                </article>
-              </div>
-            </section>
+            <p class="sensitivity-line" id="sensitivity-line">Every 1 percentage point increase in captured time is worth roughly 210 hours / 630k SEK gross capacity at current settings.</p>
           </div>
+
+          <aside class="assumption-panel">
+            <details>
+              <summary>Adjust assumptions</summary>
+              <div class="simulator-controls">
+                <p class="sim-label">Lynxeye baseline</p>
+                <div class="field">
+                  <div class="field-head">
+                    <label for="employees">Employees</label>
+                    <button class="info-trigger" type="button" aria-label="Employees assumption" aria-expanded="false" data-info-trigger>i</button>
+                    <span id="employees-value">70</span>
+                  </div>
+                  <span class="info-panel" role="status">Default: 70 people from the brief. Phase 1 should replace this with the relevant scope.</span>
+                  <input id="employees" type="range" min="20" max="150" value="70" data-simulator-input>
+                </div>
+
+                <div class="field">
+                  <div class="field-head">
+                    <label for="hours">Billable hours / consultant / year</label>
+                    <button class="info-trigger" type="button" aria-label="Billable hours assumption" aria-expanded="false" data-info-trigger>i</button>
+                    <span id="hours-value">1,500</span>
+                  </div>
+                  <span class="info-panel" role="status">Default: 1,500 annual billable hours. Directional only.</span>
+                  <input id="hours" type="range" min="1000" max="2000" step="50" value="1500" data-simulator-input>
+                </div>
+
+                <div class="field">
+                  <div class="field-head">
+                    <label for="rate">Average billing rate (SEK/hr)</label>
+                    <button class="info-trigger" type="button" aria-label="Billing rate assumption" aria-expanded="false" data-info-trigger>i</button>
+                    <span id="rate-value">3,000</span>
+                  </div>
+                  <span class="info-panel" role="status">Default: 3,000 SEK/hr blended rate. Gross value, not net profit.</span>
+                  <input id="rate" type="range" min="1500" max="5000" step="100" value="3000" data-simulator-input>
+                </div>
+
+                <p class="sim-label sim-label-spaced">Improvement levers</p>
+                <div class="field">
+                  <div class="field-head">
+                    <label for="project-compression">Project delivery compression</label>
+                    <button class="info-trigger" type="button" aria-label="Project delivery compression assumption" aria-expanded="false" data-info-trigger>i</button>
+                    <span id="project-compression-value">20%</span>
+                  </div>
+                  <span class="info-panel" role="status">Reduction in production drag from better AI orchestration. Must be tested through real Lynxeye workflows.</span>
+                  <input id="project-compression" type="range" min="0" max="50" value="20" data-simulator-input>
+                </div>
+
+                <div class="field">
+                  <div class="field-head">
+                    <label for="pitch-compression">Pitch cycle compression</label>
+                    <button class="info-trigger" type="button" aria-label="Pitch cycle compression assumption" aria-expanded="false" data-info-trigger>i</button>
+                    <span id="pitch-compression-value">20%</span>
+                  </div>
+                  <span class="info-panel" role="status">Shorter pitch cycles translated into pitch-equivalent capacity, not guaranteed sales.</span>
+                  <input id="pitch-compression" type="range" min="0" max="50" value="20" data-simulator-input>
+                </div>
+
+                <div class="field">
+                  <div class="field-head">
+                    <label for="win-rate">Win rate improvement</label>
+                    <button class="info-trigger" type="button" aria-label="Win rate assumption" aria-expanded="false" data-info-trigger>i</button>
+                    <span id="win-rate-value">10%</span>
+                  </div>
+                  <span class="info-panel" role="status">Relative improvement on qualified pitch wins from better preparation. No deal-size revenue value is assigned.</span>
+                  <input id="win-rate" type="range" min="0" max="40" value="10" data-simulator-input>
+                </div>
+
+                <div class="field">
+                  <div class="field-head">
+                    <label for="capture-rate">% of freed time captured as real value</label>
+                    <button class="info-trigger" type="button" aria-label="Captured value assumption" aria-expanded="false" data-info-trigger>i</button>
+                    <span id="capture-rate-value">55%</span>
+                  </div>
+                  <span class="info-panel" role="status">The honesty lever. Not all freed time becomes value. Some gets absorbed by work creep.</span>
+                  <input id="capture-rate" type="range" min="0" max="100" value="55" data-simulator-input>
+                </div>
+
+                <div class="advanced-grid">
+                  <label>Qualified pitches / year <input id="baseline-pitches" type="number" min="1" max="60" step="1" value="12" data-simulator-input></label>
+                  <label>Baseline win rate <input id="baseline-win-rate" type="number" min="0" max="100" step="1" value="35" data-simulator-input></label>
+                  <label>Working weeks / year <input id="working-weeks" type="number" min="40" max="52" step="1" value="46" data-simulator-input></label>
+                  <label>Uncertainty band <input id="uncertainty-band" type="number" min="0" max="30" step="1" value="15" data-simulator-input></label>
+                </div>
+              </div>
+            </details>
+          </aside>
         </div>
 
-        <div class="hypothesis-box">
-          <p><strong>Directional Ascent potential.</strong> These numbers are directional, not promises. The purpose is to frame what becomes possible once capability starts compounding.</p>
-        </div>
-
-        <div class="gap-bridge">
-          <p class="section-kicker">Friction removed first</p>
-          <p>Before the upside can compound, people need a setup where the basics stop slowing them down.</p>
-          <p>Access works. Context is connected. People stop wasting energy on setup friction.</p>
-          <p>Work moves faster. Good practice becomes visible. Reusable context replaces repeated setup.</p>
-        </div>
-
-        <section class="hiring-pressure" aria-labelledby="hiring-pressure-title">
-          <div class="section-kicker">Hiring pressure</div>
-          <div class="hiring-pressure-head">
+        <section class="hiring-panel" aria-labelledby="hiring-title">
+          <div class="hiring-head">
             <div>
-              <h3 id="hiring-pressure-title">Could capability lower the next hiring need?</h3>
-              <p><strong>This is not a headcount reduction argument.</strong> It is a hiring pressure argument: hire where human judgment is needed, and let playbooks absorb repeatable production load.</p>
+              <p class="eyebrow">Hiring pressure</p>
+              <h3 id="hiring-title">Capability can ease pressure without pretending people are optional.</h3>
             </div>
-            <span class="pressure-tag">Pricing stays [TBD]</span>
+            <span>Pricing stays [TBD]</span>
           </div>
+          <p class="hiring-intro">This is not a headcount reduction argument. It is a hiring pressure argument: hire where human judgment is needed, and let playbooks absorb repeatable production load.</p>
 
-          <div class="hiring-pressure-grid">
-            <div class="hiring-pressure-controls">
-              <div class="slider-row">
-                <div class="slider-heading">
-                  <span class="slider-title"><label for="hiring-need">Hiring need under the old answer</label> <button class="info-trigger" type="button" aria-label="Hiring need assumption" aria-expanded="false" data-info-trigger>i</button></span>
-                  <span id="hiring-need-value">3 hires</span>
-                </div>
-                <span class="info-panel" role="status">Assumption: the number of hires Lynxeye might consider if the only answer is more headcount. Default: 3, matching the finance-team pressure mentioned in the brief. Range: 1 to 6, so the pressure can be tested without changing the rest of the model.</span>
-                <input id="hiring-need" type="range" min="1" max="6" step="1" value="3" data-simulator-input>
+          <div class="hiring-grid">
+            <div class="field">
+              <div class="field-head">
+                <label for="hiring-need">Hiring need under the old answer</label>
+                <button class="info-trigger" type="button" aria-label="Hiring need assumption" aria-expanded="false" data-info-trigger>i</button>
+                <span id="hiring-need-value">3 hires</span>
               </div>
-
-              <div class="lift-control">
-                <div class="lift-control-head">
-                  <p>Capability support level</p>
-                  <span id="coverage-rate-value">50%</span>
-                </div>
-                <div class="lift-options" role="group" aria-label="Capability support level">
-                  <button class="lift-option" type="button" data-coverage-option="25" aria-pressed="false">
-                    <span>Light support</span>
-                    <strong>25%</strong>
-                  </button>
-                  <button class="lift-option lift-option-active" type="button" data-coverage-option="50" aria-pressed="true">
-                    <span>Balanced lift</span>
-                    <strong>50%</strong>
-                  </button>
-                  <button class="lift-option" type="button" data-coverage-option="70" aria-pressed="false">
-                    <span>Strong lift</span>
-                    <strong>70%</strong>
-                  </button>
-                </div>
-              </div>
+              <span class="info-panel" role="status">Default: 3 hires. Range lets Christian test whether capability could reduce, but not remove, immediate hiring pressure.</span>
+              <input id="hiring-need" type="range" min="1" max="6" step="1" value="3" data-simulator-input>
             </div>
-
-            <div class="hiring-pressure-output">
-              <p class="pressure-label">Scenario</p>
-              <p class="pressure-main" id="hiring-pressure-output">Old answer: hire 3. Capability answer: hire about 2, while playbooks absorb the pressure of roughly 1 role.</p>
-              <div class="pressure-stats">
-                <div>
-                  <span>Hiring run-rate not immediately added</span>
-                  <strong id="hiring-avoided-output">1.2 to 1.5M SEK / year</strong>
-                </div>
-                <div>
-                  <span>AI tool costs</span>
-                  <strong>Handled separately</strong>
-                </div>
+            <div class="coverage-control">
+              <p>Capability support level <span id="coverage-rate-value">50%</span></p>
+              <div class="coverage-options" role="group" aria-label="Capability support level">
+                <button class="coverage-option" type="button" data-coverage-option="25" aria-pressed="false">Light support <strong>25%</strong></button>
+                <button class="coverage-option coverage-option-active" type="button" data-coverage-option="50" aria-pressed="true">Balanced lift <strong>50%</strong></button>
+                <button class="coverage-option" type="button" data-coverage-option="70" aria-pressed="false">Strong lift <strong>70%</strong></button>
               </div>
-              <p class="pressure-help" id="hiring-pressure-help">Project Accelerate pricing stays [TBD], and this model always leaves at least one real hire in place.</p>
             </div>
           </div>
 
-          <div class="pressure-compare-grid">
-            <article>
-              <span>Old hiring answer</span>
+          <div class="hiring-result">
+            <p id="hiring-pressure-output">Old answer: hire 3. Capability answer: hire about 2, while playbooks absorb the pressure of roughly 1 role.</p>
+            <div>
+              <span>Old hiring run-rate</span>
               <strong id="old-hiring-cost-output">3.6 to 4.5M SEK / year</strong>
-              <p id="old-hiring-help">Fully loaded annual run-rate before recruiting delay.</p>
-            </article>
-            <article>
-              <span>Capability answer</span>
+            </div>
+            <div>
+              <span>Hiring run-rate not immediately added</span>
+              <strong id="hiring-avoided-output">1.2 to 1.5M SEK / year</strong>
+            </div>
+            <div>
+              <span>Remaining hiring run-rate</span>
               <strong id="remaining-hiring-output">About 2 hires still needed</strong>
-              <p id="remaining-hiring-help">Plus [TBD] Phase 1 and per-employee AI tool costs, outside the hiring-cost model.</p>
-            </article>
-            <article>
-              <span>Time to first lift</span>
-              <strong>8-12 weeks</strong>
-              <p>Hiring can still be right. Capability work can start easing pressure before a 6-12 month hiring cycle has fully landed.</p>
-            </article>
+            </div>
           </div>
+          <p class="hiring-help" id="hiring-pressure-help">Balanced lift keeps roughly 1 role out of the immediate hiring pressure. Project Accelerate pricing stays [TBD].</p>
 
-          <div class="unknowns-box">
-            <p><strong>What we do not know yet:</strong> actual adoption rate, true time savings per workflow, and how much repeatable load playbooks can absorb. Phase 1 is designed to turn those from hypothesis into evidence.</p>
-          </div>
+          <details class="sources-panel">
+            <summary>Where these numbers come from</summary>
+            <div class="sources-content">
+              <p><strong>Source status:</strong> directional references for the draft model. Henrik should confirm final citations before external sharing.</p>
+              <p>Productivity potential: McKinsey, The Economic Potential of Generative AI.</p>
+              <p>Task-level consulting evidence: HBS AI Institute, Navigating the Jagged Technological Frontier.</p>
+              <p>Adoption and value capture: BCG and McKinsey research on capability expansion and organizational rewiring.</p>
+              <p>Lynxeye-specific: conversations with Christian, May 2026. Defaults should be calibrated in Phase 1.</p>
+            </div>
+          </details>
         </section>
-
-        <details class="sources-panel">
-          <summary>Where these numbers come from</summary>
-          <div class="sources-content">
-            <p><strong>Source status:</strong> directional references for the draft model. Henrik should confirm which sources to cite before external sharing.</p>
-            <p><strong>Productivity potential:</strong> <a href="https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier">McKinsey, "The Economic Potential of Generative AI"</a>.</p>
-            <p><strong>Task-level consulting evidence:</strong> <a href="https://d3.harvard.edu/navigating-the-jagged-technological-frontier/">HBS AI Institute, "Navigating the Jagged Technological Frontier"</a>.</p>
-            <p><strong>Adoption and value capture:</strong> <a href="https://www.bcg.com/publications/2023/how-people-create-and-destroy-value-with-gen-ai">BCG on value creation and destruction with GenAI</a>, <a href="https://www.bcg.com/publications/2024/gen-ai-increases-productivity-and-expands-capabilities">BCG on capability expansion</a>, and <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-how-organizations-are-rewiring-to-capture-value">McKinsey on rewiring to capture value</a>.</p>
-            <p><strong>Hiring cost logic:</strong> <a href="https://www.skatteverket.se/servicelankar/otherlanguages/englishengelska/businessesandemployers/startingandrunningaswedishbusiness/declaringtaxesbusinesses/filingapayereturn/employercontributions.4.2fb39afe18dabf1e4d24a3d.html">Skatteverket employer contributions</a>, used only to support fully loaded Swedish employer-cost logic.</p>
-            <p><strong>Lynxeye-specific:</strong> conversations with Lynxeye, May 2026. Defaults are deliberately directional and should be calibrated in Phase 1.</p>
-          </div>
-        </details>
-
-        <div class="draft-note">
-          <p><strong>Direction, not promise.</strong> The model frames the upside Phase 1 helps Lynxeye investigate and qualify. It does not claim that Phase 1 delivers the Ascent numbers by itself.</p>
-        </div>
       </section>
 
-      <section class="open-panel panel-hidden" id="panel-phases" data-panel="phases" hidden>
-        <p class="panel-eyebrow">The journey</p>
-        <h2 class="panel-title">Escape Velocity, Ascent, New Frontiers</h2>
-        <p class="panel-sub">Phase 1 is the collaboration suggested here: escape from the current way of working. Phase 2 is where the upside starts to compound. Phase 3 is the strategic frontier beyond this engagement.</p>
-
-        <div class="phase-intro prose">
-          <p>Most companies fail to scale with AI because the new way of working is rougher than the old one at the start.</p>
-          <p>Early friction pushes teams back into old habits before new capability has time to compound.</p>
-          <p>It removes friction, builds the first capability, and proves the new way through live client work. Phase 2 and Phase 3 are context, not proposed scope.</p>
-        </div>
-
-        <div class="phase-cards" aria-label="Three phases">
-          <div class="phase-card phase-one">
-            <p class="phase-anchor">↓ THIS PROPOSAL</p>
-            <p class="phase-label">Phase 1 · Escape Velocity</p>
-            <h3>Current proposal</h3>
-            <p>5-8 people, an 8-12 week working rhythm, and one live client engagement. Remove friction, build first capability, and prove the new way through real work.</p>
-            <p class="phase-tag">Capability created</p>
-          </div>
-          <div class="phase-card phase-two">
-            <p class="phase-label">Phase 2 · Future scope</p>
-            <h3>Ascent</h3>
-            <p>More teams use the method, playbooks improve through reuse, freed time is captured, and capacity starts to compound across client work.</p>
-            <p class="phase-tag">Compounding capacity</p>
-          </div>
-          <div class="phase-card phase-three">
-            <p class="phase-label">Phase 3 · Future scope</p>
-            <h3>New Frontiers</h3>
-            <p>New offers, new business areas, and new types of client work become possible because the operating capability exists.</p>
-            <p class="phase-tag">New offers, new business</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="open-panel panel-hidden" id="panel-suggestion" data-panel="suggestion" hidden>
-        <p class="panel-eyebrow">Panel 4 · The center of gravity</p>
-        <h2 class="panel-title">My suggestion for collaboration.</h2>
-        <p class="panel-sub">A locked Phase 1 core, a small set of possible add-ons, and a way of working matched to Lynxeye's pace, availability, live work, and current AI maturity.</p>
-
-        <div class="collaboration-intro prose">
-          <p><strong>Phase 1 builds a practical AI working capability inside Lynxeye, using live client work, not generic training.</strong> The core stays locked at thirteen deliverables. Add-ons only extend depth, reach, or timing.</p>
-          <p>The first read is simple: set the direction, remove friction, train through live client work, scale the capability, and create the expansion map.</p>
-        </div>
-
-        <div class="strategic-process-band" aria-label="Phase 1 strategic process and timing summary">
-          <div class="process-steps">
-            <div><span>01</span><strong>Set the direction</strong></div>
-            <div><span>02</span><strong>Remove daily friction</strong></div>
-            <div><span>03</span><strong>Train through live work</strong></div>
-            <div><span>04</span><strong>Scale the capability</strong></div>
-            <div><span>05</span><strong>Create the expansion map</strong></div>
-          </div>
-          <div class="process-facts">
-            <div>
-              <span>Duration</span>
-              <strong>8-12 weeks</strong>
-              <em>Working rhythm</em>
-            </div>
-            <div>
-              <span>Window</span>
-              <strong>Summer-aware</strong>
-              <em>Useful work can continue between sessions</em>
-            </div>
-            <div>
-              <span>Team</span>
-              <strong>5-8 people</strong>
-              <em>Add-ons may extend reach</em>
-            </div>
-            <div>
-              <span>Investment</span>
-              <strong>[TBD]</strong>
-              <em>Follows alignment</em>
-            </div>
-          </div>
-        </div>
-
-        <div class="tabs" role="tablist" aria-label="Collaboration details">
-          <button class="tab tab-active" type="button" role="tab" id="tab-core" aria-selected="true" aria-controls="pane-core" data-tab-target="core">
-            Locked core <span>13 items</span>
-          </button>
-          <button class="tab" type="button" role="tab" id="tab-addons" aria-selected="false" aria-controls="pane-addons" data-tab-target="addons">
-            Add-ons <span>6 options</span>
-          </button>
-          <button class="tab" type="button" role="tab" id="tab-how" aria-selected="false" aria-controls="pane-how" data-tab-target="how">
-            How we work <span>approach</span>
-          </button>
-          <button class="tab" type="button" role="tab" id="tab-outcomes" aria-selected="false" aria-controls="pane-outcomes" data-tab-target="outcomes">
-            What Lynxeye gets <span>outcome</span>
-          </button>
-        </div>
-
-        <div class="tab-pane tab-pane-active" id="pane-core" role="tabpanel" aria-labelledby="tab-core" data-tab-pane="core">
-          <div class="tab-context prose">
-            <p><strong>Locked core.</strong> These thirteen deliverables are the minimum shared system: direction, setup, live work, reusable practice, and the evidence Lynxeye needs after Escape Velocity.</p>
-          </div>
-
-          <div class="deliverable-list" aria-label="Phase 1 locked core deliverables">
-            <div class="deliverable-chapter">
-              <span>Foundation</span>
-              <strong>Direction, team shape, and working agreement.</strong>
-            </div>
-            <article class="deliverable deliverable-locked">
-              <button class="deliverable-head" type="button" aria-expanded="false">
-                <span class="deliverable-check">✓</span>
-                <span><strong>AI ambition &amp; operating principles.</strong><em>Short leadership reference for direction, principles, and success measures.</em></span>
-                <span class="deliverable-toggle">▾</span>
-              </button>
-              <div class="deliverable-detail">
-                <div>
-                  <p><strong>Output:</strong> A concise partner-level document that states where Lynxeye is going with AI and what principles guide the work.</p>
-                  <p><strong>Why it matters:</strong> It stops the work becoming scattered tool experiments.</p>
-                  <p><strong>Connection:</strong> Sets the frame for the current-practice session.</p>
-                </div>
-              </div>
-            </article>
-
-            <article class="deliverable deliverable-locked">
-              <button class="deliverable-head" type="button" aria-expanded="false">
-                <span class="deliverable-check">✓</span>
-                <span><strong>Current AI practice working session.</strong><em>Internal AI Specialists/leaders, domain experts, and pilot team around the same table.</em></span>
-                <span class="deliverable-toggle">▾</span>
-              </button>
-              <div class="deliverable-detail">
-                <div>
-                  <p><strong>Output:</strong> A documented map of what already exists, what has worked, what has failed, and what should be built on.</p>
-                  <p><strong>Why it matters:</strong> Lynxeye is not treated as a greenfield client.</p>
-                  <p><strong>Connection:</strong> Feeds the pilot team selection and working agreement.</p>
-                </div>
-              </div>
-            </article>
-
-            <article class="deliverable deliverable-locked">
-              <button class="deliverable-head" type="button" aria-expanded="false">
-                <span class="deliverable-check">✓</span>
-                <span><strong>Pilot team selection and onboarding plan.</strong><em>Who is in the 5-8, why they are there, and what they carry back.</em></span>
-                <span class="deliverable-toggle">▾</span>
-              </button>
-              <div class="deliverable-detail">
-                <div>
-                  <p><strong>Output:</strong> A clear pilot team setup with roles, expectations, availability, and onboarding path.</p>
-                  <p><strong>Why it matters:</strong> The wrong pilot team can make a good method look weak.</p>
-                  <p><strong>Connection:</strong> Gives the working agreement a real operating shape.</p>
-                </div>
-              </div>
-            </article>
-
-            <article class="deliverable deliverable-locked">
-              <button class="deliverable-head" type="button" aria-expanded="false">
-                <span class="deliverable-check">✓</span>
-                <span><strong>Engagement charter / working agreement.</strong><em>Decisions, escalation paths, IP, confidentiality, and scope boundaries.</em></span>
-                <span class="deliverable-toggle">▾</span>
-              </button>
-              <div class="deliverable-detail">
-                <div>
-                  <p><strong>Output:</strong> A short operating agreement for how Henrik works with Lynxeye during Phase 1.</p>
-                  <p><strong>Why it matters:</strong> It prevents confusion once live client work and AI setup start moving.</p>
-                  <p><strong>Connection:</strong> Clears the way for personal setup and gateway readiness.</p>
-                </div>
-              </div>
-            </article>
-
-            <div class="deliverable-chapter">
-              <span>Capability transfer</span>
-              <strong>Practical setup that can move beyond the pilot.</strong>
-            </div>
-            <article class="deliverable deliverable-locked">
-              <button class="deliverable-head" type="button" aria-expanded="false">
-                <span class="deliverable-check">✓</span>
-                <span><strong>Personal AI setup &amp; gateway readiness.</strong><em>Tools, workspaces, role context, document access, and input methods.</em></span>
-                <span class="deliverable-toggle">▾</span>
-              </button>
-              <div class="deliverable-detail">
-                <div>
-                  <p><strong>Output:</strong> Each pilot person has the practical setup needed to use AI seriously inside their actual workday.</p>
-                  <p><strong>Why it matters:</strong> Most AI adoption fails in tiny frictions that never get designed away.</p>
-                  <p><strong>Connection:</strong> Creates the model for the firm-wide setup guide.</p>
-                </div>
-              </div>
-            </article>
-
-            <article class="deliverable deliverable-locked">
-              <button class="deliverable-head" type="button" aria-expanded="false">
-                <span class="deliverable-check">✓</span>
-                <span><strong>Documented setup guide for the rest of the firm.</strong><em>Reusable setup path for people beyond the pilot.</em></span>
-                <span class="deliverable-toggle">▾</span>
-              </button>
-              <div class="deliverable-detail">
-                <div>
-                  <p><strong>Output:</strong> A living guide covering approved tools, context setup, storage hygiene, and common friction points.</p>
-                  <p><strong>Why it matters:</strong> The pilot setup should not stay trapped inside 5-8 people.</p>
-                  <p><strong>Connection:</strong> Supports the live-case work with a consistent baseline.</p>
-                </div>
-              </div>
-            </article>
-
-            <div class="deliverable-chapter">
-              <span>Live work</span>
-              <strong>The new method tested through a real client engagement.</strong>
-            </div>
-            <article class="deliverable deliverable-locked">
-              <button class="deliverable-head" type="button" aria-expanded="false">
-                <span class="deliverable-check">✓</span>
-                <span><strong>Live-case selection.</strong><em>Pick the right client engagement as the practice field.</em></span>
-                <span class="deliverable-toggle">▾</span>
-              </button>
-              <div class="deliverable-detail">
-                <div>
-                  <p><strong>Output:</strong> A selected live case with explicit criteria: timing, AI relevance, sensitivity, senior involvement, and usefulness.</p>
-                  <p><strong>Why it matters:</strong> The work needs stakes, but not unnecessary risk.</p>
-                  <p><strong>Connection:</strong> Gives the workflow design a real client context.</p>
-                </div>
-              </div>
-            </article>
-
-            <article class="deliverable deliverable-locked">
-              <button class="deliverable-head" type="button" aria-expanded="false">
-                <span class="deliverable-check">✓</span>
-                <span><strong>Live-case workflow design and coaching.</strong><em>AI orchestration inside actual delivery, with hands-on support.</em></span>
-                <span class="deliverable-toggle">▾</span>
-              </button>
-              <div class="deliverable-detail">
-                <div>
-                  <p><strong>Output:</strong> Designed workflows, coached usage, reviewed outputs, and reusable patterns from real client work.</p>
-                  <p><strong>Why it matters:</strong> Actual work creates fluency in a way training sessions cannot.</p>
-                  <p><strong>Connection:</strong> Produces the raw material for the first Lynxeye playbooks.</p>
-                </div>
-              </div>
-            </article>
-
-            <div class="deliverable-chapter">
-              <span>Knowledge and quality</span>
-              <strong>Reusable playbooks protected by review rhythm.</strong>
-            </div>
-            <article class="deliverable deliverable-locked">
-              <button class="deliverable-head" type="button" aria-expanded="false">
-                <span class="deliverable-check">✓</span>
-                <span><strong>First Lynxeye playbooks (1-2).</strong><em>Early reusable assets captured from the live work.</em></span>
-                <span class="deliverable-toggle">▾</span>
-              </button>
-              <div class="deliverable-detail">
-                <div>
-                  <p><strong>Output:</strong> One or two structured playbooks with prompts, examples, quality checks, and output formats.</p>
-                  <p><strong>Why it matters:</strong> Playbooks are how senior expertise starts becoming reusable company practice.</p>
-                  <p><strong>Connection:</strong> Needs quality guardrails before it scales.</p>
-                </div>
-              </div>
-            </article>
-
-            <article class="deliverable deliverable-locked">
-              <button class="deliverable-head" type="button" aria-expanded="false">
-                <span class="deliverable-check">✓</span>
-                <span><strong>Light quality guardrails &amp; review rhythms.</strong><em>Human review, escalation, and premium-standard protection.</em></span>
-                <span class="deliverable-toggle">▾</span>
-              </button>
-              <div class="deliverable-detail">
-                <div>
-                  <p><strong>Output:</strong> A light protocol for where humans review, what gets escalated, and what is safe to use.</p>
-                  <p><strong>Why it matters:</strong> Faster output is only useful if Lynxeye's standard stays intact.</p>
-                  <p><strong>Connection:</strong> Makes the use-case map more honest about what should scale.</p>
-                </div>
-              </div>
-            </article>
-
-            <div class="deliverable-chapter">
-              <span>Outcomes and decisions</span>
-              <strong>Evidence package for what should happen after Phase 1.</strong>
-            </div>
-            <article class="deliverable deliverable-locked">
-              <button class="deliverable-head" type="button" aria-expanded="false">
-                <span class="deliverable-check">✓</span>
-                <span><strong>Use-case map and opportunity surface.</strong><em>Qualitative evidence from the live work.</em></span>
-                <span class="deliverable-toggle">▾</span>
-              </button>
-              <div class="deliverable-detail">
-                <div>
-                  <p><strong>Output:</strong> A map of workflows, bottlenecks, risks, and value areas worth pursuing after Phase 1.</p>
-                  <p><strong>Why it matters:</strong> Phase 2 should not be a guess.</p>
-                  <p><strong>Connection:</strong> Feeds the refined simulator with real Lynxeye context.</p>
-                </div>
-              </div>
-            </article>
-
-            <article class="deliverable deliverable-locked">
-              <button class="deliverable-head" type="button" aria-expanded="false">
-                <span class="deliverable-check">✓</span>
-                <span><strong>Refined back-of-envelope simulator.</strong><em>Directional assumptions replaced with Lynxeye-specific data.</em></span>
-                <span class="deliverable-toggle">▾</span>
-              </button>
-              <div class="deliverable-detail">
-                <div>
-                  <p><strong>Output:</strong> The simulator updated with measured time savings, adoption reality, tooling cost, and captured-time assumptions.</p>
-                  <p><strong>Why it matters:</strong> It turns the commercial story from hypothesis into decision input.</p>
-                  <p><strong>Connection:</strong> Combines with the use-case map in the Phase 2 recommendation.</p>
-                </div>
-              </div>
-            </article>
-
-            <article class="deliverable deliverable-locked">
-              <button class="deliverable-head" type="button" aria-expanded="false">
-                <span class="deliverable-check">✓</span>
-                <span><strong>Phase 2 recommendation document.</strong><em>What to scale, deepen, automate, or leave alone.</em></span>
-                <span class="deliverable-toggle">▾</span>
-              </button>
-              <div class="deliverable-detail">
-                <div>
-                  <p><strong>Output:</strong> A short synthesis for leadership: where to focus next, who to involve, what to scale, and what not to pursue.</p>
-                  <p><strong>Why it matters:</strong> It turns Phase 1 from a pilot into a strategic decision.</p>
-                  <p><strong>Connection:</strong> This is the bridge into a Phase 2 conversation, not a hidden commitment.</p>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <div class="tab-pane" id="pane-addons" role="tabpanel" aria-labelledby="tab-addons" data-tab-pane="addons" hidden>
-          <div class="tab-context prose">
-            <p><strong>Possible add-ons.</strong> These are not commitments inside the core. They are ways to extend depth, reach, or timing during the work, or after the first operating rhythm is clear.</p>
-          </div>
-          <div class="deliverable-list">
-            <article class="deliverable deliverable-addon">
-              <button class="deliverable-head" type="button" aria-expanded="false">
-                <span class="deliverable-check"></span>
-                <span><strong>Extended playbook capture.</strong><em>3-5 playbooks captured deeper across the summer window.</em></span>
-                <span class="deliverable-toggle">▾</span>
-              </button>
-              <div class="deliverable-detail">
-                <div>
-                  <p>Instead of the core's 1-2 playbooks, this add-on captures <strong>3-5 of Lynxeye's most valuable methods</strong> and turns them into AI-ready assets across the summer window.</p>
-                  <p><strong>Best when:</strong> Lynxeye knows which methods matter most and wants autumn scale to start from a stronger base.</p>
-                </div>
-              </div>
-            </article>
-
-            <article class="deliverable deliverable-addon">
-              <button class="deliverable-head" type="button" aria-expanded="false">
-                <span class="deliverable-check"></span>
-                <span><strong>Multi-team momentum.</strong><em>Two or more client teams running in parallel.</em></span>
-                <span class="deliverable-toggle">▾</span>
-              </button>
-              <div class="deliverable-detail">
-                <div>
-                  <p>The pilot runs across <strong>two or more client teams in parallel</strong>, not just one. More logistics, more learning, and more carriers of the new way of working.</p>
-                  <p><strong>Best when:</strong> Lynxeye wants Phase 1 to seed change broadly, not just deeply.</p>
-                </div>
-              </div>
-            </article>
-
-            <article class="deliverable deliverable-addon">
-              <button class="deliverable-head" type="button" aria-expanded="false">
-                <span class="deliverable-check"></span>
-                <span><strong>Wider team scale.</strong><em>10-15 people in the pilot instead of 5-8.</em></span>
-                <span class="deliverable-toggle">▾</span>
-              </button>
-              <div class="deliverable-detail">
-                <div>
-                  <p>The pilot includes <strong>10-15 people</strong> instead of 5-8. Broader cultural anchor, more voices in the use-case map, and more variance in what we learn.</p>
-                  <p><strong>Best when:</strong> leadership wants Phase 1 to feel firm-wide from day one rather than like a small experiment.</p>
-                </div>
-              </div>
-            </article>
-
-            <article class="deliverable deliverable-addon">
-              <button class="deliverable-head" type="button" aria-expanded="false">
-                <span class="deliverable-check"></span>
-                <span><strong>Full adoption rhythm &amp; governance.</strong><em>Use-case sharing, tool decisions, escalation paths, wider-firm rhythm.</em></span>
-                <span class="deliverable-toggle">▾</span>
-              </button>
-              <div class="deliverable-detail">
-                <div>
-                  <p>A rhythm of business for AI across the wider firm: monthly use-case sharing, lightweight governance, tool decision clarity, escalation paths, and a simple way to share what is being learned.</p>
-                  <p><strong>Best when:</strong> Lynxeye is ready to operationalize, not just experiment.</p>
-                </div>
-              </div>
-            </article>
-
-            <article class="deliverable deliverable-addon">
-              <button class="deliverable-head" type="button" aria-expanded="false">
-                <span class="deliverable-check"></span>
-                <span><strong>Framing keynote &amp; feedback loop.</strong><em>Communicate broadly, capture reactions, update framing for Phase 2.</em></span>
-                <span class="deliverable-toggle">▾</span>
-              </button>
-              <div class="deliverable-detail">
-                <div>
-                  <p>A firm-wide framing moment at the end of Phase 1: a session, a deck or interactive walkthrough, and a structured way to capture reactions from the wider partner and senior team.</p>
-                  <p><strong>Best when:</strong> broad partner alignment matters as much as pilot success.</p>
-                </div>
-              </div>
-            </article>
-
-            <article class="deliverable deliverable-addon">
-              <button class="deliverable-head" type="button" aria-expanded="false">
-                <span class="deliverable-check"></span>
-                <span><strong>Extended coaching cadence.</strong><em>Ongoing coaching and check-ins past the initial active window.</em></span>
-                <span class="deliverable-toggle">▾</span>
-              </button>
-              <div class="deliverable-detail">
-                <div>
-                  <p>A continued coaching cadence past Phase 1's active window: check-ins, hands-on support for specific problems, and bridges into Phase 2 without a hard handoff.</p>
-                  <p><strong>Best when:</strong> Lynxeye wants to avoid the post-pilot slump.</p>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <div class="tab-pane" id="pane-how" role="tabpanel" aria-labelledby="tab-how" data-tab-pane="how" hidden>
-          <div class="tab-context prose">
-            <p><strong>The work adapts to Lynxeye.</strong> Phase 1 is best thought of as an 8-12 week working rhythm, adjusted to Lynxeye's availability, live client work, and how quickly the pilot team turns new practice into habit.</p>
-            <p>Some people will move fast. Others will need more repetition, review, and supported practice. The point is not to rush the calendar. The point is that the team can use the new way of working in real work, without Henrik in the room.</p>
-          </div>
-
-          <div class="collaboration-map">
-            <div class="loop-visual" aria-label="Live-case loop from client work to playbook">
-              <svg viewBox="0 0 500 390" role="img" aria-labelledby="loop-title loop-desc">
-                <title id="loop-title">Live-case working loop</title>
-                <desc id="loop-desc">A five step circular loop with live work and playbook capture emphasized through border treatment.</desc>
-                <circle cx="250" cy="190" r="106" class="loop-ring" />
-                <g class="loop-step">
-                  <circle cx="250" cy="58" r="32" />
-                  <text x="250" y="64" text-anchor="middle">1</text>
-                  <text class="loop-step-label" x="250" y="112" text-anchor="middle">Set frame</text>
-                </g>
-                <g class="loop-step">
-                  <circle cx="390" cy="150" r="32" />
-                  <text x="390" y="156" text-anchor="middle">2</text>
-                  <text class="loop-step-label" x="390" y="204" text-anchor="middle">Select case</text>
-                </g>
-                <g class="loop-step loop-step-emphasis">
-                  <circle cx="336" cy="306" r="32" />
-                  <text x="336" y="312" text-anchor="middle">3</text>
-                  <text class="loop-step-label" x="336" y="360" text-anchor="middle">Work live</text>
-                </g>
-                <g class="loop-step loop-step-emphasis">
-                  <circle cx="164" cy="306" r="32" />
-                  <text x="164" y="312" text-anchor="middle">4</text>
-                  <text class="loop-step-label" x="164" y="360" text-anchor="middle">Capture playbook</text>
-                </g>
-                <g class="loop-step">
-                  <circle cx="110" cy="150" r="32" />
-                  <text x="110" y="156" text-anchor="middle">5</text>
-                  <text class="loop-step-label" x="110" y="204" text-anchor="middle">Decide next</text>
-                </g>
-                <text class="loop-center" x="250" y="184" text-anchor="middle">WHERE THE</text>
-                <text class="loop-center" x="250" y="204" text-anchor="middle">LEVERAGE LIVES</text>
-              </svg>
-            </div>
-
-            <div class="work-rhythm prose">
-              <h3>How the rhythm works</h3>
-              <p>Henrik works with the pilot team, Internal AI Specialists/leaders, and relevant senior reviewers around live client work. The sessions create the practice. The between-session work turns the practice into reusable materials.</p>
-              <p>The live case matters because it avoids abstract AI training. Lynxeye sees where the method helps, where it is too much, where quality review belongs, and what should become part of the operating system.</p>
-            </div>
-          </div>
-
-          <div class="pace-section">
-            <div class="section-heading">
-              <p class="column-label">Timing options</p>
-              <h3>Weeks only, adjusted to real availability</h3>
-              <p>The exact session length and cadence should be decided with Lynxeye. The proposal should not pretend to know availability before the conversation.</p>
-            </div>
-            <div class="pace-options" aria-label="Phase 1 timing options">
-              <button class="pace-card pace-card-active" type="button" data-pace-option="focused" data-pace-summary="Focused: around 8 weeks, enough time for practice, coaching, review, and useful momentum when the pilot team can protect time.">
-                <span>Focused</span>
-                <strong>Around 8 weeks</strong>
-                <em>Best when calendars can move and the live case is ready.</em>
-              </button>
-              <button class="pace-card" type="button" data-pace-option="summer" data-pace-summary="Summer-adjusted: 10-12 weeks, with more reflection between sessions and useful behind-the-scenes work while people are away.">
-                <span>Summer-adjusted</span>
-                <strong>10-12 weeks</strong>
-                <em>Best when vacation, client load, or learning curve needs more space.</em>
-              </button>
-            </div>
-            <p class="pace-summary" id="pace-summary">Focused: around 8 weeks, enough time for practice, coaching, review, and useful momentum when the pilot team can protect time.</p>
-            <div class="summer-work">
-              <strong>If the rhythm spans summer</strong>
-              <p>The quieter weeks can still be useful. Henrik can work behind the scenes on playbooks, structural setup, skills, lightweight automations, and reusable materials that help Lynxeye move faster after vacation.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="tab-pane" id="pane-outcomes" role="tabpanel" aria-labelledby="tab-outcomes" data-tab-pane="outcomes" hidden>
-          <div class="section-heading">
-            <p class="column-label">Expansion map</p>
-            <h3>What Lynxeye gets by the end of Phase 1</h3>
-            <p>By the end of Phase 1, Lynxeye should know what worked, what the real numbers suggest, and where expansion makes sense: more people, more teams, more use cases, more automation, or stronger operating rhythm.</p>
-          </div>
-
-          <div class="outcome-grid" aria-label="Phase 1 outcome package">
-            <article class="outcome-card">
-              <strong>Actual opportunity surface</strong>
-              <span>A clear view of the workflows where AI orchestration helps, where it does not, and what should be left alone.</span>
-            </article>
-            <article class="outcome-card">
-              <strong>Evidence from real work</strong>
-              <span>Simulator assumptions sharpened with Lynxeye-specific practice, adoption reality, and quality review.</span>
-            </article>
-            <article class="outcome-card">
-              <strong>First reusable assets</strong>
-              <span>Playbooks, setup guidance, and working patterns the pilot team can keep using after the active rhythm.</span>
-            </article>
-            <article class="outcome-card">
-              <strong>Phase 2 decision logic</strong>
-              <span>A practical recommendation on what to scale, deepen, automate, govern, or pause.</span>
-            </article>
-          </div>
-
-          <div class="section-heading section-heading-spaced">
-            <p class="column-label">Continuation paths</p>
-            <h3>What Lynxeye can decide after Escape Velocity</h3>
-            <p>The next step should follow the evidence from Phase 1, not a prewritten expansion plan.</p>
-          </div>
-
-          <div class="after-path-grid" aria-label="Natural continuation paths">
-            <article>
-              <strong>More people and teams</strong>
-              <span>Scale the setup and working method to the next teams without rebuilding from zero.</span>
-            </article>
-            <article>
-              <strong>More use cases</strong>
-              <span>Prioritize the client-facing and back-office workflows where orchestration can create real value.</span>
-            </article>
-            <article>
-              <strong>More automation and value</strong>
-              <span>Decide where deeper setup, automation, governance, or playbook capture should come next.</span>
-            </article>
-          </div>
-
-          <div class="input-note-grid" aria-label="What Lynxeye puts into the work">
-            <article>
-              <strong>Protected pilot attention</strong>
-              <span>Enough time to practice, not just attend.</span>
-            </article>
-            <article>
-              <strong>Live-case access</strong>
-              <span>A real engagement where learning can attach to actual delivery.</span>
-            </article>
-            <article>
-              <strong>Senior review</strong>
-              <span>Human judgment stays close to quality, claims, and client fit.</span>
-            </article>
-            <article>
-              <strong>Internal AI Specialists/leaders</strong>
-              <span>Included as partners in the method, not bypassed by the work.</span>
-            </article>
-          </div>
-        </div>
-      </section>
     </article>
   </main>
 
-  <div class="modal-backdrop" id="modal-pingpong" role="dialog" aria-modal="true" aria-labelledby="modal-pingpong-title" hidden>
-    <div class="modal-card">
-      <button class="modal-close" type="button" data-modal-close aria-label="Close">×</button>
-      <p class="modal-eyebrow">Supporting context</p>
-      <h2 id="modal-pingpong-title">Ping-pong vs. orchestration</h2>
-      <p class="modal-sub">How Lynxeye employees interact with AI today, and what changes when the practice becomes orchestrated.</p>
-
-      <div class="modal-body prose">
-        <p>Most people start with AI in <strong>ping-pong mode</strong>: ask, answer, repeat.</p>
-        <p>Orchestration begins when AI stops being personal productivity and becomes company capability.</p>
-        <p>Playbooks accumulate. Senior expertise becomes reusable. AI works inside the team, not beside it. The result is more output with quality preserved.</p>
-        <p>The difference is not the tool. The difference is the practice. The same AI tools create isolated gains in one company and compounding capability in another.</p>
-
-        <h3>One workflow, two ways</h3>
-        <div class="modal-grid">
-          <section class="modal-cell">
-            <p class="modal-cell-label">Today · Ping-pong mode</p>
-            <p>A strategist starts from scratch. Useful AI output appears in fragments across chats, documents, and versions.</p>
-            <p>Valuable work gets created, but little of it becomes reusable.</p>
-          </section>
-          <section class="modal-cell">
-            <p class="modal-cell-label">Orchestrated</p>
-            <p>Strategist opens the Lynxeye Proposal Playbook. Client context, sector knowledge, tone, and quality expectations are already structured. The strategist briefs, challenges, reviews, and refines the output. What works goes back into the playbook for the next team.</p>
-            <p><strong>Output: reusable working asset.</strong></p>
-          </section>
+  <div class="modal-backdrop" id="modal-orchestration" role="dialog" aria-modal="true" aria-labelledby="modal-orchestration-title" hidden>
+    <div class="modal-card modal-card-wide">
+      <button class="modal-close" type="button" data-modal-close aria-label="Close">x</button>
+      <p class="eyebrow">Why orchestration</p>
+      <h2 id="modal-orchestration-title">Two strategies for AI: ping-ponging, or building capability.</h2>
+      <div class="modal-body orchestration-body">
+        <p>Most people start with ping-pong mode: ask, answer, retry, move on. It can be useful, but the value stays personal, inconsistent, and hard to scale. The organization gets activity, but not necessarily capacity.</p>
+        <div class="orchestration-compare" aria-label="Ping-pong versus orchestration">
+          <article>
+            <span>Ping-pong with AI chat</span>
+            <strong>Useful, but fragile</strong>
+            <p>One person tries something, gets an answer, edits it, and moves on. The next person starts again from scratch. Learning stays hidden.</p>
+          </article>
+          <article>
+            <span>Scale and orchestrate with AI</span>
+            <strong>Reusable working capability</strong>
+            <p>The workflow is designed with context, approved tools, examples, review points, quality checks, and playbooks. Learning becomes shared practice.</p>
+          </article>
         </div>
-
-        <h3>Why most companies do not escape</h3>
-        <p>Good thinking disappears into chat windows. Senior expertise stays trapped in people, decks, and habits. One person improves. The company does not. Too much work still starts from scratch. Every quarter spent in ping-pong mode widens the gap to firms already compounding capability.</p>
-        <p>The intelligence is already inside Lynxeye. AI does not create it. AI activates it. The question is when.</p>
+        <p>This connects directly to the HQ and Eraneos setup. Group infrastructure creates the conditions. Lynxeye creates value when that infrastructure becomes smooth daily use, stronger client projects, faster and better pitches, and company-owned methods.</p>
+        <p>The work is not about replacing judgment. It is about giving Lynxeye people better ways to prepare, synthesize, produce, review, and reuse work so capacity and capability increase together.</p>
+        <div class="modal-note">
+          <strong>Why Henrik fits this bridge</strong>
+          <span>Henrik has worked across business transformation, technology, AI, and practical change in organizations where new ways of working have to hold across many people. A review-sensitive proof point to confirm: Circle K work connected to best-practice scaling and responsibility across 12,000+ employees.</span>
+        </div>
+        <div class="modal-note">
+          <strong>Later proof points</strong>
+          <span>Client verbatims and practical examples can be added here once Henrik has chosen the exact wording.</span>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="modal-backdrop" id="modal-henrik" role="dialog" aria-modal="true" aria-labelledby="modal-henrik-title" hidden>
-    <div class="modal-card">
-      <button class="modal-close" type="button" data-modal-close aria-label="Close">×</button>
-      <p class="modal-eyebrow">Supporting context</p>
-      <h2 id="modal-henrik-title">About Henrik &amp; Threesixty1</h2>
-      <p class="modal-sub">My background, my view, my way of working.</p>
+    <div class="modal-card modal-card-wide">
+      <button class="modal-close" type="button" data-modal-close aria-label="Close">x</button>
+      <p class="eyebrow">About Henrik</p>
+      <h2 id="modal-henrik-title">Business, technology, people, and AI, made practical.</h2>
+      <div class="modal-body modal-body-about">
+        <p>I have spent more than two decades helping people and organizations move better through technology, business change, leadership, and scalable ways of working. This is a focused one-person practice: I do the work myself, close to the people and the problem. My work sits where business goals, technology choices, employees, customers, and company results need to meet in a practical way.</p>
+        <p>I joined Microsoft in 2012 and have been thinking about AI since then. At Atea, I spent three years close to a wide technology ecosystem, including Microsoft, AWS, Apple, Google, Cisco, IBM, and many others, working through partner models, sales motions, customer needs, and enterprise transformation approaches. I have also worked with organizations such as Circle K and Coca-Cola on business and digital transformation.</p>
+        <p>A relevant part of that background is scale. At Circle K, my work connected to best-practice scaling, transformation, and ways of working across more than 12,000 employees. That matters here because Project Accelerate is not only about tools. It is about combining technology and intelligence with how people actually work, how quality is protected, and how a business creates value.</p>
+        <p>For the past five years I have worked deeply and practically with the latest AI developments, both in my own organizations and with customers in medium and large companies. I connect with experts, go into detail with the tools and methods, test what actually works, and then help people use it in their own work.</p>
 
-      <div class="modal-body prose">
-        <p>I have spent more than two decades working inside transformation, long before AI. Leading teams, building products, and helping companies change how they operate. The hardest part has never been the new tool. It has been escaping the old habit.</p>
-        <p>I am not approaching Lynxeye as a pure AI specialist. I am approaching it as someone who has watched organizations change, succeed, fail, and quietly fall back into old habits.</p>
-        <p>AI is the new lever, but the underlying work is still leadership, coaching, and changing how people work together.</p>
-        <p>I have a strong instinct for what creates real change and what is simply theater.</p>
-        <p>I have worked deeply with AI, both practically and strategically, for several years.</p>
-        <p>But the part I trust most is still the human side of the work.</p>
-
-        <h3>Three commitments I work by</h3>
-        <div class="commitments">
-          <section class="commitment">
-            <span aria-hidden="true"></span>
-            <div>
-              <h4>Humans stay in charge</h4>
-              <p>Senior judgment leads on what matters: brand fit, taste, strategy, quality. AI is support, not authority. Premium quality is preserved by design, not by accident.</p>
-            </div>
-          </section>
-          <section class="commitment">
-            <span aria-hidden="true"></span>
-            <div>
-              <h4>Live cases over generic training</h4>
-              <p>Real client work as the practice field. What gets produced is theirs to keep and use the next day. Only actual work creates fluency.</p>
-            </div>
-          </section>
-          <section class="commitment">
-            <span aria-hidden="true"></span>
-            <div>
-              <h4>The intelligence is already there</h4>
-              <p>Lynxeye's playbooks, sector knowledge, and proposal craft already exist. AI activates them. My job is to help structure them so they scale.</p>
-            </div>
-          </section>
+        <div class="about-sweetspot" aria-label="Henrik's working sweet spot">
+          <article>
+            <span>Business</span>
+            <strong>Objectives and value</strong>
+            <p>Start with the business outcome, the client value, and the result worth changing for.</p>
+          </article>
+          <article>
+            <span>Technology</span>
+            <strong>AI and platforms</strong>
+            <p>Understand the tools, the infrastructure, the constraints, and what can actually scale.</p>
+          </article>
+          <article>
+            <span>People</span>
+            <strong>Employees and teams</strong>
+            <p>Coach, teach, challenge, and help people build confidence through their real work.</p>
+          </article>
+          <article>
+            <span>Market</span>
+            <strong>Customers and clients</strong>
+            <p>Keep asking what perfect would look like, then reverse-engineer the practical steps from there.</p>
+          </article>
         </div>
+
+        <p>The common thread is simple: I help people master new technology by tying it to the work they already need to do. Not abstract training. Not tool enthusiasm for its own sake. Real problems, better methods, clearer outcomes, and enough structure that the learning can spread.</p>
+
+        <div class="about-proof" aria-label="Selected feedback about Henrik's working style">
+          <article>
+            <blockquote>He has in-depth knowledge regarding AI combined with a strong business acumen and excellent human capital skills.</blockquote>
+            <p>Kristin Ruud, Chief People Officer, Telenor</p>
+          </article>
+          <article>
+            <blockquote>Henrik was our advisor, mentor, and facilitator in developing a pilot model.</blockquote>
+            <p>Leif Brandeggen, CEO, Studio Sigdal Lørenskog</p>
+          </article>
+          <article>
+            <blockquote>Henrik has a unique ability to identify opportunities and challenges, and to create real enthusiasm by making complex topics engaging and accessible.</blockquote>
+            <p>Astrid Skaugseth, former CEO, SHE Conference</p>
+          </article>
+          <article>
+            <blockquote>Henrik makes innovation feel accessible.</blockquote>
+            <p>Karen Romer, Communications Executive at various international companies</p>
+          </article>
+        </div>
+
+        <p class="about-contact">Henrik C. Høst · henrik@threesixty1.com · threesixty1.com · 941 52 361</p>
       </div>
     </div>
   </div>
 
-  <script src="script.js?v=active-connector-2"></script>
+  <script src="script.js?v=matrix-lock"></script>
 </body>
 </html>

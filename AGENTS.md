@@ -1,5 +1,71 @@
 # AGENTS.md — Project Accelerate Lynxeye
 
+# Simplified Branch Override
+
+This duplicated project is the simplified executive-facing version of the Lynxeye proposal.
+
+The original flagship project used the current app structure as a long-form strategic proposal. In this branch, that architecture is source material, not a locked requirement.
+
+Before planning or editing, read:
+
+1. `simplification.md`
+2. `AGENTS.md`
+3. the current app structure in `src/`
+
+The governing frame for this branch is:
+
+> Help Lynxeye employees turn incoming AI infrastructure into measurable client value and company results.
+
+## What Changes In This Branch
+
+Use the flagship version as source material, but rebuild the simplified version around:
+
+- the matrix-led operating model
+- Part A: Align & Scope
+- Part B: Working Pilot
+- Later: Scale Decision
+- a retained but simplified simulator
+- adoption, compliance, IP, and quality as visible cross-cutting rails
+- current deliverables reorganized into the matrix, not presented first as a long deliverable list
+
+## What Is No Longer Locked
+
+For this simplified branch, the following flagship rules are no longer binding:
+
+- the four-panel architecture
+- “Escape Velocity” as the main phase language
+- the 13 core deliverables as the first-read structure
+- the 6 add-ons as a shopping-list section
+- the rule that deliverable count must not be reduced or reframed
+
+The underlying content can still be reused, but it must be simplified, merged, and reframed according to `simplification.md`.
+
+## What Remains Binding
+
+Keep these rules from the original project:
+
+- no em dashes in rendered HTML
+- currency is SEK
+- use confirmed names only
+- no fictional client names
+- pricing stays TBD unless Henrik confirms numbers
+- all quantified numbers are directional and back-of-the-envelope
+- human judgment leads
+- avoid generic AI language
+- keep the tone clear, warm, practical, and Henrik-like
+
+## Planning Rule
+
+Before making changes, produce a plan that states:
+
+- what will be kept from the flagship
+- what will be removed
+- what will be merged
+- what will be reframed
+- what the new page structure will be
+
+Do not implement until Henrik approves the plan.
+
 > This file follows the [AGENTS.md](https://agents.md) open standard. It is read natively by Claude Code, OpenAI Codex CLI, Cursor, Aider, GitHub Copilot, and most other modern coding agents. Whatever agent you are, read this file in full before making any changes.
 
 ## Who you're building for
@@ -89,29 +155,21 @@ The architecture is fully sketched in `spec/architecture-reference.html`. Match 
 **Core (13 items, every Phase 1 includes all):**
 
 Foundation:
+
 1. AI ambition & operating principles document
 2. Kickoff working session with Johan, Viking, pilot team
 3. Pilot team selection and onboarding plan
 4. Engagement charter / working agreement
 
-Capability transfer:
-5. Personal AI setup & gateway readiness
-6. Documented setup guide for the rest of the firm
+Capability transfer: 5. Personal AI setup & gateway readiness 6. Documented setup guide for the rest of the firm
 
-Live work:
-7. Live-case selection
-8. Live-case workflow design and coaching
+Live work: 7. Live-case selection 8. Live-case workflow design and coaching
 
-Knowledge capture:
-9. First Lynxeye playbooks (1-2)
+Knowledge capture: 9. First Lynxeye playbooks (1-2)
 
-Quality:
-10. Light quality guardrails & review rhythms
+Quality: 10. Light quality guardrails & review rhythms
 
-Outcomes & decision artifacts:
-11. Use-case map and opportunity surface
-12. Refined back-of-envelope simulator
-13. Phase 2 recommendation document
+Outcomes & decision artifacts: 11. Use-case map and opportunity surface 12. Refined back-of-envelope simulator 13. Phase 2 recommendation document
 
 **Add-ons (6 items, Lynxeye picks):**
 

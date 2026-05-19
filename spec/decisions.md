@@ -39,7 +39,7 @@ A numbered log of decisions locked across the design conversation. Each decision
 
 22. **Locked core: 13 deliverables.** Every Phase 1 includes all thirteen. Final list and order:
     1. AI ambition & operating principles document
-    2. Kickoff working session with Johan, Viking, pilot team
+    2. Current AI practice working session with internal AI specialists, domain experts, and pilot team
     3. Pilot team selection and onboarding plan
     4. Engagement charter / working agreement
     5. Personal AI setup & gateway readiness

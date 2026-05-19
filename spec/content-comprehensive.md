@@ -77,7 +77,7 @@ Panel 4's "My suggestion for collaboration" carries the deliverable inventory ac
 
 *Foundation:*
 1. AI ambition & operating principles document
-2. Kickoff working session with Johan, Viking, pilot team
+2. Current AI practice working session
 3. Pilot team selection and onboarding plan
 4. Engagement charter / working agreement
 
@@ -109,7 +109,7 @@ Panel 4's "My suggestion for collaboration" carries the deliverable inventory ac
 5. Framing keynote & feedback loop
 6. Extended coaching cadence
 
-**Tab 3 — How we work:** The principle ("Train through the work") + the integration ("Built on what Johan and Viking are doing") + the live-case loop diagram.
+**Tab 3 — How we work:** The flow ("Adapt first, then accelerate") + the rhythm ("Sit down, then keep momentum") + the live-case loop diagram.
 
 **Tab 4 — What Lynxeye gets:** Three outcomes Lynxeye walks away knowing that didn't exist on day one.
 
@@ -152,9 +152,9 @@ The full version Henrik can cut from. May ship the first paragraph only:
 Placed below the elevator pitch, with a 3px gold left border, italic, in brand green `#2E6B54`. Don't change a word.
 
 ## Hero visual — the divergence
-Two paths from the same starting point. **"Orchestrating with AI"** rises sharply with gold curve and anchor dots. **"Ping-pong with AI"** stays nearly flat with slight drift. Caption: *"Two paths. Same starting point. **The gap widens every quarter.**"*
+Two paths from the same starting point. **"Orchestrating with AI"** rises sharply with gold curve and anchor dots. **"Ping-pong with AI"** stays nearly flat with slight drift. Thesis: *"Companies that orchestrate AI will outperform those still ping-ponging with chat."* Caption: *"Individual gains help. **Shared capability compounds.**"*
 
-`[CLAUDE]` The "every quarter" language is mine. It implies time without committing to dates, which is honest. But verify it's the right cadence — could also be "every month," "every year." My pick: quarter feels strategy-appropriate.
+`[NOTE]` The older widening-gap caption has been replaced by the tighter "Shared capability compounds" line.
 
 `[OPEN]` Should the hero include Henrik's contact info (Threesixty1, email, phone)? Currently it's not in the hero. My view: no — keep the hero clean, put contact info in the About Henrik modal. The email companion carries direct contact for the reply.
 
@@ -165,19 +165,15 @@ Two paths from the same starting point. **"Orchestrating with AI"** rises sharpl
 ## Panel framing
 **Eyebrow:** Panel 1 · The conversation so far
 **Title:** Situation & ambition
-**Subtitle:** *What I hear from our conversations. Lynxeye's reality on the left, where Lynxeye wants to get to on the right.*
+**Subtitle:** *Lynxeye already has the judgment and the demand. The opportunity is to make that expertise easier to scale without lowering the standard.*
 
 ## Situation — long version
 
 The left column. Captures what Henrik has heard from Christian (and where Christian has reflected what others at Lynxeye think).
 
-> **Lynxeye is a premium consultancy of around 70 people**, structurally understaffed for the work in front of it. The pricing premium creates a paradox: it attracts the right kind of client work, but it also creates lost opportunities — projects that don't pencil out because the team can't fit them in. Hiring is the standard answer, and Lynxeye does hire, but the market for senior strategy talent in Stockholm is tight, and the **finance team alone is currently short three people**. Headcount is not catching up to demand.
+> AI use already exists, but most of it remains individual. Context disappears, good practice stays trapped inside teams, and too much work still starts from scratch.
 >
-> Internally, AI use exists but is **individual and scattered**. Johan and Viking are doing meaningful work on the AI side — setting up tools, exploring use cases, building internal capability. But the wider firm is still in what we have been calling **ping-pong mode**: people ask AI questions, get answers, ask more questions, and move on. The prompts disappear. The good thinking happens inside chat windows and vanishes. Knowledge stays in heads. Every project starts from scratch. **AI use is not compounding into Lynxeye intelligence.** It is just generating moments of individual productivity.
->
-> There is also a quality dimension. Lynxeye's premium positioning depends on senior expertise — Niklas, the senior partners, the strategists who carry the firm's distinctive way of seeing problems. That expertise is in their heads, in decks they have written, in habits they have built. AI cannot reach what is not structured. Today, the senior judgment that defines Lynxeye is the bottleneck — and the firm cannot scale it because nothing about it is written down in a way that an intelligent system could amplify.
->
-> The result is a firm running hard, doing premium work, but with a structural ceiling. **More clients than capacity. More opportunities than time.** The standard playbook — hire more people — is slow, expensive, and runs straight into Stockholm's talent market constraints.
+> Senior judgment is still the bottleneck. Until it becomes reusable, AI improves individuals more than the firm itself.
 
 ### Things to fold in — situation
 - The reference to **"premium quality must stay human"** — this is a Lynxeye commitment Christian made clear
@@ -190,15 +186,11 @@ The left column. Captures what Henrik has heard from Christian (and where Christ
 
 The right column. Where Lynxeye wants to get to. Drawn from Christian's framing.
 
-> **Scale and orchestrate with AI without losing what makes Lynxeye premium.** This is the operative phrase. Christian has been clear that the goal is not "use AI more" or "be AI-forward." The goal is to find a way to grow capacity, reduce per-project friction, and open new categories of work — while keeping the senior judgment, the taste, and the editorial standard that define Lynxeye's market position.
+> **Scale and orchestrate with AI without losing what makes Lynxeye premium.** The goal is more capacity, less friction, and stronger client work.
 >
-> The ambition has three concrete shapes:
+> Turn senior expertise into reusable practice. Give people better starting points. Let the first playbooks emerge from real client work, not artificial training exercises.
 >
-> **Turn senior expertise into playbooks.** The knowledge currently locked in Niklas's head and the senior partners' habits becomes structured, reusable, and AI-accessible. Not in a way that flattens it — in a way that amplifies it. The first time a playbook is used, it produces a draft. The senior person reviews, refines, and the playbook gets better. Over time, junior people supported by playbooks plus AI can produce work that approaches senior quality on the easier 70% of cases. The senior person is freed for the hard 30%.
->
-> **Free experienced people from production burden.** Today, senior partners at Lynxeye spend non-trivial time on production: drafting decks, formatting proposals, writing first-pass analysis. Orchestrated AI takes the production burden off their plates — not by replacing them, but by giving them leverage. The senior person becomes the editor and director, not the producer.
->
-> **Build the capability inside Lynxeye, not bought-in.** This is critical. Lynxeye is not buying an AI agency's services. Lynxeye is building its own AI capability, with Henrik as the catalyst and Johan and Viking as the internal owners. When Henrik leaves, the capability stays. The playbooks are owned by Lynxeye. The methods belong to Lynxeye. **The IP is built inside the firm.**
+> When Henrik leaves, the capability stays. The playbooks are owned by Lynxeye. The methods belong to Lynxeye. The IP is built inside the firm.
 
 ### Things to fold in — ambition
 - **Premium quality preserved** — recurring phrase
@@ -241,7 +233,7 @@ The same curve from the hero, possibly scaled down and embedded inside Panel 1 b
 ## Intro callout — the hypothesis frame
 A gold-bordered callout at the top of the panel:
 
-> **Starting hypothesis.** If Lynxeye succeeds with the acceleration, the upside looks something like the numbers below. **No time frame implied here** — this is the destination state, not a Phase 1 deliverable. Phase 1 produces real Lynxeye-specific numbers to replace these directional ones.
+> **Directional Ascent potential.** These numbers are directional, not promises. The purpose is to frame what becomes possible once capability starts compounding.
 
 This is critical framing. The simulator must not be read as "here's what you get in 2-3 months." It is "here's what success looks like if it happens."
 
@@ -379,11 +371,11 @@ After the main simulator output and the hiring alternative, a closing prose bloc
 
 ## Intro prose — long version
 
-> Most companies fail to scale with AI not because they don't want to. They fail because **the new way of working is rougher than the old one**, and time pulls people back to old habits. The first few weeks of orchestrated AI feel slower than the ping-pong mode they replaced. Workflows get rebuilt. Playbooks get drafted. Things break. Without leadership commitment and visible early wins, the team quietly reverts. The old shortcuts come back. The new tools sit unused. The investment evaporates.
+> Most companies fail to scale with AI because the new way of working is rougher than the old one at the start.
 >
-> **Phase 1 is designed to break that gravity.** It is short. It is intense. It is built around real client work, not theoretical training. By the end, the pilot team has lived through the rough part and come out the other side with playbooks they own, workflows they trust, and evidence that the new way is faster than the old one. **Escape velocity reached.**
+> Early friction pushes teams back into old habits before new capability has time to compound.
 >
-> Phase 2 and Phase 3 are what becomes possible once Lynxeye is moving. They are not part of this proposal. They are the destination this proposal is making possible.
+> It removes friction, builds the first capability, and proves the new way through live client work. Phase 2 and Phase 3 are context, not proposed scope.
 
 ### Phase 1 — Escape Velocity (this proposal)
 
@@ -434,7 +426,7 @@ This is the center of gravity of the entire proposal. Most content lives here.
 ## Panel framing
 **Eyebrow:** Panel 4 · The center of gravity
 **Title:** My suggestion for collaboration
-**Subtitle:** *Based on our conversations. A locked core, a small set of add-ons Lynxeye can choose, and a way of working built on what Johan and Viking are already doing.*
+**Subtitle:** *Based on our conversations. A locked core, a small set of add-ons Lynxeye can choose, and a way of working built around Lynxeye's actual people, tools, client work, and transition speed.*
 
 ## Opening prose — long version
 
@@ -471,18 +463,18 @@ Thirteen deliverables. Every version of Phase 1 includes all thirteen. They are 
 **Why this matters:**
 > Without an explicit AI ambition document, Lynxeye stays in reactive mode: tools get tried, abandoned, re-tried by different people. The ambition document is the alignment artifact that ends that cycle. It is short on purpose — strategic direction, not implementation plan.
 
-### Core deliverable 2: Kickoff working session with Johan, Viking, pilot team
+### Core deliverable 2: Current AI practice working session
 
-**Headline:** Kickoff working session with Johan, Viking, pilot team.
-**Short description:** Capture what's already in motion. No greenfield assumption.
+**Headline:** Current AI practice working session.
+**Short description:** Internal AI specialists, domain experts, pilot team. No greenfield assumption.
 
 **Long detail (on click):**
-> A structured kickoff session that brings together **Johan, Viking, and the 5-8 pilot people**. We capture what has already been built, what is working, what has failed, and what has been learned. This becomes the foundation for everything that follows. **No greenfield assumption, no consultant ego, no rebuilding what is already there.**
+> A structured sit-down with **internal AI specialists, domain experts, and the 5-8 pilot people**. We capture what has already been built, what is being tested, what has failed, what has been learned, and where the team believes the transition can move faster. This becomes the foundation for everything that follows. **No greenfield assumption, no consultant ego, no rebuilding what is already there.**
 >
-> *Format: Half-day session. Documented. Output circulated to leadership.*
+> *Format: Physical half-day session where possible. Documented. Output circulated to leadership.*
 
 **Why this matters:**
-> Lynxeye is not starting from zero on AI. Treating it as if it were is the most common consultant failure mode. The kickoff session is the explicit acknowledgment that Johan and Viking's work is the foundation Henrik builds on, not the obstacle he works around. Politically important: this is what turns potential internal allies into actual allies.
+> Lynxeye is not starting from zero on AI. Treating it as if it were is the most common consultant failure mode. The kickoff session is the explicit acknowledgment that current internal AI work is the foundation Henrik builds on, not the obstacle he works around. Politically important: this is what turns potential internal allies into actual allies.
 
 ### Core deliverable 3: Pilot team selection and onboarding plan
 
@@ -511,6 +503,7 @@ Thirteen deliverables. Every version of Phase 1 includes all thirteen. They are 
 > - Confidentiality handling for client engagements used as live cases
 > - IP ownership of the playbooks and methods produced (Lynxeye-owned, always)
 > - How Henrik operates within Lynxeye's existing rhythms
+> - Tool and model requirements, including corporate agreements and Microsoft 365 constraints
 > - What's in scope and what's explicitly out
 >
 > *Format: 2-3 pages. Signed at engagement start. Living document — updated as situations emerge.*
@@ -521,21 +514,20 @@ Thirteen deliverables. Every version of Phase 1 includes all thirteen. They are 
 ### Core deliverable 5: Personal AI setup & gateway readiness
 
 **Headline:** Personal AI setup & gateway readiness.
-**Short description:** One-on-one configuration. Tools, contexts, voice-first, friction removed.
+**Short description:** One-on-one readiness. Tools, contexts, Microsoft setup, friction removed.
 
 **Long detail (on click):**
-> Each pilot person gets their AI environment configured for serious work:
-> - **Claude (Anthropic)** with Projects, custom instructions, and contexts for their work
-> - **ChatGPT / OpenAI** for fast queries, image generation, and code
-> - **Wispr Flow** (or equivalent) for voice-first input — where speed lives
-> - **Microsoft 365 connectors** grounded in Lynxeye's actual documents
-> - Folders, naming conventions, contexts set up consistently
-> - Custom instructions written for each person's role
+> Each pilot person gets their AI environment prepared for serious work:
+> - The confirmed **Claude / Anthropic** setup, with Projects or equivalent workspaces, custom instructions, and contexts for their work
+> - **Microsoft 365** connections and constraints grounded in Lynxeye's actual environment
+> - Storage, folders, naming conventions, and context hygiene set up consistently
+> - Possible voice-to-text such as **Wispr Flow** if it fits Lynxeye's tool and security requirements
+> - Other approved AI tools only where they fit the agreed tool direction
 >
-> *Format: One-on-one sessions, ~1 hour per person. Each person leaves with a working AI environment configured to their actual work.*
+> *Format: One-on-one readiness sessions, ~1 hour per person. Each person leaves with a working AI environment configured to their actual work.*
 
 **Why this matters:**
-> Most people fail with AI not because the tools are bad, but because the **friction of using them well** is invisible. They open ChatGPT, ask a question, get a generic answer, close the tab. They never set up Projects with custom instructions. They never connect their drive. They never speak instead of type. Each piece of friction is small. Together they keep AI at 10% of its potential. Phase 1 removes that friction for 5-8 people.
+> Most people fail with AI not because the tools are bad, but because the **friction of using them well** is invisible. They open a tool, ask a question, get a generic answer, close the tab. They never set up the right context. They never connect the right work material. They never speak instead of type where voice would be faster. Each piece of friction is small. Together they keep AI at 10% of its potential. Phase 1 removes that friction for 5-8 people before asking them to change how they work.
 
 ### Core deliverable 6: Documented setup guide for the rest of the firm
 
@@ -545,12 +537,12 @@ Thirteen deliverables. Every version of Phase 1 includes all thirteen. They are 
 **Long detail (on click):**
 > The setup work from deliverable 5 produces a **written guide** that any of Lynxeye's other 60+ people can follow to replicate the pilot team's AI environment.
 >
-> Covers: which tools to install, how to configure Projects in Claude, which custom instructions to use for which roles, how to connect Microsoft 365, voice-first setup, troubleshooting common issues.
+> Covers: approved tools, AI workspaces and projects, custom instructions by role, Microsoft 365 connections, voice-first setup where relevant, storage hygiene, and common troubleshooting.
 >
-> *Format: Living document. Owned by Lynxeye. Maintained by Johan/Viking or a delegated person after Phase 1.*
+> *Format: Living document. Owned by Lynxeye. Maintained internally after Phase 1.*
 
 **Why this matters:**
-> Without this guide, the pilot team's setup expertise stays locked to 5-8 people. The wider firm cannot benefit. With it, Phase 2 can roll out the same setup to the next 10-30 people without Henrik present. Half a day of work, very high leverage.
+> Without this guide, the pilot team's setup expertise stays locked to 5-8 people. The wider firm cannot benefit. With it, Phase 2 can roll out the same setup to the next 10-30 people without Henrik being in every loop. Half a day of work, very high leverage.
 
 ### Core deliverable 7: Live-case selection
 
@@ -565,6 +557,7 @@ Thirteen deliverables. Every version of Phase 1 includes all thirteen. They are 
 > - It includes work types where AI orchestration plausibly helps (research, synthesis, drafting, presentation)
 > - The client is supportive of (or at least not hostile to) the use of AI in delivery
 > - Senior Lynxeye people on the engagement want to participate, not just tolerate
+> - The case connects to a business area where Lynxeye wants short-term impact, including financial-services work if that is the right priority
 > - The outputs produced are valuable to Lynxeye regardless of Phase 1 — so the work isn't artificial
 >
 > *Format: Selection memo. Reviewed with leadership. Signed off before workflow design begins.*
@@ -578,7 +571,7 @@ Thirteen deliverables. Every version of Phase 1 includes all thirteen. They are 
 **Short description:** Real client work as the practice field. Workflows designed, coaching hands-on, outputs kept and used.
 
 **Long detail (on click):**
-> Once the live case is selected, the pilot team uses AI orchestration alongside their actual delivery — not as a parallel exercise. Workflows are designed deliberately. Henrik coaches hands-on, demos when needed, unblocks when stuck. **What gets produced is the client's actual deliverable**, not a training artifact.
+> Once the live case is selected, the pilot team uses AI orchestration alongside their actual delivery — not as a parallel exercise. Workflows are designed deliberately with the team. Henrik coaches hands-on, demos when needed, unblocks when stuck. **What gets produced is the client's actual deliverable**, not a training artifact.
 >
 > Specific work includes:
 > - Mapping the engagement's work types onto AI-orchestrated workflows
@@ -647,6 +640,7 @@ Thirteen deliverables. Every version of Phase 1 includes all thirteen. They are 
 > A structured document capturing what the live work surfaced — the discoveries that **only exist because we did the work together**:
 > - **Use cases Lynxeye should pursue next** — beyond Phase 1, the specific workflows, processes, and client deliverables that are highest-leverage to AI-orchestrate
 > - **Bottlenecks AI can actually break** — and the ones it cannot, so Lynxeye does not waste energy
+> - **Short-term value areas** — where the benefit is commercial for clients, operational for employees, or both
 > - **Issues to watch out for** — risks, quality concerns, organizational friction, change management challenges identified in real work
 > - **Insights about where premium quality must stay human** — and where AI is safe to lead
 > - **Workflow patterns** — what's working across the pilot team that's worth scaling
@@ -654,7 +648,7 @@ Thirteen deliverables. Every version of Phase 1 includes all thirteen. They are 
 > *Format: Structured document. Owned by Lynxeye. Used as input to deliverables 12 and 13.*
 
 **Why this matters:**
-> Without the use-case map, Phase 2 is guesswork. With it, Lynxeye knows specifically where to invest next, which methods to prioritize for playbook capture, and which areas to leave alone. **This is the strategic value that only comes from doing the work, not from advising about it.**
+> Without the use-case map, Phase 2 is guesswork. With it, Lynxeye knows specifically where to invest next, which methods to prioritize for playbook capture, what to do with its intellectual property, standard operating procedures, and playbooks, and which areas to leave alone. **This is the strategic value that only comes from doing the work, not from advising about it.**
 
 ### Core deliverable 12: Refined back-of-envelope simulator
 
@@ -686,7 +680,7 @@ Thirteen deliverables. Every version of Phase 1 includes all thirteen. They are 
 > A short, sharp document that synthesizes deliverables 11 and 12 into a concrete recommendation for Phase 2:
 > - **Where Phase 2 should focus** — the highest-leverage use cases identified
 > - **Who should be involved** — which teams, which roles, what size
-> - **What to scale** — playbooks, workflows, tools that proved their value
+> - **What to scale** — playbooks, workflows, tools, and IP structures that proved their value
 > - **What to leave alone** — areas where AI doesn't help, or where the cost outweighs the value
 > - **Risks to manage** — what could derail Phase 2 if not handled
 > - **Timing and rhythm** — how fast Phase 2 should move, what cadence
@@ -803,25 +797,25 @@ I haven't added these because we didn't discuss them explicitly. But worth Henri
 
 This tab combines what was previously "How we work" + "Live-case loop." Two prose blocks plus the loop diagram.
 
-### Block 1: The principle
+### Block 1: The flow
 
-**Label:** The principle
-**Headline:** Train through the work
-
-**Body:**
-> Five to eight people in the first version. Live client projects, never hypothetical exercises. What gets produced is theirs to keep and use the next day. Coaching, challenging, demos when needed. **If someone is stuck, I help them out.**
->
-> This is the opposite of "AI training." Training teaches people about AI in the abstract. Working teaches them how to do their actual job with AI. Only the second creates fluency. **Only the second compounds.**
-
-### Block 2: The integration
-
-**Label:** The integration
-**Headline:** Built on what Johan and Viking are doing
+**Label:** The flow
+**Headline:** Adapt first, then accelerate
 
 **Body:**
-> This work doesn't replace internal AI capability. **It accelerates it.** The first deliverable of every Phase 1 is a working session with Johan, Viking, and the pilot team. The playbooks and methods that emerge are Lynxeye-owned. I add velocity, structure, outside perspective — but the IP stays inside the firm.
+> We start by understanding how Lynxeye actually works today: who is already pushing AI forward, where the domain expertise sits, which tools and constraints matter, and how steep the transition can realistically be. Then we move through ambition, guardrails, individual setup, real client work, shared sessions, playbook capture, and the Phase 2 recommendation.
 >
-> Specifically: Johan and Viking continue leading internal AI direction. They are the long-term owners. Henrik is the catalyst — three months of intense work that leaves capability behind. **When Henrik leaves, the work continues.** If it doesn't, Phase 1 has failed regardless of any other outcome.
+> This is the opposite of generic AI training. The point is to adapt to the team first, then accelerate from inside the work. Only actual work creates fluency. **Only actual work compounds.**
+
+### Block 2: The rhythm
+
+**Label:** The rhythm
+**Headline:** Sit down, then keep momentum
+
+**Body:**
+> Some work should happen physically: the early sessions where we get to know each other, understand current practice, and build trust. The supporting work can then run through a clear digital rhythm. Every session is documented so the team can refresh, reuse, and keep moving without needing to ask someone what happened last time.
+>
+> This work does not replace internal AI capability. **It accelerates it.** The playbooks and methods that emerge are Lynxeye-owned. I add velocity, structure, outside perspective, and hands-on help, but the IP stays inside the firm.
 
 ### The live-case loop
 
@@ -894,11 +888,13 @@ This is one of the two supporting context modals accessible from the top menu ba
 
 ## Body — long version
 
-> Most people start with AI in **ping-pong mode**: ask a question, get an answer, ask another, get another. It feels productive in the moment. It doesn't compound. The prompts disappear. The context resets. Next week, the wheel is reinvented.
+> Most people start with AI in **ping-pong mode**: ask, answer, repeat.
 >
-> Orchestration is what happens when AI use stops being individual and starts being systemic. **Playbooks accumulate. Senior expertise gets structured. AI works alongside the team, not in parallel to it.** The same person doing the same client work produces dramatically more, with quality preserved.
+> Orchestration begins when AI stops being personal productivity and becomes company capability.
 >
-> The difference is not the tool. The difference is the practice. The same AI tools — Claude, ChatGPT, Gemini — produce ad hoc results for one person and orchestrated leverage for another. **What changes is how the person uses them: with context, with structure, with playbooks, with deliberate review and refinement.**
+> Playbooks accumulate. Senior expertise becomes reusable. AI works inside the team, not beside it. The result is more output with quality preserved.
+>
+> The difference is not the tool. The difference is the practice. The same AI tools create isolated gains in one company and compounding capability in another.
 
 ## Subsection: One workflow, two ways
 
@@ -906,37 +902,35 @@ Two-column side-by-side comparison.
 
 ### Today · Ping-pong mode
 
-> Senior strategist opens a blank deck. Asks AI in 3 separate sessions: industry context, frameworks, draft language. Copies and pastes. Reformats by hand. Loses 2 hours to PowerPoint layout. Three rounds with junior to refine. Each round restarts the AI without memory.
+> A strategist starts from scratch. Useful AI output appears in fragments across chats, documents, and versions.
 >
-> **Effort: 3 days. Output: one-shot deck.**
+> Valuable work gets created, but little of it becomes reusable.
 
 ### After Phase 1 · Orchestrated
 
-> Strategist opens the Lynxeye Proposal Playbook. AI has memory: client context, sector knowledge, Lynxeye tone. Voice-first briefing: 10 minutes. Draft generated with the Insight-to-Implication framework. Strategist reviews, challenges, refines. Output goes back into the playbook for future use.
+> Strategist opens the Lynxeye Proposal Playbook. Client context, sector knowledge, tone, and quality expectations are already structured. The strategist briefs, challenges, reviews, and refines the output. What works goes back into the playbook for the next team.
 >
-> **Effort: 4 hours. Output: reusable asset.**
+> **Output: reusable working asset.**
 
-`[CLAUDE]` These numbers ("3 days vs. 4 hours") are mine and are illustrative. They should be either confirmed by Henrik as roughly right or replaced with something less precise ("days vs. hours" without specific numbers). Premium consultancies will scrutinize these.
-
-`[VERIFY]` Henrik should also confirm the workflow example. Is "proposal drafting for a financial services client" the right example, or would a different Lynxeye workflow land better? Brand positioning, sector intelligence, strategic recommendation — all could be the example.
+`[NOTE]` Specific timing claims have been removed from the visible modal copy. Measurement belongs in Phase 1 calibration.
 
 ## Subsection: Why most companies don't escape
 
-> Four forces pull teams back into ping-pong mode:
+> Good thinking disappears into chat windows.
 >
-> **Prompts disappear** — good thinking happens in chat windows and vanishes. The senior person who figured out a great approach last Tuesday cannot reproduce it next Tuesday because the conversation is gone.
+> Senior expertise stays trapped in people, decks, and habits.
 >
-> **Knowledge stays scattered** — senior expertise lives in heads, decks, habits. AI cannot reach what isn't structured. The smartest people in Lynxeye are the bottleneck, and they cannot be cloned.
+> One person improves. The company does not.
 >
-> **Best practices don't scale** — one person figures something out, the other 69 don't benefit. Innovation gets locked into individual practice instead of becoming firm capability.
+> Too much work still starts from scratch.
 >
-> **Every project starts from scratch** — no playbooks, no shared assets, no compounding. Every client engagement reinvents the methods that should already be infrastructure.
+> Every quarter spent in ping-pong mode widens the gap to firms already compounding capability.
 
 ## Subsection: The cost of waiting
 
-> The cost of waiting compounds. Every quarter Lynxeye stays in ping-pong mode, the gap widens between Lynxeye and the firms that escaped earlier. The intelligence is already inside Lynxeye. AI does not create it. **AI activates it.**
+> The intelligence is already inside Lynxeye. AI does not create it. AI activates it.
 >
-> The question is when activation happens — and whether it happens deliberately, with senior judgment leading, or whether it happens by accident, through individual experiments that never compound.
+> The question is when.
 
 `[CLAUDE]` The closing line "the intelligence is already inside Lynxeye" is one of the strongest pieces of voice in the whole brief. It's the philosophical argument for the entire engagement. Could potentially be promoted to the hero or elsewhere. Currently lives here. Worth Henrik's view on placement.
 
@@ -952,17 +946,17 @@ Two-column side-by-side comparison.
 
 ## Body — long version
 
-> `[VERIFY]` **The opening paragraph is placeholder.** Henrik must replace with his actual bio.
+> I have spent more than two decades working inside transformation, long before AI. Leading teams, building products, and helping companies change how they operate. The hardest part has never been the new tool. It has been escaping the old habit.
 >
-> ~~I have spent **20 to 30 years working inside transformation**, long before AI. Leading people, building teams, shipping consumer technology, advising companies on how to change the way they operate. The hardest part has never been the new tool. It has been escaping the old habit.~~
+> I am not approaching Lynxeye as a pure AI specialist. I am approaching it as someone who has watched organizations change, succeed, fail, and quietly fall back into old habits.
 >
-> [Replace with Henrik's actual background — number of years, what he's done, what companies/sectors, what he's known for]
+> AI is the new lever, but the underlying work is still leadership, coaching, and changing how people work together.
 >
-> That is what makes this work specific. I am not coming to Lynxeye as an AI expert. I am coming as someone who has watched dozens of organizations try to change, succeed, fail, and quietly revert. AI is the new lever, but the work is the same work: **leadership, coaching, designing how people show up to their craft.**
+> I have a strong instinct for what creates real change and what is simply theater.
 >
-> I work hands-on with people. I sit with their actual problem. I challenge thinking, demo what is possible, document what emerges, and stay close enough that nothing gets stuck. I have an instinct for what is real and what is theater. I avoid frameworks that do not earn their place. I push back when something is off.
+> I have worked deeply with AI, both practically and strategically, for several years.
 >
-> I have been deep in the AI space practically and strategically for a few years. I work with **Claude, OpenAI, and Gemini** every day. I have built workflows, playbooks, and live-case methods. But the part of my work I trust most is still the human part. **Reading the room, finding the right person to spend an hour with, getting the next thing unstuck.**
+> But the part I trust most is still the human side of the work.
 
 ## Subsection: Three commitments I work by
 
@@ -1017,7 +1011,7 @@ This is what was previously "Closing" in the proposal. It moves to the email com
 > **A reading guide if it helps:**
 > - **For you, Christian:** The full proposal. Start at Panel 4 (My suggestion for collaboration) if you want the substance immediately.
 > - **For Niklas:** The hero plus Panel 1 (Situation & Ambition) plus Panel 4. ~5 minutes for the strategic shape.
-> - **For Johan and Viking:** Panel 4, especially the "How we work" tab. The integration with what they're already doing is explicit and important. They are the long-term owners, not bypassed.
+> - **For internal AI specialists and domain experts:** Panel 4, especially the "How we work" tab. The integration with what is already happening inside Lynxeye is explicit and important. Internal capability is respected, not bypassed.
 > - **For the skeptical partner:** Panel 2 (Back of the envelope), then the hiring alternative inside it. The math.
 >
 > **My ask for Monday:**
@@ -1062,7 +1056,7 @@ Four visuals, redrawn in editorial daylight palette (cream `#F6F3EE`, gold `#C9A
 
 **Where it lives:** Hero, right column.
 **What it argues:** Two paths from the same starting point. The gap widens over time. Ping-pong with AI plateaus; Orchestrating with AI rises sharply.
-**Locked design:** SVG with grey ping-pong line (flat) and gold orchestrating line (rising with anchor dots). End-state labels in brand green for orchestrated, muted for ping-pong. "NOW" and "LATER" axis labels. Caption: "Two paths. Same starting point. The gap widens every quarter."
+**Locked design:** SVG with grey ping-pong line (flat) and gold orchestrating line (rising with anchor dots). End-state labels in brand green for orchestrated, muted for ping-pong. "NOW" and "LATER" axis labels. Caption: "Individual gains help. Shared capability compounds."
 
 ## Visual 2: Three-phase rising borders
 
