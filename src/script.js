@@ -1,22 +1,18 @@
 (function () {
-  var matrixPhaseTabs = Array.prototype.slice.call(document.querySelectorAll("[data-matrix-phase]"));
-  var matrixDetailTabs = Array.prototype.slice.call(document.querySelectorAll("[data-matrix-detail-tab]"));
-  var matrixCells = Array.prototype.slice.call(document.querySelectorAll("[data-matrix-cell]"));
-  var matrixRowToggles = Array.prototype.slice.call(document.querySelectorAll("[data-matrix-row-toggle]"));
-  var matrixColumnToggles = Array.prototype.slice.call(document.querySelectorAll("[data-matrix-column-toggle]"));
-  var matrixHome = document.querySelector("[data-matrix-home]");
+  var matrixTabs = Array.prototype.slice.call(document.querySelectorAll("[data-matrix-tab]"));
+  var matrixSummaryCells = Array.prototype.slice.call(document.querySelectorAll("[data-matrix-summary]"));
+  var matrixDetailCells = Array.prototype.slice.call(document.querySelectorAll("[data-matrix-detail]"));
+  var matrixRowButtons = Array.prototype.slice.call(document.querySelectorAll("[data-matrix-toggle]"));
+  var matrixSummaryRows = Array.prototype.slice.call(document.querySelectorAll("[data-matrix-row]"));
   var scenarioButtons = Array.prototype.slice.call(document.querySelectorAll("[data-scenario]"));
   var modalOpeners = Array.prototype.slice.call(document.querySelectorAll("[data-modal-open]"));
   var modals = Array.prototype.slice.call(document.querySelectorAll(".modal-backdrop"));
   var coverageButtons = Array.prototype.slice.call(document.querySelectorAll("[data-coverage-option]"));
-  var selectedPhase = "phase1";
-  var selectedDetailTab = "success";
-  var selectedCell = "teams-projects";
-  var highlightedRow = null;
-  var highlightedColumn = null;
   var previouslyFocused = null;
   var latestSimulatorState = null;
   var copyStatusTimer = null;
+  var selectedMatrixTab = "overview";
+  var openMatrixRow = "";
 
   var scenarioPresets = {
     conservative: {
@@ -39,234 +35,105 @@
     }
   };
 
-  var phaseLabels = {
-    phase1: "Phase 1: Scope & Setup",
-    phase2: "Phase 2: Prove In Work",
-    phase3: "Phase 3: Scale Further"
-  };
-
-  var detailTabLabels = {
-    success: "Success looks like",
-    deliverables: "Concrete deliverables",
-    activities: "Activities we do",
-    collaboration: "How we collaborate"
-  };
-
   var matrixContent = {
-    "employee-setup": {
-      title: "Smooth AI flow",
-      coordinates: "Employee x AI-ready setup",
-      guardrails: "Approved tools, privacy boundaries, role context, safe input habits.",
-      valueLink: false,
-      phase1: {
-        success: "The selected employees know what approved AI can and cannot do, can access the tools, and have a smoother starting rhythm with less guessing and less setup friction.",
-        deliverables: "Readiness notes, access and blocker map, personal setup checklist, role-specific starting prompts.",
-        activities: "Map current habits, remove setup blockers, clarify approved use, and identify the few daily tasks where smoother AI use matters first.",
-        collaboration: "Henrik works with Johan, Viking, and selected employees to understand real friction before proposing routines.",
-        commercial: "This creates the conditions for value. It does not claim value before people can use the setup smoothly.",
-        evidence: "Readiness notes, blocker map, approved-use summary.",
-        status: "Included in this proposal."
+    overview: {
+      note: "Overview shows the operating model first. Use the tabs to change the lens, then open the level that matters most.",
+      summaries: {
+        "employees-setup": { title: "Skills, tools, access, confidence", summary: "Daily AI use starts from less friction." },
+        "employees-projects": { title: "Better prepared, faster contribution", summary: "Individuals bring stronger work into real projects." },
+        "employees-pitches": { title: "More useful pitch input earlier", summary: "People can contribute before the pressure peaks." },
+        "teams-setup": { title: "Shared setup and working rhythm", summary: "Teams get a common way to work." },
+        "teams-projects": { title: "Workflows tested in real projects", summary: "The method is tested where value is visible." },
+        "teams-pitches": { title: "Better pitch flow and output quality", summary: "Pitch work becomes more structured and reusable." },
+        "lynxeye-setup": { title: "Company-owned adoption path", summary: "The setup can spread beyond the first group." },
+        "lynxeye-projects": { title: "Playbooks and reusable methods", summary: "Strong work becomes company practice." },
+        "lynxeye-pitches": { title: "Value evidence and scale choices", summary: "Leadership can decide what should expand." }
       },
-      phase2: {
-        success: "Employees use approved AI in the flow of daily work without stopping to fight the setup. Confidence rises because the method is clear and usable.",
-        deliverables: "Working personal setup, practical routines, reviewed examples, confidence notes.",
-        activities: "Coach live usage, tune prompts and context, review outputs, and adjust the setup around each person’s real work.",
-        collaboration: "Henrik supports people close to the task, with internal owners seeing what can be repeated later.",
-        commercial: "Smooth setup protects the larger value case by reducing avoidable friction.",
-        evidence: "Setup completion, reviewed examples, employee feedback.",
-        status: "Included in this proposal."
+      details: {
+        "employees-setup": ["Skills, tools, access, and confidence", "Less friction in daily AI use", "Practical habits people can repeat"],
+        "employees-projects": ["Better meeting preparation", "Faster contribution to project work", "Clearer documentation and follow-up"],
+        "employees-pitches": ["Earlier pitch contribution", "Better first drafts and options", "Stronger preparation before senior review"],
+        "teams-setup": ["Shared setup standards", "Common working rhythm", "Visible support and handover"],
+        "teams-projects": ["Priority workflows tested in real work", "Reusable examples captured", "Team learning made visible"],
+        "teams-pitches": ["Better pitch flow", "Reusable output patterns", "Quality and speed improved together"],
+        "lynxeye-setup": ["Company-owned adoption path", "Setup guide beyond the bridge team", "Clear owner for keeping it current"],
+        "lynxeye-projects": ["Playbooks and reusable methods", "Quality guardrails around client work", "Patterns that can scale safely"],
+        "lynxeye-pitches": ["Value evidence for leadership", "Scale choices based on real use", "Lynxeye as a stronger internal reference"]
       }
     },
-    "employee-projects": {
-      title: "Useful delivery capacity",
-      coordinates: "Employee x client projects",
-      guardrails: "Client confidentiality, human review, source discipline, quality standard.",
-      valueLink: true,
-      phase1: {
-        success: "The pilot identifies where individual client-work tasks can create more useful capacity without lowering quality or pushing people into unsafe shortcuts.",
-        deliverables: "Candidate task list, risk notes, personal workflow hypotheses, success criteria.",
-        activities: "Find recurring client-work friction, check risk, define what good support looks like, and choose the first coached work moments.",
-        collaboration: "Henrik listens for where employees lose time and where judgment must stay close.",
-        commercial: "Connects to project compression only after the workflow is tested.",
-        evidence: "Candidate task list, risk notes, success logic.",
-        status: "Included in this proposal."
+    scope: {
+      note: "Scope & Setup finds the short-term value areas, builds on what Lynxeye and HQ already have, and clarifies what should be tested first.",
+      summaries: {
+        "employees-setup": { title: "Skills setup and access", summary: "Tools, Atlas, connectors, devices." },
+        "employees-projects": { title: "Short-term value moments", summary: "Meeting prep, follow-up, output friction." },
+        "employees-pitches": { title: "Pitch preparation friction", summary: "Where people can contribute earlier." },
+        "teams-setup": { title: "Current practice and bridge team", summary: "What works, what failed, who owns action." },
+        "teams-projects": { title: "3 to 5 priority use cases", summary: "Useful, visible, and safe to test." },
+        "teams-pitches": { title: "Pitch workflow baseline", summary: "Current flow, review points, prototype candidates." },
+        "lynxeye-setup": { title: "HQ direction and constraints", summary: "Tools, platform, security, IP, compliance." },
+        "lynxeye-projects": { title: "Project Phase scope", summary: "Use cases, team, cadence, boundaries." },
+        "lynxeye-pitches": { title: "Baseline value evidence", summary: "Simulator, assumptions, leadership questions." }
       },
-      phase2: {
-        success: "Employees contribute more useful capacity inside live client work. AI supports preparation, synthesis, production, and review while human judgment stays responsible.",
-        deliverables: "Reviewed before-and-after examples, personal workflow notes, reusable prompts, quality observations.",
-        activities: "Coach real tasks, compare outputs, review quality, and capture where the work moved faster or became stronger.",
-        collaboration: "Henrik works alongside selected employees in real tasks, then reviews learning with the internal AI team.",
-        commercial: "Connects to captured capacity and weekly hours returned in the directional value case.",
-        evidence: "Before-and-after examples, review notes, employee feedback.",
-        status: "Included in this proposal."
+      details: {
+        "employees-setup": ["Skills setup by role", "Approved AI tools configured correctly", "ChatGPT Atlas browser setup and use cases where approved", "Projects, memory, custom instructions, files, connectors", "Cloud storage and document access mapped", "Voice input where useful", "Mac, PC, browser, and phone friction removed", "Availability and support needs clarified"],
+        "employees-projects": ["Identify where each person can contribute faster", "Map meeting preparation and follow-up friction", "Find where transcripts can become outputs faster", "Identify research, synthesis, documentation, and versioning moments", "Confirm human review and client data boundaries"],
+        "employees-pitches": ["Map where individuals can prepare better for pitches", "Identify moments for faster research and synthesis", "Find where more versions or directions would improve the work", "Capture proposal, deck, and meeting-output friction", "Clarify what support helps people contribute earlier"],
+        "teams-setup": ["Current AI practice working session", "What works, what failed, what should be reused", "Relevant HQ and group resources collected", "Bridge team roles, actions, and availability", "Shared rhythm for support, learning, and handover"],
+        "teams-projects": ["Rank 3 to 5 priority use cases", "Select project contexts with visible short-term value", "Map team collaboration flows around AI", "Identify prototype opportunities using Lynxeye materials", "Define what evidence should be captured"],
+        "teams-pitches": ["Baseline current pitch workflow", "Select priority pitch contexts", "Identify reusable proposal logic and design elements", "Map team review and decision points", "Define pitch examples that show orchestration over chat"],
+        "lynxeye-setup": ["HQ and June 3 input review", "Tool, platform, security, data, IP, and compliance constraint map", "Engagement charter and escalation paths", "Clear rules for read, draft, create, edit, and send actions"],
+        "lynxeye-projects": ["Project Phase scope recommendation", "Use cases, team, cadence, boundaries, responsibilities", "Baseline success measures", "Compliance model for project material", "Pricing basis, with pricing still [TBD]"],
+        "lynxeye-pitches": ["Baseline commercial simulator", "Value capture assumptions", "Leadership questions to resolve before Project Phase", "Evidence model for short-term value", "What would make Lynxeye a forerunner inside the wider group"]
       }
     },
-    "employee-pitches": {
-      title: "Earlier sharper input",
-      coordinates: "Employee x client pitches",
-      guardrails: "Senior judgment owns claims, no generic language, client fit review.",
-      valueLink: true,
-      phase1: {
-        success: "Lynxeye knows where employees could contribute earlier and sharper input to pitch work without flattening the voice or creating unsupported claims.",
-        deliverables: "Pitch friction map, candidate pitch tasks, output-quality risks, review criteria.",
-        activities: "Map pitch bottlenecks, identify blank-page moments, define where support helps, and protect the standard for final claims.",
-        collaboration: "Henrik works with people close to pitch production and with senior reviewers who know what good looks like.",
-        commercial: "Connects later to pitch cycle compression and win-rate assumptions.",
-        evidence: "Pitch friction map and review criteria.",
-        status: "Included in this proposal."
+    project: {
+      note: "Project Phase shows value creation through prototypes, outputs, examples, reusable workflows, and evidence from the work.",
+      summaries: {
+        "employees-setup": { title: "Personalized daily setup", summary: "Working browser and tool habits." },
+        "employees-projects": { title: "Useful outputs from real work", summary: "Preparation, documentation, first versions." },
+        "employees-pitches": { title: "Sharper pitch contribution", summary: "More options and stronger drafts." },
+        "teams-setup": { title: "Shared standards and rhythm", summary: "Support, action rules, show-and-tell." },
+        "teams-projects": { title: "Designed workflows and prototypes", summary: "Examples, outputs, reusable assets." },
+        "teams-pitches": { title: "Reusable pitch workflow", summary: "Proposal logic, formats, quality gates." },
+        "lynxeye-setup": { title: "Setup guide and hub", summary: "Documentation, skills, playbooks, ownership." },
+        "lynxeye-projects": { title: "Playbooks and opportunity map", summary: "Reusable methods owned by Lynxeye." },
+        "lynxeye-pitches": { title: "Commercial upside and scale plan", summary: "Evidence, recommendation, expansion stages." }
       },
-      phase2: {
-        success: "More people can contribute earlier to pitch thinking, synthesis, and production. The work gets faster and sharper without becoming generic.",
-        deliverables: "Pitch workflow examples, synthesis prompts, output templates, senior review checklist.",
-        activities: "Test pitch support patterns, review outputs, refine structure, and capture the parts that improve speed and quality.",
-        collaboration: "Henrik supports the pitch workflow while senior Lynxeye judgment keeps positioning and claims sharp.",
-        commercial: "Connects to pitch-equivalent capacity and expected additional wins in the directional value case.",
-        evidence: "Pitch examples, review checklist, team feedback.",
-        status: "Included in this proposal."
+      details: {
+        "employees-setup": ["One-on-one practical setup support", "Personalized tool environments and context packs", "ChatGPT Atlas routines for on-page help, research, and summaries", "Connectors, storage, voice, and device habits working in daily use", "Meeting transcript to output routines", "Email draft/send workflows only inside approved boundaries"],
+        "employees-projects": ["Better meeting preparation", "Faster documentation and follow-up", "More useful first versions of client outputs", "Reviewed outputs people can use", "Clear notes on when AI should not be used"],
+        "employees-pitches": ["Faster pitch preparation", "More options and stronger first drafts", "Pitch meeting notes turned into usable outputs", "Research, synthesis, structure, and drafting support", "Human judgment remains explicit before senior review"],
+        "teams-setup": ["Shared setup standards", "Storage hygiene and context patterns", "Team support channel and action rules", "Show-and-tell rhythm", "Availability rhythm that keeps the work moving"],
+        "teams-projects": ["Designed workflows for selected use cases", "Prototype builds using Lynxeye playbooks and design elements", "Team collaboration flows captured as deliverables", "Before and after examples", "Review and refine loop"],
+        "teams-pitches": ["Redesigned pitch workflow", "Reusable proposal logic", "Output formats and design patterns", "Pitch prototypes and example outputs", "Quality gates before external use"],
+        "lynxeye-setup": ["Documented setup guide for wider rollout", "Interactive documentation hub", "Tool setup, connector guidance, skills, playbooks, and support material in one place", "Ownership model for maintenance", "Reskilling rhythm for the wider firm"],
+        "lynxeye-projects": ["First Lynxeye playbooks", "Quality guardrails and review rhythm", "Use-case map and opportunity surface", "Reusable methods owned by Lynxeye", "What to scale and what to leave alone"],
+        "lynxeye-pitches": ["Refined simulator with Lynxeye evidence", "Updated commercial upside quantification", "Highest-value expansion recommendation", "Staged scale plan", "Lynxeye positioned as the go-to AI adoption and value creation reference inside the wider group"]
       }
     },
-    "teams-setup": {
-      title: "Shared working rhythm",
-      coordinates: "Teams x AI-ready setup",
-      guardrails: "Shared approved-use rules, internal ownership, handover points.",
-      valueLink: false,
-      phase1: {
-        success: "The pilot team has a shared view of how to use approved AI, where to store learning, how to review output, and what not to touch yet.",
-        deliverables: "Team setup map, current-practice notes, ownership map, shared-rhythm hypothesis.",
-        activities: "Learn from existing internal AI work, clarify team habits, identify ownership, and decide which routines the pilot should use.",
-        collaboration: "Henrik builds with Johan and Viking rather than around them, using the team’s existing knowledge as source material.",
-        commercial: "Shared setup reduces reinvention before the value case can be tested.",
-        evidence: "Current-practice notes, ownership map, shared setup draft.",
-        status: "Included in this proposal."
+    adoption: {
+      note: "Adoption, Security & Quality shows how the work becomes regular, trusted, safe, and strong enough for Lynxeye's premium standard.",
+      summaries: {
+        "employees-setup": { title: "Comfort and approved use", summary: "Confidence, consent, Atlas controls." },
+        "employees-projects": { title: "Human review and safe handling", summary: "Quality checks before work leaves the team." },
+        "employees-pitches": { title: "Safe pitch contribution", summary: "Tone, quality, originality, confidence." },
+        "teams-setup": { title: "Learning rhythm and recognition", summary: "Use-case sessions, Q&A, shared examples." },
+        "teams-projects": { title: "QA rhythm for live workflows", summary: "Risks, mistakes, best practices, review loops." },
+        "teams-pitches": { title: "Pitch quality rhythm", summary: "Shared examples and maintained methods." },
+        "lynxeye-setup": { title: "Rhythm of business for AI", summary: "Governance, ownership, captured learning." },
+        "lynxeye-projects": { title: "Company quality guardrails", summary: "Compliance, IP, privacy, safe scale." },
+        "lynxeye-pitches": { title: "Internal showcase model", summary: "Commercial evidence and adoption proof." }
       },
-      phase2: {
-        success: "The team has a rhythm for briefing, producing, reviewing, sharing examples, and improving the method together.",
-        deliverables: "Shared setup guide, meeting rhythm, example library, handover notes.",
-        activities: "Run show-and-tell moments, tune shared routines, capture examples, and make the setup teachable.",
-        collaboration: "Henrik coaches the rhythm while Johan and Viking shape what should become internal practice.",
-        commercial: "Better team rhythm supports adoption and reduces repeated setup cost.",
-        evidence: "Shared setup guide, example library, team feedback.",
-        status: "Included in this proposal."
-      }
-    },
-    "teams-projects": {
-      title: "Capability lift in delivery",
-      coordinates: "Teams x client projects",
-      guardrails: "Approved tools, client confidentiality, human review, quality standard.",
-      valueLink: true,
-      phase1: {
-        success: "The pilot team knows which client-project workflows matter enough to test, who should be involved, what the risks are, and what evidence would make the pilot worth running.",
-        deliverables: "3 to 5 priority use cases, pilot context, workflow hypotheses, success logic, risk notes.",
-        activities: "Select useful use cases, define workflow boundaries, map constraints, and agree what Phase 2 should prove in live work.",
-        collaboration: "Henrik works with Johan, Viking, and the selected team to turn real delivery pressure into a focused pilot shape.",
-        commercial: "This is where project compression, captured value, and reduced hiring pressure can become visible in the directional value case.",
-        evidence: "Use-case shortlist, pilot context, success logic, risk notes.",
-        status: "Included in this proposal."
-      },
-      phase2: {
-        success: "Teams create more client value with the same or less pressure on hours. Capacity increases because repeatable work moves faster. Capability increases because the team learns better ways to prepare, synthesize, produce, review, and reuse.",
-        deliverables: "Validated use cases, workflow examples, reviewed outputs, playbook inputs, quality checkpoints.",
-        activities: "Design workflows, coach live work, review outputs, capture what worked, and convert useful patterns into repeatable practice.",
-        collaboration: "Henrik works close to the live work with the selected team, while Johan and Viking see what should become internal method.",
-        commercial: "Connects directly to project compression, captured capacity, gross capacity value, and hiring pressure.",
-        evidence: "Workflow examples, reviewed outputs, use-case ranking, playbook inputs.",
-        status: "Included in this proposal."
-      }
-    },
-    "teams-pitches": {
-      title: "Stronger pitch flow",
-      coordinates: "Teams x client pitches",
-      guardrails: "Senior review, Lynxeye voice, supported claims, output quality.",
-      valueLink: true,
-      phase1: {
-        success: "The pilot identifies which pitch moments are worth testing because they can improve speed, quality, contribution, or confidence in the commercial story.",
-        deliverables: "Pitch context shortlist, pitch-flow map, quality risks, review criteria.",
-        activities: "Choose pitch contexts, map where work slows down, define quality standards, and agree what Phase 2 should test.",
-        collaboration: "Henrik works with the people who shape pitch flow, from early synthesis through senior review.",
-        commercial: "Sets up the pitch cycle and win-rate assumptions for the directional value case.",
-        evidence: "Pitch context shortlist, quality risks, success logic.",
-        status: "Included in this proposal."
-      },
-      phase2: {
-        success: "Pitch work moves faster and gets sharper. The team can synthesize faster, structure better, and produce useful material earlier without losing Lynxeye’s taste or judgment.",
-        deliverables: "Pitch workflow pattern, synthesis examples, output templates, senior review checklist.",
-        activities: "Test pitch support, compare outputs, refine templates, and identify where AI improves speed and quality.",
-        collaboration: "Henrik works with the pitch team while senior owners keep the voice and commercial argument sharp.",
-        commercial: "Connects to pitch-equivalent capacity and expected additional wins.",
-        evidence: "Pitch examples, workflow pattern, review findings.",
-        status: "Included in this proposal."
-      }
-    },
-    "lynxeye-setup": {
-      title: "Scalable adoption path",
-      coordinates: "Lynxeye x AI-ready setup",
-      guardrails: "Group alignment, approved tools, data boundaries, adoption ownership.",
-      valueLink: false,
-      phase1: {
-        success: "Lynxeye has a clear view of how the pilot setup fits HQ direction, what must be resolved, and what a wider adoption path could require later.",
-        deliverables: "HQ input summary, approved-tool boundaries, adoption risks, scale-path assumptions.",
-        activities: "Clarify infrastructure fit, confirm constraints, map adoption risks, and define what should stay inside the first pilot.",
-        collaboration: "Henrik connects Lynxeye’s practical needs with the infrastructure and guardrails already being created.",
-        commercial: "A clear setup path avoids wasting investment through fragmented adoption.",
-        evidence: "HQ input summary, boundary notes, adoption-risk map.",
-        status: "Included in this proposal."
-      },
-      phase2: {
-        success: "The pilot leaves a better starting point for more people. Lynxeye can see what would be needed to expand setup beyond the first group.",
-        deliverables: "Documented setup path, internal handover notes, adoption checklist, next-scale requirements.",
-        activities: "Document the setup, test handover points, capture blockers, and define what wider rollout would require.",
-        collaboration: "Henrik packages the learning so internal owners can decide what should move forward.",
-        commercial: "Supports scaling without requiring every team to restart from zero.",
-        evidence: "Setup path, adoption checklist, scale requirements.",
-        status: "Included in this proposal."
-      }
-    },
-    "lynxeye-projects": {
-      title: "Reusable client practice",
-      coordinates: "Lynxeye x client projects",
-      guardrails: "Company-owned examples, IP discipline, review rhythm, quality rules.",
-      valueLink: true,
-      phase1: {
-        success: "Lynxeye knows which delivery patterns could become reusable company practice and which should wait until the working pilot creates evidence.",
-        deliverables: "Capture candidates, playbook hypothesis, quality-risk notes, review rhythm draft.",
-        activities: "Identify repeatable patterns, decide what should be captured, and define how quality will be reviewed.",
-        collaboration: "Henrik uses live-work candidates to shape what could become Lynxeye-owned method.",
-        commercial: "Reusable practice is how capacity gains can become more than isolated savings.",
-        evidence: "Capture candidates, quality-risk notes, playbook hypothesis.",
-        status: "Included in this proposal."
-      },
-      phase2: {
-        success: "Good client-project practice becomes company-owned assets: playbooks, examples, review habits, and quality rules that can improve through reuse.",
-        deliverables: "First client-work playbooks, reviewed examples, quality protocol, reusable prompts and templates.",
-        activities: "Capture playbook material, review quality, organize examples, and turn useful workflows into teachable practice.",
-        collaboration: "Henrik captures the working method with Johan, Viking, and the team so Lynxeye owns the output.",
-        commercial: "Connects to captured capacity and the ability to spread capability beyond the first team.",
-        evidence: "First playbooks, quality protocol, reusable examples.",
-        status: "Included in this proposal."
-      }
-    },
-    "lynxeye-pitches": {
-      title: "Commercial scale evidence",
-      coordinates: "Lynxeye x client pitches",
-      guardrails: "Directional numbers, senior ownership, no unsupported claims, quality review.",
-      valueLink: true,
-      phase1: {
-        success: "Leadership gets a practical commercial hypothesis for what the pilot should test: pitch speed, pitch quality, win probability, and what evidence would justify scaling.",
-        deliverables: "Success logic, simulator assumptions to calibrate, pitch-value hypothesis, Phase 2 decision criteria.",
-        activities: "Define the value case, check assumptions, decide what evidence matters, and keep pricing as [TBD] until the shape is clear.",
-        collaboration: "Henrik gives Christian and the internal team a sharper basis for deciding what the pilot should prove.",
-        commercial: "This sets the directional model before Lynxeye-specific evidence replaces assumptions.",
-        evidence: "Assumption log, success criteria, value-case draft.",
-        status: "Included in this proposal."
-      },
-      phase2: {
-        success: "Lynxeye has evidence for what to scale, deepen, or pause. The pitch and delivery findings feed a practical recommendation for the next investment.",
-        deliverables: "Refined value model, use-case ranking, scale decision package, recommendation for what comes next.",
-        activities: "Calibrate the model, combine qualitative and quantitative evidence, and prepare the scale decision.",
-        collaboration: "Henrik packages the evidence with Lynxeye so leadership can make a confident next decision.",
-        commercial: "Connects to pitch-equivalent capacity, expected additional wins, and the overall scale case.",
-        evidence: "Refined model, use-case ranking, scale decision package.",
-        status: "Included in this proposal."
+      details: {
+        "employees-setup": ["Confidence and comfort checks", "Support for skeptical or unsure employees", "Approved tool use made practical", "ChatGPT Atlas page visibility and browser-memory controls", "Consent rules for recording and transcripts", "Clear escalation path for questions"],
+        "employees-projects": ["Human review for client-facing work", "Safe handling of client data", "Quality checks before output leaves the team", "Notes on mistakes, weak outputs, and learning moments", "QA sessions where people can ask practical questions"],
+        "employees-pitches": ["Review before pitch material is shared", "Tone, quality, and originality checks", "Safe use of client and prospect context", "Clear rule for what can be drafted, reused, or shown", "Better confidence before senior or partner review"],
+        "teams-setup": ["Every-other-week AI use-case session", "Shared learning from wins, mistakes, and examples", "Recognition for teams moving adoption forward", "Practical AI team of the month or similar light ritual", "Team support and Q&A cadence"],
+        "teams-projects": ["QA rhythm for live workflows", "Escalation for privacy, IP, or quality concerns", "Best practices captured from actual project work", "Mistakes and lessons captured without blame", "Review patterns added back into playbooks"],
+        "teams-pitches": ["Pitch quality review rhythm", "Shared examples of strong AI-supported pitch work", "Reusable pitch patterns improved over time", "Team learning from what worked and what did not", "Clear owner for maintaining pitch methods"],
+        "lynxeye-setup": ["Rhythm of business for AI", "Governance for tools, connectors, permissions, and budgets", "Regular capture of skills, use cases, best practices, mistakes, and learnings", "Ownership for documentation and playbook updates", "Wider adoption rhythm beyond the bridge team"],
+        "lynxeye-projects": ["Company quality guardrails", "Compliance, privacy, and IP habits", "Reusable project methods maintained over time", "Leadership visibility into adoption and value", "A practical model for scaling safely"],
+        "lynxeye-pitches": ["Commercial evidence reviewed regularly", "Pitch and growth learnings fed back into the method", "Strongest use cases prioritized for expansion", "Recognition of teams creating measurable value", "Lynxeye becomes a credible internal showcase for AI adoption"]
       }
     }
   };
@@ -278,6 +145,90 @@
   function setText(id, value) {
     var element = byId(id);
     if (element) element.textContent = value;
+  }
+
+  function getSelectedMatrixContent() {
+    return matrixContent[selectedMatrixTab] || matrixContent.overview;
+  }
+
+  function updateMatrixTabs() {
+    var panel = byId("matrix-panel");
+
+    matrixTabs.forEach(function (button) {
+      var isActive = button.dataset.matrixTab === selectedMatrixTab;
+      button.classList.toggle("matrix-tab-active", isActive);
+      button.setAttribute("aria-selected", String(isActive));
+      button.setAttribute("tabindex", isActive ? "0" : "-1");
+
+      if (isActive && panel) {
+        panel.setAttribute("aria-labelledby", button.id);
+      }
+    });
+  }
+
+  function renderBulletList(list, items) {
+    list.innerHTML = "";
+
+    items.forEach(function (item) {
+      var listItem = document.createElement("li");
+      listItem.textContent = item;
+      list.appendChild(listItem);
+    });
+  }
+
+  function updateMatrixContent() {
+    var content = getSelectedMatrixContent();
+
+    matrixSummaryCells.forEach(function (cell) {
+      var cellContent = content.summaries[cell.dataset.matrixSummary];
+      if (!cellContent) return;
+
+      var title = cell.querySelector("strong");
+      var summary = cell.querySelector("em");
+
+      if (title) title.textContent = cellContent.title;
+      if (summary) summary.textContent = cellContent.summary;
+    });
+
+    matrixDetailCells.forEach(function (cell) {
+      var items = content.details[cell.dataset.matrixDetail] || [];
+      var list = cell.querySelector("ul");
+      if (list) renderBulletList(list, items);
+    });
+
+    setText("matrix-note", content.note || matrixContent.overview.note);
+  }
+
+  function updateMatrixRows() {
+    matrixSummaryRows.forEach(function (row) {
+      row.classList.toggle("matrix-summary-row-open", row.dataset.matrixRow === openMatrixRow);
+    });
+
+    matrixRowButtons.forEach(function (button) {
+      var isOpen = button.dataset.matrixToggle === openMatrixRow;
+      var detail = byId("matrix-detail-" + button.dataset.matrixToggle);
+      var action = button.querySelector(".matrix-row-action");
+
+      button.setAttribute("aria-expanded", String(isOpen));
+      button.classList.toggle("matrix-row-button-open", isOpen);
+
+      if (detail) detail.hidden = !isOpen;
+      if (action) action.firstChild.nodeValue = isOpen ? "Hide details " : "View details ";
+    });
+  }
+
+  function setOpenMatrixRow(row) {
+    openMatrixRow = openMatrixRow === row ? "" : row;
+    updateMatrixRows();
+  }
+
+  function setMatrixTab(tab) {
+    if (!matrixContent[tab]) return;
+
+    selectedMatrixTab = tab;
+    updateMatrixTabs();
+    updateMatrixContent();
+    updateMatrixRows();
   }
 
   function setValue(id, value) {
@@ -366,97 +317,6 @@
   function setHidden(id, value) {
     var element = byId(id);
     if (element) element.hidden = value;
-  }
-
-  function getSelectedMatrixContent() {
-    var cell = matrixContent[selectedCell] || matrixContent["teams-projects"];
-    var phase = cell[selectedPhase] || cell.phase1;
-    var tabContent = phase[selectedDetailTab] || phase.success;
-
-    return {
-      cell: cell,
-      body: tabContent,
-      commercial: phase.commercial,
-      evidence: phase.evidence,
-      status: phase.status
-    };
-  }
-
-  function updateMatrixDetail() {
-    var content = getSelectedMatrixContent();
-
-    setText("matrix-detail-kicker", phaseLabels[selectedPhase] || phaseLabels.phase1);
-    setText("matrix-detail-title", content.cell.title);
-    setText("matrix-detail-coordinates", content.cell.coordinates);
-    setText("matrix-detail-body", content.body);
-    setText("matrix-detail-commercial", content.commercial);
-    setText("matrix-detail-guardrails", content.cell.guardrails);
-    setText("matrix-detail-evidence", content.evidence);
-    setText("matrix-detail-status", content.status);
-    setHidden("matrix-value-link", !content.cell.valueLink);
-  }
-
-  function updateMatrixSelection() {
-    matrixCells.forEach(function (button) {
-      var isActive = button.dataset.matrixCell === selectedCell;
-      var isRowHighlighted = highlightedRow && button.dataset.matrixRow === highlightedRow;
-      var isColumnHighlighted = highlightedColumn && button.dataset.matrixColumn === highlightedColumn;
-
-      button.classList.toggle("matrix-cell-active", isActive);
-      button.classList.toggle("matrix-cell-highlighted", Boolean(isRowHighlighted || isColumnHighlighted));
-      button.setAttribute("aria-pressed", String(isActive));
-    });
-
-    matrixRowToggles.forEach(function (button) {
-      var isActive = highlightedRow === button.dataset.matrixRowToggle;
-      button.classList.toggle("matrix-row-head-active", isActive);
-      button.setAttribute("aria-pressed", String(isActive));
-    });
-
-    matrixColumnToggles.forEach(function (button) {
-      var isActive = highlightedColumn === button.dataset.matrixColumnToggle;
-      button.classList.toggle("matrix-col-head-active", isActive);
-      button.setAttribute("aria-pressed", String(isActive));
-    });
-
-    updateMatrixDetail();
-  }
-
-  function setMatrixPhase(name) {
-    if (!phaseLabels[name]) return;
-    selectedPhase = name;
-
-    matrixPhaseTabs.forEach(function (button) {
-      var isActive = button.dataset.matrixPhase === name;
-      button.classList.toggle("matrix-phase-tab-active", isActive);
-      button.setAttribute("aria-selected", String(isActive));
-    });
-
-    updateMatrixDetail();
-  }
-
-  function setMatrixDetailTab(name) {
-    if (!detailTabLabels[name]) return;
-    selectedDetailTab = name;
-
-    matrixDetailTabs.forEach(function (button) {
-      var isActive = button.dataset.matrixDetailTab === name;
-      button.classList.toggle("matrix-detail-tab-active", isActive);
-      button.setAttribute("aria-selected", String(isActive));
-    });
-
-    updateMatrixDetail();
-  }
-
-  function resetMatrix() {
-    selectedCell = "teams-projects";
-    selectedPhase = "phase1";
-    selectedDetailTab = "success";
-    highlightedRow = null;
-    highlightedColumn = null;
-    setMatrixPhase(selectedPhase);
-    setMatrixDetailTab(selectedDetailTab);
-    updateMatrixSelection();
   }
 
   function readCoverageRate() {
@@ -629,21 +489,21 @@
   }
 
   function buildHiringPressureSentence(state) {
-    var sentence = "Old answer: hire " + state.hiringNeed + ". Capability answer: hire about " + state.remainingHires;
+    var sentence = "Baseline pressure: " + formatHireCount(state.hiringNeed) + ". Capability view: " + formatHireCount(state.remainingHires) + " still needed";
 
     if (state.pressureEased === 0) {
-      return sentence + ", while the model keeps at least one real hire in place.";
+      return sentence + ", with no immediate hiring pressure absorbed at this setting.";
     }
 
-    return sentence + ", while playbooks absorb the pressure of roughly " + formatRoleCount(state.pressureEased) + ".";
+    return sentence + ", while playbooks absorb roughly " + formatRoleCount(state.pressureEased) + " of repeatable load.";
   }
 
   function buildHiringPressureHelp(state) {
     if (state.pressureEased === 0) {
-      return state.coverageLabel + " does not change the immediate hire count at this setting. Project Accelerate pricing stays [TBD].";
+      return state.coverageLabel + " does not change the immediate hire count at this setting.";
     }
 
-    return state.coverageLabel + " keeps roughly " + formatRoleCount(state.pressureEased) + " out of the immediate hiring pressure. Project Accelerate pricing stays [TBD].";
+    return state.coverageLabel + " shows how much pressure could be absorbed before the next hiring decision.";
   }
 
   function recalculateSimulator() {
@@ -685,7 +545,7 @@
 
   function buildCopyText(state) {
     return [
-      "Project Accelerate Lynxeye, directional simulator model",
+      "Project Accelerate Lynxeye, back-of-envelope model",
       "",
       "Inputs",
       "Employees: " + formatNumber(state.employees),
@@ -710,10 +570,9 @@
       buildHiringPressureSentence(state),
       "Old hiring run-rate: " + formatSEKShortRange(state.oldHiringCostLow, state.oldHiringCostHigh) + " / year",
       "Hiring run-rate not immediately added: " + formatSEKShortRange(state.hiringRunRateNotAddedLow, state.hiringRunRateNotAddedHigh) + " / year",
-      "Project Accelerate pricing: [TBD]",
       "",
       "Caveat",
-      "This is directional commercial logic, not proof. Phase 1 should calibrate the model with Lynxeye-specific evidence."
+      "This is back-of-the-envelope thinking, not proof. Scope & Setup should calibrate the model with Lynxeye-specific evidence."
     ].join("\n");
   }
 
@@ -757,48 +616,46 @@
     });
   }
 
-  matrixPhaseTabs.forEach(function (button) {
-    button.addEventListener("click", function () {
-      if (!button.disabled) setMatrixPhase(button.dataset.matrixPhase);
-    });
-  });
-
-  matrixDetailTabs.forEach(function (button) {
-    button.addEventListener("click", function () {
-      setMatrixDetailTab(button.dataset.matrixDetailTab);
-    });
-  });
-
-  matrixCells.forEach(function (button) {
-    button.addEventListener("click", function () {
-      selectedCell = button.dataset.matrixCell;
-      updateMatrixSelection();
-    });
-  });
-
-  matrixRowToggles.forEach(function (button) {
-    button.addEventListener("click", function () {
-      var row = button.dataset.matrixRowToggle;
-      highlightedRow = highlightedRow === row ? null : row;
-      highlightedColumn = null;
-      updateMatrixSelection();
-    });
-  });
-
-  matrixColumnToggles.forEach(function (button) {
-    button.addEventListener("click", function () {
-      var column = button.dataset.matrixColumnToggle;
-      highlightedColumn = highlightedColumn === column ? null : column;
-      highlightedRow = null;
-      updateMatrixSelection();
-    });
-  });
-
-  if (matrixHome) matrixHome.addEventListener("click", resetMatrix);
-
   scenarioButtons.forEach(function (button) {
     button.addEventListener("click", function () {
       setScenario(button.dataset.scenario);
+    });
+  });
+
+  matrixTabs.forEach(function (button) {
+    button.addEventListener("click", function () {
+      setMatrixTab(button.dataset.matrixTab);
+    });
+
+    button.addEventListener("keydown", function (event) {
+      var currentIndex = matrixTabs.indexOf(button);
+      var nextIndex = currentIndex;
+
+      if (event.key === "ArrowRight") nextIndex = currentIndex + 1;
+      if (event.key === "ArrowLeft") nextIndex = currentIndex - 1;
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = matrixTabs.length - 1;
+
+      if (nextIndex !== currentIndex) {
+        event.preventDefault();
+        if (nextIndex < 0) nextIndex = matrixTabs.length - 1;
+        if (nextIndex >= matrixTabs.length) nextIndex = 0;
+        matrixTabs[nextIndex].focus();
+        setMatrixTab(matrixTabs[nextIndex].dataset.matrixTab);
+      }
+    });
+  });
+
+  matrixRowButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      setOpenMatrixRow(button.dataset.matrixToggle);
+    });
+  });
+
+  matrixSummaryRows.forEach(function (row) {
+    row.addEventListener("click", function (event) {
+      if (event.target.closest("button")) return;
+      setOpenMatrixRow(row.dataset.matrixRow);
     });
   });
 
@@ -864,7 +721,8 @@
   var copyButton = byId("copy-model");
   if (copyButton) copyButton.addEventListener("click", copyCurrentModel);
 
-  resetMatrix();
+  setMatrixTab(selectedMatrixTab);
+  updateMatrixRows();
   setCoverageRate(50, false);
   setScenario("base");
 })();
