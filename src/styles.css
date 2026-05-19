@@ -129,7 +129,7 @@ a {
 }
 
 .eyebrow,
-.matrix-table td > span,
+.matrix-phase-table td span,
 .detail-kicker,
 .sim-label,
 .output-label,
@@ -640,6 +640,121 @@ a {
 }
 
 .matrix-note {
+  background: var(--bg-white);
+  border: 0.5px solid var(--border);
+  border-left: 3px solid var(--gold);
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+  margin-top: 16px;
+  padding: 14px 16px;
+}
+
+.matrix-phase-tabs {
+  align-items: end;
+  border-bottom: 0.5px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.matrix-phase-tab {
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: -1px;
+  padding: 0 0 11px;
+  text-align: left;
+  transition: border-color var(--duration) var(--ease), color var(--duration) var(--ease);
+}
+
+.matrix-phase-tab:hover,
+.matrix-phase-tab:focus-visible {
+  border-bottom-color: var(--gold);
+  color: var(--ink);
+  outline: 0;
+}
+
+.matrix-phase-tab-active,
+.matrix-phase-tab-active:hover,
+.matrix-phase-tab-active:focus-visible {
+  border-bottom-color: var(--green);
+  color: var(--ink);
+  outline: 0;
+}
+
+.matrix-phase-table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.matrix-phase-table th,
+.matrix-phase-table td {
+  border-right: 0.5px solid var(--border-light);
+  border-bottom: 0.5px solid var(--border-light);
+  padding: 16px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.matrix-phase-table th:last-child,
+.matrix-phase-table td:last-child {
+  border-right: 0;
+}
+
+.matrix-phase-table tbody tr:last-child th,
+.matrix-phase-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.matrix-phase-table thead th {
+  background: var(--bg-stone);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.matrix-phase-table tbody th {
+  background: var(--gold-tint);
+  width: 22%;
+}
+
+.matrix-phase-table td {
+  background: var(--bg-white);
+  min-height: 116px;
+}
+
+.matrix-phase-table strong {
+  color: var(--ink);
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.matrix-phase-table em {
+  color: var(--muted);
+  display: block;
+  font-size: 12px;
+  font-style: normal;
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+.matrix-phase-table td span {
+  display: none;
+  margin-bottom: 8px;
+}
+
+.matrix-phase-note {
   background: var(--bg-white);
   border: 0.5px solid var(--border);
   border-left: 3px solid var(--gold);
@@ -1495,6 +1610,67 @@ body.modal-open {
   .matrix-tab {
     border-radius: 8px;
     min-height: 48px;
+  }
+
+  .matrix-phase-tabs {
+    align-items: stretch;
+    display: grid;
+    gap: 0;
+    grid-template-columns: 1fr;
+    margin-bottom: 16px;
+  }
+
+  .matrix-phase-tab {
+    border-bottom-width: 0.5px;
+    margin-bottom: 0;
+    padding: 12px 0;
+  }
+
+  .matrix-phase-tab-active {
+    border-bottom-width: 2px;
+  }
+
+  .matrix-phase-table,
+  .matrix-phase-table thead,
+  .matrix-phase-table tbody,
+  .matrix-phase-table tr,
+  .matrix-phase-table th,
+  .matrix-phase-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .matrix-phase-table thead {
+    display: none;
+  }
+
+  .matrix-phase-table tbody tr {
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .matrix-phase-table tbody tr:last-child {
+    border-bottom: 0;
+  }
+
+  .matrix-phase-table th,
+  .matrix-phase-table td,
+  .matrix-phase-table th:last-child,
+  .matrix-phase-table td:last-child {
+    border-bottom: 0.5px solid var(--border-light);
+    border-right: 0;
+  }
+
+  .matrix-phase-table tbody th {
+    width: 100%;
+    padding: 14px 16px;
+  }
+
+  .matrix-phase-table td {
+    padding: 16px;
+  }
+
+  .matrix-phase-table td span {
+    display: block;
   }
 
   .matrix-table,

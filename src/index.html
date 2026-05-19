@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="styles.css?v=matrix-operating-model">
+  <link rel="stylesheet" href="styles.css?v=matrix-phase-live">
 </head>
 <body>
   <main class="page-shell">
@@ -74,92 +74,49 @@
         <div class="section-heading">
           <p class="eyebrow">Value matrix</p>
           <h2 id="matrix-title">Where the work creates value.</h2>
-          <p>A simple operating model for where the work should show up: setup and daily use, client projects, and client pitches. The first layer stays calm. The detail opens only when the reader wants to see what gets produced.</p>
+          <p>A simple map of who benefits and where the work should show up: setup and daily use, client projects, and pitches and growth. The center remains client projects, where capacity and capability become real.</p>
         </div>
 
-        <div class="matrix-tabs" role="tablist" aria-label="Matrix lens">
-          <button class="matrix-tab matrix-tab-active" id="matrix-tab-overview" type="button" role="tab" aria-selected="true" aria-controls="matrix-panel" data-matrix-tab="overview"><span>1</span>Overview</button>
-          <button class="matrix-tab" id="matrix-tab-scope" type="button" role="tab" aria-selected="false" aria-controls="matrix-panel" data-matrix-tab="scope"><span>2</span>Scope &amp; Setup</button>
-          <button class="matrix-tab" id="matrix-tab-project" type="button" role="tab" aria-selected="false" aria-controls="matrix-panel" data-matrix-tab="project"><span>3</span>Project Phase</button>
-          <button class="matrix-tab" id="matrix-tab-adoption" type="button" role="tab" aria-selected="false" aria-controls="matrix-panel" data-matrix-tab="adoption"><span>4</span>Adoption, Security &amp; Quality</button>
+        <div class="matrix-phase-tabs" role="tablist" aria-label="Matrix phases">
+          <button class="matrix-phase-tab matrix-phase-tab-active" type="button" role="tab" aria-selected="true" data-matrix-phase="partA">Part A: Align &amp; Scope</button>
+          <button class="matrix-phase-tab" type="button" role="tab" aria-selected="false" data-matrix-phase="partB">Part B: Working Pilot</button>
+          <button class="matrix-phase-tab" type="button" role="tab" aria-selected="false" data-matrix-phase="later">Later: Scale Decision</button>
         </div>
 
-        <div class="matrix-table-wrap" id="matrix-panel" role="tabpanel" aria-labelledby="matrix-tab-overview">
-          <table class="matrix-table" aria-label="Lynxeye AI value matrix">
+        <div class="matrix-table-wrap">
+          <table class="matrix-phase-table" aria-label="Lynxeye AI value matrix">
             <thead>
               <tr>
-                <th scope="col">Level</th>
+                <th scope="col">Who / where</th>
                 <th scope="col">Setup &amp; daily use</th>
                 <th scope="col">Client projects</th>
-                <th scope="col">Client pitches</th>
+                <th scope="col">Pitches &amp; growth</th>
               </tr>
             </thead>
             <tbody>
-              <tr class="matrix-summary-row" data-matrix-row="employees">
-                <th scope="row">
-                  <button class="matrix-row-button" type="button" aria-expanded="false" aria-controls="matrix-detail-employees" data-matrix-toggle="employees">
-                    <span class="matrix-row-copy"><strong>Employees</strong><em>Skills, tools, access, confidence.</em></span>
-                    <span class="matrix-row-action">View details <span aria-hidden="true">v</span></span>
-                  </button>
-                </th>
-                <td data-matrix-summary="employees-setup"><span>Setup &amp; daily use</span><strong>Skills, tools, access, confidence</strong><em>Daily AI use starts from less friction.</em></td>
-                <td data-matrix-summary="employees-projects"><span>Client projects</span><strong>Better prepared, faster contribution</strong><em>Individuals bring stronger work into real projects.</em></td>
-                <td data-matrix-summary="employees-pitches"><span>Client pitches</span><strong>More useful pitch input earlier</strong><em>People can contribute before the pressure peaks.</em></td>
+              <tr>
+                <th scope="row"><strong>Employee</strong><em>Individual readiness and confidence.</em></th>
+                <td data-matrix-cell="employee-setup"><span>Setup &amp; daily use</span><strong>Map readiness</strong><em>Habits, blockers, confidence, and access.</em></td>
+                <td data-matrix-cell="employee-projects"><span>Client projects</span><strong>Find safe work moments</strong><em>Tasks where AI can support real work.</em></td>
+                <td data-matrix-cell="employee-pitches"><span>Pitches &amp; growth</span><strong>Locate pitch friction</strong><em>Where contribution slows down today.</em></td>
               </tr>
-              <tr class="matrix-detail-row" id="matrix-detail-employees" hidden>
-                <td colspan="4">
-                  <div class="matrix-detail-grid" aria-label="Employee details">
-                    <article data-matrix-detail="employees-setup"><h3>Setup &amp; daily use</h3><ul></ul></article>
-                    <article data-matrix-detail="employees-projects"><h3>Client projects</h3><ul></ul></article>
-                    <article data-matrix-detail="employees-pitches"><h3>Client pitches</h3><ul></ul></article>
-                  </div>
-                </td>
+              <tr>
+                <th scope="row"><strong>Team / practice</strong><em>Shared working practice.</em></th>
+                <td data-matrix-cell="teams-setup"><span>Setup &amp; daily use</span><strong>Learn current practice</strong><em>What Johan, Viking, and teams already know.</em></td>
+                <td data-matrix-cell="teams-projects"><span>Client projects</span><strong>Select 3 to 5 use cases</strong><em>Useful, safe, visible, and practical.</em></td>
+                <td data-matrix-cell="teams-pitches"><span>Pitches &amp; growth</span><strong>Choose pitch contexts</strong><em>Growth moments worth testing now.</em></td>
               </tr>
-              <tr class="matrix-summary-row" data-matrix-row="teams">
-                <th scope="row">
-                  <button class="matrix-row-button" type="button" aria-expanded="false" aria-controls="matrix-detail-teams" data-matrix-toggle="teams">
-                    <span class="matrix-row-copy"><strong>Teams</strong><em>Shared setup and working rhythm.</em></span>
-                    <span class="matrix-row-action">View details <span aria-hidden="true">v</span></span>
-                  </button>
-                </th>
-                <td data-matrix-summary="teams-setup"><span>Setup &amp; daily use</span><strong>Shared setup and working rhythm</strong><em>Teams get a common way to work.</em></td>
-                <td data-matrix-summary="teams-projects"><span>Client projects</span><strong>Workflows tested in real projects</strong><em>The method is tested where value is visible.</em></td>
-                <td data-matrix-summary="teams-pitches"><span>Client pitches</span><strong>Better pitch flow and output quality</strong><em>Pitch work becomes more structured and reusable.</em></td>
-              </tr>
-              <tr class="matrix-detail-row" id="matrix-detail-teams" hidden>
-                <td colspan="4">
-                  <div class="matrix-detail-grid" aria-label="Team details">
-                    <article data-matrix-detail="teams-setup"><h3>Setup &amp; daily use</h3><ul></ul></article>
-                    <article data-matrix-detail="teams-projects"><h3>Client projects</h3><ul></ul></article>
-                    <article data-matrix-detail="teams-pitches"><h3>Client pitches</h3><ul></ul></article>
-                  </div>
-                </td>
-              </tr>
-              <tr class="matrix-summary-row" data-matrix-row="lynxeye">
-                <th scope="row">
-                  <button class="matrix-row-button" type="button" aria-expanded="false" aria-controls="matrix-detail-lynxeye" data-matrix-toggle="lynxeye">
-                    <span class="matrix-row-copy"><strong>Lynxeye</strong><em>Company-owned capability.</em></span>
-                    <span class="matrix-row-action">View details <span aria-hidden="true">v</span></span>
-                  </button>
-                </th>
-                <td data-matrix-summary="lynxeye-setup"><span>Setup &amp; daily use</span><strong>Company-owned adoption path</strong><em>The setup can spread beyond the first group.</em></td>
-                <td data-matrix-summary="lynxeye-projects"><span>Client projects</span><strong>Playbooks and reusable methods</strong><em>Strong work becomes company practice.</em></td>
-                <td data-matrix-summary="lynxeye-pitches"><span>Client pitches</span><strong>Value evidence and scale choices</strong><em>Leadership can decide what should expand.</em></td>
-              </tr>
-              <tr class="matrix-detail-row" id="matrix-detail-lynxeye" hidden>
-                <td colspan="4">
-                  <div class="matrix-detail-grid" aria-label="Lynxeye details">
-                    <article data-matrix-detail="lynxeye-setup"><h3>Setup &amp; daily use</h3><ul></ul></article>
-                    <article data-matrix-detail="lynxeye-projects"><h3>Client projects</h3><ul></ul></article>
-                    <article data-matrix-detail="lynxeye-pitches"><h3>Client pitches</h3><ul></ul></article>
-                  </div>
-                </td>
+              <tr>
+                <th scope="row"><strong>Lynxeye company</strong><em>Company-owned capability.</em></th>
+                <td data-matrix-cell="lynxeye-setup"><span>Setup &amp; daily use</span><strong>Confirm HQ direction</strong><em>Tools, data access, security, and constraints.</em></td>
+                <td data-matrix-cell="lynxeye-projects"><span>Client projects</span><strong>Identify playbook candidates</strong><em>Patterns worth capturing later.</em></td>
+                <td data-matrix-cell="lynxeye-pitches"><span>Pitches &amp; growth</span><strong>Define success logic</strong><em>Evidence the pilot should create.</em></td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <p class="matrix-note" id="matrix-note" aria-live="polite">Overview shows the operating model first. Use the tabs to change the lens, then open the level that matters most.</p>
+        <p class="matrix-phase-note" id="matrix-phase-note" aria-live="polite">Part A chooses where the work should focus before anything is scaled: what is ready, what is useful, and what evidence the pilot needs to create.</p>
       </section>
 
       <section class="value-section" id="value" aria-labelledby="value-title">
@@ -503,6 +460,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=matrix-operating-model"></script>
+  <script src="script.js?v=matrix-phase-live"></script>
 </body>
 </html>
