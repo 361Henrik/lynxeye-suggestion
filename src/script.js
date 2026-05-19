@@ -433,7 +433,7 @@
 
   function buildCopyText(state) {
     return [
-      "Project Accelerate Lynxeye, back-of-envelope model",
+      "Accelerate Lynxeye with AI, back-of-envelope model",
       "",
       "Inputs",
       "Employees: " + formatNumber(state.employees),
